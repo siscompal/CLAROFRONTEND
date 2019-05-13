@@ -48,6 +48,7 @@
     </button>
     <span>Distrirecarga</span>
     <p id="p">Cerrar sesion</p>
+
 </mat-toolbar>
 <mat-drawer-container class="drawer-container" autosize>
 
@@ -67,10 +68,13 @@
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        prueba
+                        <a [routerLink]="['editar-usuario']" [routerLinkActive]="['active']"> prueba</a>
                     </mat-panel-title>
                 </mat-expansion-panel-header>
             </mat-expansion-panel>
+
+
+
 
         </mat-accordion>
 

@@ -1,0 +1,27 @@
+.example-tab-icon {
+    margin-right: 8px;
+}
+
+mat-card {
+    margin: left;
+    width: 70%;
+    background-color: #7c0000;
+}
+
+.tabscard {
+    background-color: #0cc215;
+    margin: auto;
+    width: 90%;
+}
+
+mat-tab-group {
+    background-color: #0c0fc2;
+    margin: left;
+    width: 100%;
+}
+
+.innertabs {
+    background-color: #910557;
+    margin: left;
+    width: 100%;
+}
