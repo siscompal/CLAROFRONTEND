@@ -1,0 +1,33 @@
+.formcontainer {
+    width: 50%;
+    background-color: #157c00;
+    margin: auto;
+}
+
+form {
+    width: 100%;
+}
+
+mat-card {
+    margin: auto;
+    width: 70%;
+}
+
+mat-form-field,
+input {
+    width: 92%;
+    margin: auto;
+}
+
+mat-form-field {
+    margin-right: 10px;
+}
+
+button {
+    margin-top: 20px;
+    background-color: #e52427;
+}
+
+.miti {
+    width: 45%;
+}

@@ -1,0 +1,42 @@
+.mat-toolbar {
+    background-color: #7c0000;
+}
+
+.mat-toolbar,
+p {
+    color: #fff;
+}
+
+.mat-drawer-container {
+    height: -webkit-fill-available;
+}
+
+.sidenavdiv {
+    background-color: #7c0000;
+}
+
+.mat-drawer {
+    width: 270px;
+}
+
+drawer-container {
+    width: 500px;
+    height: 300px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.content-body {
+    display: flex;
+    height: -webkit-fill-available;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-sidenav {
+    width: 230;
+    padding: 20px;
+}
+
+.mat-expansion-panel {
+    margin-right: 10px;
+}

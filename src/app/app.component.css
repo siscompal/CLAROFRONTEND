@@ -1,0 +1,19 @@
+main {
+    width: 100%;
+    margin-top: 10rem;
+    text-align: center;
+}
+
+mat-card,
+app-photos {
+    margin: auto;
+    width: 25%;
+    display: block;
+    margin-top: 2rem;
+}
+
+mat-form-field,
+input {
+    width: 90%;
+    border: 1px;
+}
