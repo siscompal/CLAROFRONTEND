@@ -5,17 +5,17 @@
         <mat-card-title> Inicia sesión </mat-card-title>
         <hr>
 
-        <form action="">
+        <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && loginSubmit()" novalidate>
             <mat-form-field>
-                <input type="text" matInput placeholder="Usuario">
+                <input text="type" id="username" matInput formControlName="username" matInput placeholder="Usuario">
                 <mat-icon matSuffix>perm_identity</mat-icon>
             </mat-form-field>
 
             <mat-form-field>
-                <input type="text" matInput placeholder="Contraseña">
+                <input type="password" id="password" matInput formControlName="password" placeholder="Contraseña">
                 <mat-icon matSuffix> vpn_key</mat-icon>
             </mat-form-field>
-            <button mat-button mat-flat-button>Iniciar sesión</button>
+            <button mat-button type="submit" mat-flat-button [disabled]="!loginForm.valid">Iniciar sesión</button>
 
         </form>
     </mat-card>

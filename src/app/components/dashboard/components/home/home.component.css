@@ -8,6 +8,10 @@ mat-card {
     background-color: #7c0000;
 }
 
+mat-tab {
+    width: 100%;
+}
+
 .tabscard {
     background-color: #0cc215;
     margin: auto;
@@ -20,8 +24,14 @@ mat-tab-group {
     width: 100%;
 }
 
-.innertabs {
+.main {
     background-color: #910557;
     margin: left;
-    width: 100%;
+    width: 70%;
+}
+
+.una {
+    background-color: #2cb61a;
+    margin: right;
+    width: 10%;
 }

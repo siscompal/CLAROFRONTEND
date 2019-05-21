@@ -3,7 +3,7 @@
 // Modulos
 import { NgModule  } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 
@@ -40,7 +40,8 @@ import { ListarProComponent } from './components/producto/listar-pro/listar-pro.
       FormsModule,
       HttpClientModule,
       DashboardRoutingModule,
-      MaterialModule
+      MaterialModule,
+      ReactiveFormsModule
 
     ],
     providers: [

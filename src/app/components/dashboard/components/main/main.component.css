@@ -40,3 +40,18 @@ drawer-container {
 .mat-expansion-panel {
     margin-right: 10px;
 }
+
+mat-drawer-content {
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover,
+a:active {
+    color: lightgray;
+}

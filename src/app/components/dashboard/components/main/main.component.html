@@ -54,34 +54,88 @@
 
     <mat-drawer #drawer class="content-sidenav" mode="side">
         <h2>Menu</h2>
+        <!-- <mat-expansion-panel *ngFor="let item of menu">
+            <mat-expansion-panel-header>
 
-        <mat-accordion>
+                {{item}}
 
-            <mat-expansion-panel *ngFor="let item of menu">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        {{item}}
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-            </mat-expansion-panel>
+            </mat-expansion-panel-header>
+        </mat-expansion-panel>
 
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        <a [routerLink]="['editar-usuario']" [routerLinkActive]="['active']"> prueba</a>
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-            </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <a [routerLink]="['editar-usuario']" [routerLinkActive]="['active']"> prueba</a>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+        </mat-expansion-panel>
+-->
+        <mat-nav-list>
 
+            <a mat-list-item [routerLink]="['home']" [routerLinkActive]="['active']">
+                <mat-icon>home</mat-icon> <span>Home</span>
+            </a>
 
+            <mat-list-item [matMenuTriggerFor]="usuarios">
+                <mat-icon>unfold_more</mat-icon>
+                <a matline>Usuarios</a>
+            </mat-list-item>
+            <mat-menu #usuarios="matMenu">
+                <button mat-menu-item [routerLink]="['crear-usuario']" [routerLinkActive]="['active']">Registar usuario</button>
+                <button mat-menu-item [routerLink]="['listado-usuarios']" [routerLinkActive]="['active']">Ver usuarios</button>
+            </mat-menu>
+            <mat-list-item [matMenuTriggerFor]="clientes">
+                <mat-icon>unfold_more</mat-icon>
+                <a matline>Clientes</a>
+            </mat-list-item>
+            <mat-menu #clientes="matMenu">
+                <button mat-menu-item [routerLink]="['crear-cliente']" [routerLinkActive]="['active']">Registar cliente</button>
+                <button mat-menu-item [routerLink]="['listado-clientes']" [routerLinkActive]="['active']">Ver clientes</button>
+                <button mat-menu-item [routerLink]="['saldo']" [routerLinkActive]="['active']">Asignar y debitar</button>
+            </mat-menu>
 
+            <mat-list-item [matMenuTriggerFor]="productos">
+                <mat-icon>unfold_more</mat-icon>
+                <a matline>Productos</a>
+            </mat-list-item>
+            <mat-menu #productos="matMenu">
+                <button mat-menu-item [routerLink]="['crear-producto']" [routerLinkActive]="['active']">Registar producto</button>
+                <button mat-menu-item [routerLink]="['listado-productos']" [routerLinkActive]="['active']">Ver productos</button>
+            </mat-menu>
 
-        </mat-accordion>
+            <mat-list-item [matMenuTriggerFor]="informes">
+                <mat-icon>unfold_more</mat-icon>
+                <a matline>Informes</a>
+            </mat-list-item>
+            <mat-menu #informes="matMenu">
+                <button mat-menu-item> hola</button>
+                <button mat-menu-item> Add contact</button>
+
+            </mat-menu>
+
+            <a mat-list-item routerLink="#">
+                <mat-icon>account_balance</mat-icon><span class="nav-caption">IPs</span>
+            </a>
+
+            <a mat-list-item routerLink="#">
+                <mat-icon>assignment_ind</mat-icon> <span>Estado recargas</span>
+            </a>
+
+            <a mat-list-item routerLink="#">
+                <mat-icon>assignment_ind</mat-icon> <span>Estado productos</span>
+            </a>
+
+            <a mat-list-item routerLink="#">
+                <mat-icon>assignment_ind</mat-icon> <span>Mov. de saldo</span>
+            </a>
+        </mat-nav-list>
 
     </mat-drawer>
 
-    <div class="content-body">
+    <mat-drawer-content>
+
         <router-outlet></router-outlet>
-    </div>
+
+    </mat-drawer-content>
 
 </mat-drawer-container>

@@ -2,7 +2,7 @@
     <mat-card>
         <mat-card-title> Registrar cliente </mat-card-title>
 
-        <form>
+        <form #registerCli="ngForm" (ngSubmit)="onSubmit()">
             <mat-form-field class="miti">
                 <input matInput placeholder="Nombre">
             </mat-form-field>
