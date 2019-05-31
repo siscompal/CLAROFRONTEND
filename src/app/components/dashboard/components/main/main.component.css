@@ -55,3 +55,7 @@ a:hover,
 a:active {
     color: lightgray;
 }
+
+.pointer {
+    cursor: pointer;
+}

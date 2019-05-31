@@ -1,7 +1,7 @@
 export class User {
 
     constructor(
-        public id: string,
+
         public name: string,
         public lastname: string,
         public iden: string,

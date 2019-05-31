@@ -15,11 +15,12 @@ import { CrearUsuComponent } from './components/usuario/crear-usu/crear-usu.comp
 import { ListarUsuComponent } from './components/usuario/listar-usu/listar-usu.component';
 import { CrearProComponent } from './components/producto/crear-pro/crear-pro.component';
 import { ListarProComponent } from './components/producto/listar-pro/listar-pro.component';
+import { AuthGuard } from '../../services/guards/login.guard';
 
 
 const dashboardRoutes: Routes = [
 
-{path: 'dashboard', component: MainComponent,
+{path: 'dashboard', component: MainComponent, canActivate: [AuthGuard],
     children: [
         { path: '', redirectTo: 'home', pathMatch: 'full'},
         { path: 'home', component: HomeComponent },

@@ -34,9 +34,8 @@
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <mat-select placeholder="Select">
-                    <mat-option value="option">Asesor</mat-option>
-                    <mat-option value="option">Cargas</mat-option>
+                <mat-select name="role" [(ngModel)]="user.role">
+                    <mat-option *ngFor="let option of options2" [value]="option.name">{{ option.name }}</mat-option>
                 </mat-select>
             </mat-form-field>
 

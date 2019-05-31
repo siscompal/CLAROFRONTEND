@@ -14,7 +14,13 @@ import { DashboardModule } from './components/dashboard/dashboard.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { PhotosComponent } from './components/photos/photos.component';
+
+// Servicios
 import { UserService } from './services/user.service';
+import { ClientService } from './services/client.service';
+import { AuthGuard } from './services/guards/login.guard';
+import { UsuariosService } from './services/usuarios.service';
+import { ProductService } from './services/product.service';
 
 
 
@@ -37,7 +43,7 @@ import { UserService } from './services/user.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [UserService],
+  providers: [UserService, AuthGuard, UsuariosService, ClientService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

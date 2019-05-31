@@ -4,52 +4,51 @@
 
         <form #registerCli="ngForm" (ngSubmit)="onSubmit()">
             <mat-form-field class="miti">
-                <input matInput placeholder="Nombre">
+                <input type="text" name="name" #name="ngModel" [(ngModel)]="client.name" class="form-control" matInput placeholder="Nombre">
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <input matInput placeholder="Apellido">
+                <input type="text" name="lastname" #name="ngModel" [(ngModel)]="client.lastname" class="form-control" matInput placeholder="Apellido">
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <input matInput placeholder="Identificacion">
+                <input type="text" name="iden" #name="ngModel" [(ngModel)]="client.iden" class="form-control" matInput placeholder="Identificacion">
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <input matInput placeholder="Porcentaje">
+                <input type="text" name="porcentaje" #name="ngModel" [(ngModel)]="client.porcentaje" class="form-control" matInput placeholder="Porcentaje">
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <input matInput placeholder="Nombre de usuario">
+                <input type="text" name="username" #name="ngModel" [(ngModel)]="client.username" class="form-control" matInput placeholder="Nombre de usuario">
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <input matInput placeholder="Contraseña">
+                <input type="text" name="password" #name="ngModel" [(ngModel)]="client.password" class="form-control" type="password" matInput placeholder="Contraseña">
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <input matInput placeholder="Celular">
+                <input type="text" name="cel" #name="ngModel" [(ngModel)]="client.cel" class="form-control" maxlength="10" matInput placeholder="Celular">
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <input matInput placeholder="Ciudad">
-            </mat-form-field>
-
-            <mat-form-field>
-                <input matInput placeholder="Direccion">
-            </mat-form-field>
-
-            <mat-form-field>
-                <input matInput placeholder="Email">
+                <input type="text" name="city" #name="ngModel" [(ngModel)]="client.city" class="form-control" matInput placeholder="Ciudad">
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <mat-select placeholder="Select">
-                    <mat-option value="option">Mayorista</mat-option>
-                    <mat-option value="option">Distribuidor</mat-option>
-                    <mat-option value="option">Cliente</mat-option>
+                <input type="text" name="dir" #name="ngModel" [(ngModel)]="client.dir" class="form-control" matInput placeholder="Direccion">
+            </mat-form-field>
+
+            <mat-form-field class="miti">
+                <input type="email" name="email" #name="ngModel" [(ngModel)]="client.email" class="form-control" matInput placeholder="Email">
+            </mat-form-field>
+
+            <mat-form-field class="miti">
+                <mat-select name="role" [(ngModel)]="client.role" placeholder="Tipo de cliente">
+                    <mat-option *ngFor="let rol of role" [value]="rol.name">{{ rol.name }}</mat-option>
                 </mat-select>
             </mat-form-field>
+
             <button mat-button mat-flat-button class="miti">Registrar</button>
         </form>
     </mat-card>

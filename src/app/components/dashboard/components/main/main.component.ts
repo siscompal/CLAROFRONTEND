@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService} from '../../../../services/user.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -8,19 +10,26 @@ import { Component, OnInit } from '@angular/core';
 export class MainComponent implements OnInit {
 
   public showFiller: boolean;
-  public menu: Array<string>;
-  constructor() { }
+
+  constructor(private userService: UserService, private router: Router , private route: ActivatedRoute ) {
+
+   }
+
 
   ngOnInit() {
     this.showFiller = true;
-    this.menu = ['Home',
-    'Crear usuario',
-    'listado usuarios',
-     'Crear clientes',
-     'listado clientes',
-     'Crear producto',
-    'listado producto',
-  ]
+   // console.log(this.userService.getIdentity());
+   //  console.log(this.userService.getToken());
+    // console.log(this.userService.Autenticado());
+
+
+
   }
+
+logout() {
+    localStorage.clear();
+    this.router.navigate(['']);
+
+}
 
 }

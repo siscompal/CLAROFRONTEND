@@ -1,11 +1,9 @@
 .formcontainer {
-    background-color: #157c00;
     margin: auto;
 }
 
 mat-card {
     width: 50%;
-    background-color: #ce1370;
     margin: auto;
 }
 

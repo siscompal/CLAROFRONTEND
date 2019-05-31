@@ -14,16 +14,22 @@ import { UserService } from '../../../../../services/user.service';
   providers: [UserService]
 })
 export class CrearUsuComponent implements OnInit {
+
   email = new FormControl('', [Validators.required, Validators.email]);
   public user: User;
   public status: string;
+  public options2 = [
+    {id: 1, name: 'ROLE_ASESOR'},
+    {id: 2, name: 'ROLE_CARGAS'}
+  ];
+  public selected2 = this.options2[1].id;
 
   constructor(
    // private route: ActivatedRoute,
    // private router: Router,
     private userService: UserService
   ) {
-    this.user = new User('', '', '', '', '', '', '', '', '');
+    this.user = new User('', '', '', '', '', '', '', '');
 
   }
 
@@ -36,8 +42,10 @@ export class CrearUsuComponent implements OnInit {
     this.userService.register(this.user).subscribe(
         response => {
           if ( response ) {
+              console.log('success register', response);
+              alert('Registro exitoso');
               this.status = 'success';
-              this.user = new User('', '', '', '', '', '', '', '', '');
+              this.user = new User('', '', '', '', '', '', '', '');
           } else {
             this.status = 'error';
           }
