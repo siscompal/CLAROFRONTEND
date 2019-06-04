@@ -14,6 +14,7 @@ import { DashboardModule } from './components/dashboard/dashboard.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { PhotosComponent } from './components/photos/photos.component';
+import { CrearCliComponent } from './components/dashboard/components/cliente/crear-cli/crear-cli.component';
 
 // Servicios
 import { UserService } from './services/user.service';
@@ -21,6 +22,7 @@ import { ClientService } from './services/client.service';
 import { AuthGuard } from './services/guards/login.guard';
 import { ProductService } from './services/product.service';
 import { CdkColumnDef } from '@angular/cdk/table';
+
 
 
 
@@ -42,6 +44,7 @@ import { CdkColumnDef } from '@angular/cdk/table';
     ReactiveFormsModule
   ],
   providers: [UserService, AuthGuard, ClientService, ProductService, CdkColumnDef],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CrearCliComponent]
 })
 export class AppModule { }
