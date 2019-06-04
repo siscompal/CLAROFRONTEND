@@ -1,4 +1,6 @@
-/* import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
+import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 
 @Component({
   selector: 'app-listar-cli',
@@ -7,82 +9,38 @@
 })
 export class ListarCliComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
-*/
-
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
-}
-
-/** Constants used to fill up our data base. */
-const COLORS: string[] = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
-  'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray'];
-const NAMES: string[] = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
-  'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
-  'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
-
-/**
- * @title Data table with sorting, pagination, and filtering.
- */
-
-@Component({
-  selector: 'app-listar-cli',
-  templateUrl: './listar-cli.component.html',
-  styleUrls: ['./listar-cli.component.css']
-})
-
-export class ListarCliComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'progress', 'color'];
-  dataSource: MatTableDataSource<UserData>;
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  constructor(private _userService: UserService) {}
+  public listData: MatTableDataSource<any>;
+  public displayedColumns: string[] = ['nombre', 'apellido','iden', 'estado', 'rol', 'fecha', 'observacion', 'acciones'];
+  public searchKey: String;
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor() {
-    // Create 100 users
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
-
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
-
-  }
- 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this._userService.getClientes().subscribe(
+      list => {
+        let array = list['clientes'];
+        this.listData = new MatTableDataSource(array);
+        this.listData.sort = this.sort;
+        this.listData.paginator = this.paginator;
+        this.listData.filterPredicate = (data, filter) => {
+          return this.displayedColumns.some(element => {
+            return element != 'acciones' && data[element].toLowerCase().indexOf(filter) != -1; 
+          });
+        };
+      }
+
+    );
+
   }
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+  onSearchClear(){
+    this.searchKey = "";
+    this.applyFilter();
   }
-}
 
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
+  applyFilter(){
+    this.listData.filter = this.searchKey.trim().toLowerCase();
+  }
 
-  return {
-
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-  };
 }

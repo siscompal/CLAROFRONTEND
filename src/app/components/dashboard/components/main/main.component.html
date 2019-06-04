@@ -1,75 +1,13 @@
-<!--<mat-toolbar> Distrirecargas </mat-toolbar> -->
-
-<!--
-<div id="sidebar" class="col-lg-2" style=" background-color:#52bd58;">
-    <div class="sidebar-admin">
-        <ul class="nav nav-pills nav-stacked nav-pills-stacked-example">
-            <li role="presentation" [routerLinkActive]="['active']">
-                <a [routerLink]="['home']"> Home </a>
-            </li>
-            <li role="presentation" [routerLinkActive]="['active']">
-                <a [routerLink]="['crear-cliente']"> Crear clientes</a>
-            </li>
-            <li role="presentation">
-                <a [routerLink]="['listado-clientes']" [routerLinkActive]="['active']"> Ver clientes</a>
-            </li>
-
-            <li role="presentation">
-                <a [routerLink]="['saldo']" [routerLinkActive]="['active']"> Asignar y debitar saldo</a>
-            </li>
-
-            <li role="presentation" [routerLinkActive]="['active']">
-                <a [routerLink]="['crear-usuario']"> Crear usuario</a>
-            </li>
-            <li role="presentation">
-                <a [routerLink]="['listado-usuarios']" [routerLinkActive]="['active']"> Ver usuarios</a>
-            </li>
-            <li role="presentation">
-                <a [routerLink]="['crear-producto']" [routerLinkActive]="['active']"> Crear producto</a>
-            </li>
-            <li role="presentation">
-                <a [routerLink]="['listado-productos']" [routerLinkActive]="['active']">Ver productos</a>
-            </li>
-        </ul>
-    </div>
-
-</div> 
-
-<div class="col-lg-10">
-     <h3> {{title}}</h3> 
-    <router-outlet> </router-outlet>
-</div> -->
-
-
 <mat-toolbar>
-
-    <button mat-button (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
-    </button>
     <span>Distrirecarga</span>
+    <span class="toolbar-spacer"></span>
     <a class="pointer" (click)="logout()">Cerrar sesion</a>
 
 </mat-toolbar>
 <mat-drawer-container class="drawer-container" autosize>
 
-    <mat-drawer #drawer class="content-sidenav" mode="side">
+    <mat-drawer #drawer class="content-sidenav" mode="side" opened="true">
         <h2>Menu</h2>
-        <!-- <mat-expansion-panel *ngFor="let item of menu">
-            <mat-expansion-panel-header>
-
-                {{item}}
-
-            </mat-expansion-panel-header>
-        </mat-expansion-panel>
-
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    <a [routerLink]="['editar-usuario']" [routerLinkActive]="['active']"> prueba</a>
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-        </mat-expansion-panel>
--->
         <mat-nav-list>
 
             <a mat-list-item [routerLink]="['home']" [routerLinkActive]="['active']">

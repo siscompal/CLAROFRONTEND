@@ -21,22 +21,22 @@ export class UserService {
     public user = User;
 
 
-    constructor(private http: HttpClient, private router: Router) {
-            this.url = GLOBAL.url;
-            this.httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
+  constructor(private http: HttpClient, private router: Router) {
+      this.url = GLOBAL.url;
+      this.httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
 
-}
+  }
 
-register(newUser) {
-        const parametros = JSON.stringify(newUser);
-        this.token = localStorage.getItem('token');
-        const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
-        return this.http.post(this.url + 'users/register', parametros, headers );
+  register(newUser: any) {
+      const parametros = JSON.stringify(newUser);
+      this.token = localStorage.getItem('token');
+      const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
+      return this.http.post(this.url + 'users/register', parametros, headers );
           // .pipe(map(res => res.newUser()));
 
   }
 
-login(user: LoginModel) {
+  login(user: LoginModel) {
 
         this.http.post(this.url + 'login', user, this.httpOptions).subscribe(
           response => {
@@ -57,48 +57,43 @@ login(user: LoginModel) {
 
   }
 
-  /*  loginUser(loginUser, gettoken = null) {
-        if (gettoken != null) {
-          loginUser.gettoken = gettoken;
-          }
-        const parametros = JSON.stringify(loginUser);
-        const headers = { headers: new HttpHeaders({'Content-type': 'application/json'})};
-        return this.http.post(this.url + 'login', parametros, headers);
+  getIdentity() {
+
+      const identity = JSON.parse(localStorage.getItem('identity'));
+      if (identity !== 'undefined') {
+        this.identity = identity;
+        } else {
+      this.identity = null;
+        }
+      return this.identity;
     }
 
-*/
- getIdentity() {
 
-    const identity = JSON.parse(localStorage.getItem('identity'));
-    if (identity !== 'undefined') {
-      this.identity = identity;
-      } else {
-     this.identity = null;
-      }
-    return this.identity;
+  getToken() {
+    const token = localStorage.getItem('token');
+    if (token !== 'undefined') {
+        this.token = token;
+        } else {
+        this.token = null;
+        }
+    return this.token;
+  }
+
+  Autenticado() {
+    return localStorage.getItem('token');
   }
 
 
-getToken() {
-  const token = localStorage.getItem('token');
-  if (token !== 'undefined') {
-      this.token = token;
-      } else {
-       this.token = null;
-      }
-  return this.token;
-}
+  logout() {
+          localStorage.clear();
+          this.router.navigate(['/']);
+  }
 
-Autenticado() {
-  return localStorage.getItem('token');
-}
-
-
-logout() {
-        localStorage.clear();
-        this.router.navigate(['']);
-      }
-
+  getClientes() {
+    this.token = localStorage.getItem('token');
+    const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
+    return this.http.get(this.url + 'clients/clientes', headers);
+  }
 
 }
 

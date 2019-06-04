@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-import { UsuariosService } from 'src/app/services/usuarios.service';
 import { User } from 'src/app/models/user';
 
 export interface UserData {
@@ -27,19 +26,11 @@ const NAMES: string[] = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
   styleUrls: ['./listar-usu.component.css']
 })
 export class ListarUsuComponent implements OnInit {
-  public usuarios: any;
-  constructor(private usersService: UsuariosService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.getUsuarios();
+
   }
 
-  getUsuarios() {
-    this.usersService.getUsuarios().subscribe(
-      Response => {
-        this.usuarios = Response;
-      }
-    );
-  }
 
 }
