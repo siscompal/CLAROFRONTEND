@@ -4,7 +4,24 @@
 html,
 body {
     height: 100%;
-    /* background-color: #e52427; */
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* notification */
+snack-bar-container.success {
+    background-color: #5cb85c;
+    color : #fff;
+    margin-top: 50px; 
+}
+
+snack-bar-container.warn {
+    background-color: #f99157;
+    color : #fff;
+}
+
+
+snack-bar-container.notification simple-snack-bar{
+    font-size: 18px !important;
+    font-weight: bold;
 }

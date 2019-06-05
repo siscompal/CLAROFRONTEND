@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
 import {FormControl, Validators} from '@angular/forms';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Client } from '../../../../../models/client';
-import { GLOBAL } from '../../../../../services/global';
 import { ClientService } from '../../../../../services/client.service';
+import { MatDialogRef } from '@angular/material';
+import { NotificationService } from 'src/app/services/notification.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-cli',
@@ -22,8 +22,12 @@ export class CrearCliComponent implements OnInit {
     {id: 3, name: 'CLI_CLIENTE'},
   ];
   public selected2 = this.role[1].id;
-
-  constructor(private clientService: ClientService) {
+  
+  constructor(
+    private notificationService: NotificationService,
+    private clientService: ClientService, 
+    public dialogRef: MatDialogRef<CrearCliComponent>,
+    private router:Router) {
 
     this.client = new Client('', '', '', '', '', '', '', '', '', '', 0);
 
@@ -37,9 +41,10 @@ export class CrearCliComponent implements OnInit {
     this.clientService.register(this.client).subscribe(
         response => {
           if ( response ) {
-              console.log('success register', response);
               this.status = 'success';
               this.client = new Client('', '', '', '', '', '', '', '', '', '', 0);
+              this.notificationService.success(':: Cliente creado correctamente');
+              this.dialogRef.close();
           } else {
             this.status = 'error';
           }
