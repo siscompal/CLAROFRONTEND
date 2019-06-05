@@ -22,15 +22,14 @@
                 <button mat-menu-item [routerLink]="['crear-usuario']" [routerLinkActive]="['active']">Registar usuario</button>
                 <button mat-menu-item [routerLink]="['listado-usuarios']" [routerLinkActive]="['active']">Ver usuarios</button>
             </mat-menu>
-            <mat-list-item [matMenuTriggerFor]="clientes">
-                <mat-icon>unfold_more</mat-icon>
-                <a matline>Clientes</a>
-            </mat-list-item>
-            <mat-menu #clientes="matMenu">
+            <a mat-list-item [routerLink]="['clientes']">
+                <mat-icon>unfold_more</mat-icon> <span>Clientes</span>
+            </a>
+            <!-- <mat-menu #clientes="matMenu">
                 <button mat-menu-item [routerLink]="['crear-cliente']" [routerLinkActive]="['active']">Registar cliente</button>
                 <button mat-menu-item [routerLink]="['listado-clientes']" [routerLinkActive]="['active']">Ver clientes</button>
                 <button mat-menu-item [routerLink]="['saldo']" [routerLinkActive]="['active']">Asignar y debitar</button>
-            </mat-menu>
+            </mat-menu>-->
 
             <mat-list-item [matMenuTriggerFor]="productos">
                 <mat-icon>unfold_more</mat-icon>

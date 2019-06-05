@@ -43,8 +43,9 @@
         <ng-container matColumnDef="acciones">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let element">
-                <button mat-icon-button><mat-icon>launch</mat-icon></button>
-                <button mat-icon-button color="warn"><mat-icon>delete_outline</mat-icon></button>
+                <button mat-icon-button ><mat-icon>account_balance_wallet</mat-icon></button>
+                <button mat-icon-button (click)="onEdit(element)"><mat-icon>visibility</mat-icon></button>
+                <button mat-icon-button color="warn" (click)="onDelete(element._id)"><mat-icon>delete_outline</mat-icon></button>
             </mat-cell>
         </ng-container>
         <ng-container matColumnDef="loading">

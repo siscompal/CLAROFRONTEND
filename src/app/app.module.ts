@@ -24,8 +24,6 @@ import { ProductService } from './services/product.service';
 import { CdkColumnDef } from '@angular/cdk/table';
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
