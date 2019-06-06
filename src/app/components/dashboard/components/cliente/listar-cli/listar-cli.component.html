@@ -24,27 +24,23 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header>Identificación</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.iden}}</mat-cell>
         </ng-container>
-        <ng-container matColumnDef="estado">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Estado</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.status}}</mat-cell>
-        </ng-container>
         <ng-container matColumnDef="rol">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Rol</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.role}}</mat-cell>
+            <mat-cell *matCellDef="let element">
+                <span [hidden]="!(element.role == 'CLI_CLIENTE')">Cliente</span>
+                <span [hidden]="!(element.role == 'CLI_DISTRIBUIDOR')">Distribuidor</span>
+                <span [hidden]="!(element.role == 'CLI_MAYORISTA')">Mayorista</span>
+            </mat-cell>
         </ng-container>
         <ng-container matColumnDef="fecha">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha de creación</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.fec_cre}}</mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="observacion">
-            <mat-header-cell *matHeaderCellDef>Observación</mat-header-cell>
-            <mat-cell *matCellDef="let element"></mat-cell>
+            <mat-cell *matCellDef="let element">{{element.fec_cre | date: 'dd/MM/yy'}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="acciones">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let element">
-                <button mat-icon-button ><mat-icon>account_balance_wallet</mat-icon></button>
-                <button mat-icon-button (click)="onEdit(element)"><mat-icon>visibility</mat-icon></button>
+                <button mat-icon-button><mat-icon (click)="saldo(element._id)">account_balance_wallet</mat-icon></button>
+                <button mat-icon-button><mat-icon>visibility</mat-icon></button>
                 <button mat-icon-button color="warn" (click)="onDelete(element._id)"><mat-icon>delete_outline</mat-icon></button>
             </mat-cell>
         </ng-container>
@@ -64,5 +60,5 @@
         <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide': !(listData != null && listData.length == 0)}">
         </mat-footer-row>
     </mat-table>
-    <mat-paginator [pageSizeOptions]="[5,10,25]" [pageSize]=5 showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSize]=10 showFirstLastButtons></mat-paginator>
 </div>

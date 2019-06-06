@@ -11,9 +11,7 @@ import { Client } from '../models/client';
 
 export class ClientService {
     public url: string;
-    private httpOptions: any;
     public token: string;
-    public identity;
     public client = Client;
 
 
@@ -23,50 +21,28 @@ export class ClientService {
 
 }
 
-register(newClient) {
+  register(newClient: any) {
         const parametros = JSON.stringify(newClient);
         console.log(parametros);
         this.token = localStorage.getItem('token');
         const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
-        return this.http.post(this.url + 'clients/register', parametros, headers );
-          // .pipe(map(res => res.newUser()));
+        return this.http.post(this.url + 'clients', parametros, headers );
 
   }
 
 
-  /*  loginUser(loginUser, gettoken = null) {
-        if (gettoken != null) {
-          loginUser.gettoken = gettoken;
-          }
-        const parametros = JSON.stringify(loginUser);
-        const headers = { headers: new HttpHeaders({'Content-type': 'application/json'})};
-        return this.http.post(this.url + 'login', parametros, headers);
-    }
-
-*/
-
- getIdentity() {
-
-    const identity = JSON.parse(localStorage.getItem('identity'));
-    if (identity !== 'undefined') {
-      this.identity = identity;
-      } else {
-     this.identity = null;
-      }
-    return this.identity;
+  getClientes() {
+    this.token = localStorage.getItem('token');
+    const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
+    return this.http.get(this.url + 'clients', headers);
   }
 
 
-getToken() {
-  const token = localStorage.getItem('token');
-  if (token !== 'undefined') {
-      this.token = token;
-      } else {
-       this.token = null;
-      }
-  return this.token;
-}
-
+  deleteCliente(id: any) {
+    this.token = localStorage.getItem('token');
+    const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
+    return this.http.delete(this.url + 'clients/'  + id, headers);
+  }
 
 }
 

@@ -22,12 +22,12 @@ export class CrearCliComponent implements OnInit {
     {id: 3, name: 'CLI_CLIENTE'},
   ];
   public selected2 = this.role[1].id;
-  
+
   constructor(
     private notificationService: NotificationService,
-    private clientService: ClientService, 
+    private clientService: ClientService,
     public dialogRef: MatDialogRef<CrearCliComponent>,
-    private router:Router) {
+    private router: Router) {
 
     this.client = new Client('', '', '', '', '', '', '', '', '', '', 0);
 

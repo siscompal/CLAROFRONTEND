@@ -89,18 +89,6 @@ export class UserService {
           this.router.navigate(['/']);
   }
 
-  getClientes() {
-    this.token = localStorage.getItem('token');
-    const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
-    return this.http.get(this.url + 'clients/clientes', headers);
-  }
-
-  deleteCliente(id: any){
-    this.token = localStorage.getItem('token');
-    const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
-    return this.http.delete(this.url+'clients/'+'delete/'+id, headers);
-  }
-
 }
 
 

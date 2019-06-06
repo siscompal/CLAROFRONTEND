@@ -25,13 +25,13 @@ p {
 
 drawer-container {
     width: 500px;
-    height: 300px;
+    height: inherit;
     border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .content-body {
     display: flex;
-    height: -webkit-fill-available;
+    height: inherit;
     align-items: center;
     justify-content: center;
 }
@@ -62,4 +62,8 @@ a:active {
 
 .pointer {
     cursor: pointer;
+}
+
+.mat-drawer-container {
+    height: 550px;
 }
