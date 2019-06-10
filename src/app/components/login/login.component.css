@@ -12,7 +12,7 @@ main {
 mat-card {
     margin: auto;
     width: 25%;
-    height: 50%;
+    height: 57%;
 }
 
 mat-form-field,
@@ -23,7 +23,7 @@ input {
 }
 
 button {
-    margin-top: 20px;
+    margin-top: 15px;
     background-color: #e52427;
 }
 
@@ -45,7 +45,10 @@ button {
     background-color: #e52427 !important;
 }
 
-
+.registro{
+    font-size: 15px;
+    
+}
 /*mat-card,
 app-photos {
     margin: auto;

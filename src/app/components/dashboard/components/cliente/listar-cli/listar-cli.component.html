@@ -1,12 +1,12 @@
 <div class="search-div">
     <button mat-raised-button (click)="onCreate()">
-    <mat-icon>add</mat-icon>Crear
-  </button>
+        <mat-icon>add</mat-icon>Crear
+    </button>
     <mat-form-field class="search-form-field" floatLabel="never">
         <input matInput [(ngModel)]="searchKey" placeholder="Buscar" autocomplete="off" (keyup)="applyFilter()">
         <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
-      <mat-icon>close</mat-icon>
-    </button>
+            <mat-icon>close</mat-icon>
+        </button>
     </mat-form-field>
 </div>
 
@@ -39,9 +39,18 @@
         <ng-container matColumnDef="acciones">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let element">
-                <button mat-icon-button><mat-icon (click)="saldo(element._id)">account_balance_wallet</mat-icon></button>
-                <button mat-icon-button><mat-icon>visibility</mat-icon></button>
-                <button mat-icon-button color="warn" (click)="onDelete(element._id)"><mat-icon>delete_outline</mat-icon></button>
+                <button mat-icon-button>
+                    <mat-icon (click)="saldo(element._id)">account_balance_wallet</mat-icon>
+                </button>
+                <button mat-icon-button (click)="verCliente(element._id)">
+                    <mat-icon>visibility</mat-icon>
+                </button>
+                <button mat-icon-button (click)="onEdit(element, element._id)">
+                    <mat-icon>create</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="onDelete(element._id)">
+                    <mat-icon>delete_outline</mat-icon>
+                </button>
             </mat-cell>
         </ng-container>
         <ng-container matColumnDef="loading">

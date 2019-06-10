@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product} from '../../../../../models/product';
 import { ProductService } from '../../../../../services/product.service';
-import {FormControl, Validators} from '@angular/forms';
-
+import { MatDialogRef } from '@angular/material';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-crear-pro',
@@ -14,7 +14,6 @@ export class CrearProComponent implements OnInit {
 
   public product: Product;
   public status: string;
-
   public tipos = [
     {id: 1, name: 'Todo incluido'},
     {id: 2, name: 'Minutos'},
@@ -22,10 +21,12 @@ export class CrearProComponent implements OnInit {
     {id: 4, name: 'Apps'}
   ];
 
+constructor(
+    private notificationService: NotificationService,
+    private productService: ProductService,
+    public dialogRef: MatDialogRef<CrearProComponent>) {
 
-constructor( private productService: ProductService) {
-
-   this.product = new Product('', '', '', 0, 0, 0);
+    this.product = new Product('', '', '', 0, 0, 0);
   }
 
   ngOnInit() {
@@ -33,13 +34,13 @@ constructor( private productService: ProductService) {
 
   onSubmit() {
 
-    this.productService.register(this.product).subscribe(
+    this.productService.newProd(this.product).subscribe(
         response => {
           if ( response ) {
-              console.log('success register', response);
-              alert('Registro exitoso');
               this.status = 'success';
-              this.product = new Product('', '', '', 0, 0, 0 );
+              this.product = new Product('', '', '', 0, 0, 0);
+              this.notificationService.success(':: Producto creado correctamente');
+              this.dialogRef.close();
           } else {
             this.status = 'error';
           }

@@ -15,6 +15,7 @@
                 <input type="password" id="password" matInput formControlName="password" placeholder="Contraseña">
                 <mat-icon matSuffix> vpn_key</mat-icon>
             </mat-form-field>
+            <p class="registro">¿No tienes cuenta? <a [routerLink]="[ '/registrarse']">Registrate</a></p>
             <button mat-button type="submit" mat-flat-button [disabled]="!loginForm.valid">Iniciar sesión</button>
 
         </form>

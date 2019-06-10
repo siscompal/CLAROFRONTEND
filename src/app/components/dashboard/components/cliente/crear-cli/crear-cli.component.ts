@@ -4,7 +4,6 @@ import { Client } from '../../../../../models/client';
 import { ClientService } from '../../../../../services/client.service';
 import { MatDialogRef } from '@angular/material';
 import { NotificationService } from 'src/app/services/notification.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-cli',
@@ -26,8 +25,7 @@ export class CrearCliComponent implements OnInit {
   constructor(
     private notificationService: NotificationService,
     private clientService: ClientService,
-    public dialogRef: MatDialogRef<CrearCliComponent>,
-    private router: Router) {
+    public dialogRef: MatDialogRef<CrearCliComponent>) {
 
     this.client = new Client('', '', '', '', '', '', '', '', '', '', 0);
 

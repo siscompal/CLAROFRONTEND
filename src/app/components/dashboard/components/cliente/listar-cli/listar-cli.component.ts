@@ -2,9 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ClientService } from 'src/app/services/client.service';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog, MatDialogConfig } from '@angular/material';
 import { CrearCliComponent } from '../crear-cli/crear-cli.component';
-import { Router} from '@angular/router';
 import { NotificationService } from 'src/app/services/notification.service';
 import { SaldoComponent } from '../saldo/saldo.component';
+import { VerCliComponent } from '../ver-cli/ver-cli.component';
+import { Client } from 'src/app/models/client';
+import { EditarCliComponent } from '../editar-cli/editar-cli.component';
 
 @Component({
   selector: 'app-listar-cli',
@@ -15,7 +17,6 @@ export class ListarCliComponent implements OnInit {
 
   constructor(private clientService: ClientService,
               private dialog: MatDialog,
-              private router: Router,
               private notificationService: NotificationService) {}
   public listData: MatTableDataSource<any>;
   public displayedColumns: string[] = ['nombre', 'apellido', 'iden', 'rol', 'fecha', 'acciones'];
@@ -68,7 +69,26 @@ export class ListarCliComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
+    dialogConfig.data = {id: id};
     this.dialog.open(SaldoComponent, dialogConfig);
+  }
+
+  verCliente(id: any){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '50%';
+    dialogConfig.data = {id: id}; 
+    this.dialog.open(VerCliComponent, dialogConfig);
+  }
+
+  onEdit(cliente: Client, id: any){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '50%';
+    dialogConfig.data = {cliente: cliente, id: id}; 
+    this.dialog.open(EditarCliComponent, dialogConfig);
   }
 
 }

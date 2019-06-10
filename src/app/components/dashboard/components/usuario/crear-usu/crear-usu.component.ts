@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
 import {FormControl, Validators} from '@angular/forms';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { User } from '../../../../../models/user';
-import { GLOBAL } from '../../../../../services/global';
 import { UserService } from '../../../../../services/user.service';
-
+import { NotificationService } from 'src/app/services/notification.service';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-crear-usu',
@@ -25,10 +23,9 @@ export class CrearUsuComponent implements OnInit {
   public selected2 = this.options2[1].id;
 
   constructor(
-   // private route: ActivatedRoute,
-   // private router: Router,
-    private userService: UserService
-  ) {
+    private userService: UserService,
+    private notificationService: NotificationService,
+    public dialogRef: MatDialogRef<CrearUsuComponent>) {
     this.user = new User('', '', '', '', '', '', '', '');
 
   }
@@ -39,13 +36,13 @@ export class CrearUsuComponent implements OnInit {
 
   onSubmit() {
 
-    this.userService.register(this.user).subscribe(
+    this.userService.newUser(this.user).subscribe(
         response => {
           if ( response ) {
-              console.log('success register', response);
-              alert('Registro exitoso');
               this.status = 'success';
               this.user = new User('', '', '', '', '', '', '', '');
+              this.notificationService.success(':: Usuario creado correctamente');
+              this.dialogRef.close();
           } else {
             this.status = 'error';
           }

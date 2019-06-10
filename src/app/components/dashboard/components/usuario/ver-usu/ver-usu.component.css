@@ -1,0 +1,32 @@
+.formcontainer {
+    width: 90%;
+    margin: auto;
+}
+
+form {
+    width: 100%;
+}
+
+mat-card {
+    height: auto;
+}
+
+mat-form-field,
+input {
+    width: 92%;
+    margin: auto;
+}
+
+mat-form-field {
+    margin-right: 10px;
+}
+
+.miti {
+    width: 45%;
+}
+
+.cdk-overlay-pane {
+    width: 50%;
+    position: static;
+    pointer-events: auto;
+}

@@ -19,6 +19,12 @@ import { CrearUsuComponent } from './components/usuario/crear-usu/crear-usu.comp
 import { ListarUsuComponent } from './components/usuario/listar-usu/listar-usu.component';
 import { CrearProComponent } from './components/producto/crear-pro/crear-pro.component';
 import { ListarProComponent } from './components/producto/listar-pro/listar-pro.component';
+import { VerCliComponent } from './components/cliente/ver-cli/ver-cli.component';
+import { EditarCliComponent } from './components/cliente/editar-cli/editar-cli.component';
+import { VerUsuComponent } from './components/usuario/ver-usu/ver-usu.component';
+import { EditarUsuComponent } from './components/usuario/editar-usu/editar-usu.component';
+import { EditarProComponent } from './components/producto/editar-pro/editar-pro.component';
+import { VerProComponent } from './components/producto/ver-pro/ver-pro.component';
 
 
 @NgModule({
@@ -31,7 +37,13 @@ import { ListarProComponent } from './components/producto/listar-pro/listar-pro.
       CrearUsuComponent,
       ListarUsuComponent,
       CrearProComponent,
-      ListarProComponent
+      ListarProComponent,
+      VerCliComponent,
+      EditarCliComponent,
+      VerUsuComponent,
+      EditarUsuComponent,
+      EditarProComponent,
+      VerProComponent
 
 
     ],

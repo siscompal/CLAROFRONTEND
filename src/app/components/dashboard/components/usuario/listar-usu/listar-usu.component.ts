@@ -1,24 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTableDataSource, MatSort, MatPaginator, MatDialog, MatDialogConfig } from '@angular/material';
+import { UserService } from 'src/app/services/user.service';
+import { NotificationService } from 'src/app/services/notification.service';
+import { VerUsuComponent } from '../ver-usu/ver-usu.component';
+import { CrearUsuComponent } from '../crear-usu/crear-usu.component';
+import { EditarUsuComponent } from '../editar-usu/editar-usu.component';
 import { User } from 'src/app/models/user';
-
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
-}
-
-/** Constants used to fill up our data base. */
-const COLORS: string[] = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
-  'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray'];
-const NAMES: string[] = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
-  'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
-  'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
-
-/**
- * @title Data table with sorting, pagination, and filtering.
- */
 
 @Component({
   selector: 'app-listar-usu',
@@ -26,11 +13,72 @@ const NAMES: string[] = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
   styleUrls: ['./listar-usu.component.css']
 })
 export class ListarUsuComponent implements OnInit {
-  constructor() { }
+  constructor(
+    private userService: UserService,
+    private dialog: MatDialog,
+    private notificationService: NotificationService) { }
+
+    public listData: MatTableDataSource<any>;
+    public displayedColumns: string [] = ['nombre', 'apellido', 'iden', 'estado', 'rol', 'fecha', 'acciones'];
+    public searchKey: string;
+    @ViewChild(MatSort) sort: MatSort;
+    @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
+    this.userService.getUsuarios().subscribe(
+      list => {
+        const array = list['users'];
+        this.listData = new MatTableDataSource(array);
+        this.listData.sort = this.sort;
+        this.listData.paginator = this.paginator;
+      }
 
+    );
   }
 
+  onSearchClear() {
+    this.searchKey = '';
+    this.applyFilter();
+  }
+
+  applyFilter() {
+    this.listData.filter = this.searchKey.trim().toLowerCase();
+  }
+
+  onDelete(id: any) {
+    if (confirm('¿Está seguro de que desea eliminar este usuario?')) {
+      this.userService.deleteUsuario(id).subscribe(
+        Response => {
+          this.notificationService.warn('Usuario eliminado');
+        }
+      );
+    }
+  }
+
+  verUsuario(id: any){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '50%';
+    dialogConfig.data = {id: id}; 
+    this.dialog.open(VerUsuComponent, dialogConfig);
+  }
+
+  onEdit(usuario: User, id: any){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '50%';
+    dialogConfig.data = {usuario: usuario, id: id}; 
+    this.dialog.open(EditarUsuComponent, dialogConfig);
+  }
+
+  onCreate() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '50%';
+    this.dialog.open(CrearUsuComponent, dialogConfig);
+  }
 
 }

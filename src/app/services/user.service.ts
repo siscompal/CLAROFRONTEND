@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClientModule, HttpHeaders, HttpClient } from '@angular/common/http';
-import 'rxjs/add/operator/map';
-// import 'rxjs/Rx';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs/Observable';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { GLOBAL } from './global';
 import { Router} from '@angular/router';
 import { LoginModel } from '../models/login';
@@ -24,15 +20,6 @@ export class UserService {
   constructor(private http: HttpClient, private router: Router) {
       this.url = GLOBAL.url;
       this.httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
-
-  }
-
-  register(newUser: any) {
-      const parametros = JSON.stringify(newUser);
-      this.token = localStorage.getItem('token');
-      const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
-      return this.http.post(this.url + 'users/register', parametros, headers );
-          // .pipe(map(res => res.newUser()));
 
   }
 
@@ -87,6 +74,36 @@ export class UserService {
   logout() {
           localStorage.clear();
           this.router.navigate(['/']);
+  }
+
+  getUsuarios() {
+    this.token = localStorage.getItem('token');
+    const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
+    return this.http.get(this.url + 'users', headers);
+  }
+
+  deleteUsuario(id: any) {
+    this.token = localStorage.getItem('token');
+    const headers = {headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
+    return this.http.delete(this.url + 'users/'  + id, headers);
+  }
+
+  newUser(newUser: any) {
+    const parametros = JSON.stringify(newUser);
+    this.token = localStorage.getItem('token');
+    const headers = {headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
+    return this.http.post(this.url + 'users', parametros, headers );
+  }
+  getUsuario(id: any){
+    this.token = localStorage.getItem('token');
+    const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
+    return this.http.get(this.url + 'user/' + id, headers);
+  }
+
+  updateUsuario(usuario: User, id: any){
+    this.token = localStorage.getItem('token');
+    const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
+    return this.http.put(this.url + 'users/' + id, usuario, headers);
   }
 
 }

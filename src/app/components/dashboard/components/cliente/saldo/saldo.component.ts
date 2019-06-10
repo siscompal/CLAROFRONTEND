@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { NotificationService } from 'src/app/services/notification.service';
+import { ClientService } from 'src/app/services/client.service';
 
 @Component({
   selector: 'app-saldo',
@@ -7,9 +10,47 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SaldoComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private clientService: ClientService,
+    private notificationService: NotificationService,
+    public dialogRef: MatDialogRef<SaldoComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,) { }
 
   ngOnInit() {
+  }
+
+  asignar(valor: any){
+    console.log(this.data);
+    this.clientService.asignarSaldo(this.data['id'], valor).subscribe(
+      response => {
+        if(response){
+          console.log(response);
+          this.notificationService.success(':: Saldo asignado correctamente');
+          this.dialogRef.close();
+        }
+      
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
+
+  debitar(valor: any){
+    console.log(this.data);
+    this.clientService.debitarSaldo(this.data['id'], valor).subscribe(
+      response => {
+        if(response){
+          console.log(response);
+          this.notificationService.success(':: Saldo debitado correctamente');
+          this.dialogRef.close();
+        }
+      
+      },
+      err => {
+        console.log(err);
+      }
+    )
   }
 
 }
