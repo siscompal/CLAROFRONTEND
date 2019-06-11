@@ -25,13 +25,13 @@ export class ProductService {
         return this.http.post(this.url + 'products', parametros, headers );
     }
 
-    getProductos(){
+    getProductos() {
         this.token = localStorage.getItem('token');
         const headers = {headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
         return this.http.get(this.url + 'products', headers);
     }
 
-    getproducto(id: any){
+    getproducto(id: any) {
       this.token = localStorage.getItem('token');
       const headers = {headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
       return this.http.get(this.url + 'product/' + id, headers);

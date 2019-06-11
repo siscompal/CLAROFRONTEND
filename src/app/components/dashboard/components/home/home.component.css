@@ -1,3 +1,9 @@
+mat-card {
+    height: inherit;
+    width: 70%;
+    margin-left: 10px;
+}
+
 .example-tab-icon {
     margin-right: 8px;
 }
@@ -7,26 +13,38 @@ mat-tab {
 }
 
 .tabscard {
-    background-color: #0cc215;
     margin: auto;
     width: 90%;
 }
 
 mat-tab-group {
-    background-color: #0c0fc2;
-    margin: auto;
+    margin-left: 20px;
     width: 100%;
-    height: 300px;
+    height: inherit;
 }
 
 .main {
-    background-color: #910557;
     margin: left;
-    width: 70%;
+    width: 100%;
 }
 
 .una {
-    background-color: #2cb61a;
     margin: right;
     width: 10%;
+}
+
+.buttons {
+    margin-left: 12%;
+    margin-bottom: 1px;
+}
+
+ul li {
+    display: inline-block;
+    margin: 0px auto;
+    text-align: center;
+}
+
+ul li button {
+    width: 75px;
+    margin: 20px;
 }

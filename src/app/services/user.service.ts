@@ -13,9 +13,15 @@ export class UserService {
     public url: string;
     private httpOptions: any;
     public token: string;
-    public identity;
     public user = User;
-
+    public usuario = {
+      firstName: String,
+      lastName: String,
+      role: String,
+      saldo: String,
+      comision: String,
+      incentivo: String
+    };
 
   constructor(private http: HttpClient, private router: Router) {
       this.url = GLOBAL.url;
@@ -29,11 +35,16 @@ export class UserService {
           response => {
 
                 if (response) {
-                    console.log(response);
+                    const aux = response['usuarioLoqueado'];
+                    this.usuario.firstName = aux['name'];
+                    this.usuario.lastName = aux['lastname'];
+                    this.usuario.role = aux['role'];
+                    this.usuario.saldo = aux['saldo_actual'];
+                    this.usuario.comision = aux['comision_actual'];
+                    this.usuario.incentivo = aux['incentivo_actual'];
+
                     localStorage.setItem('token', response['token']);
-                    localStorage.setItem('usuario', response['usuarioLoqueado']);
-                    this.identity = localStorage.getItem('usuario');
-                    console.log(this.identity['role']);
+                    localStorage.setItem('usuario', JSON.stringify(this.usuario));
                     this.router.navigate(['/dashboard']);
                     }
           },
@@ -43,17 +54,6 @@ export class UserService {
         );
 
   }
-
-  getIdentity() {
-
-      const identity = JSON.parse(localStorage.getItem('identity'));
-      if (identity !== 'undefined') {
-        this.identity = identity;
-        } else {
-      this.identity = null;
-        }
-      return this.identity;
-    }
 
 
   getToken() {

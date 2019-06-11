@@ -15,13 +15,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { CrearCliComponent } from './components/dashboard/components/cliente/crear-cli/crear-cli.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-
-// Servicios
-import { UserService } from './services/user.service';
-import { ClientService } from './services/client.service';
-import { AuthGuard } from './services/guards/login.guard';
-import { ProductService } from './services/product.service';
-import { CdkColumnDef } from '@angular/cdk/table';
 import { VerCliComponent } from './components/dashboard/components/cliente/ver-cli/ver-cli.component';
 import { EditarCliComponent } from './components/dashboard/components/cliente/editar-cli/editar-cli.component';
 import { VerUsuComponent } from './components/dashboard/components/usuario/ver-usu/ver-usu.component';
@@ -30,6 +23,15 @@ import { CrearUsuComponent } from './components/dashboard/components/usuario/cre
 import { CrearProComponent } from './components/dashboard/components/producto/crear-pro/crear-pro.component';
 import { EditarProComponent } from './components/dashboard/components/producto/editar-pro/editar-pro.component';
 import { VerProComponent } from './components/dashboard/components/producto/ver-pro/ver-pro.component';
+
+// Servicios
+import { UserService } from './services/user.service';
+import { ClientService } from './services/client.service';
+import { AuthGuard } from './services/guards/login.guard';
+import { ProductService } from './services/product.service';
+import { CdkColumnDef } from '@angular/cdk/table';
+import { RecargaService } from './services/recarga.service';
+
 
 
 @NgModule({
@@ -49,7 +51,7 @@ import { VerProComponent } from './components/dashboard/components/producto/ver-
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [UserService, AuthGuard, ClientService, ProductService, CdkColumnDef],
+  providers: [UserService, AuthGuard, ClientService, ProductService, CdkColumnDef, RecargaService],
   bootstrap: [AppComponent],
   entryComponents: [
     CrearCliComponent, 
