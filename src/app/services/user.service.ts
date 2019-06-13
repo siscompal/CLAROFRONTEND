@@ -13,6 +13,7 @@ export class UserService {
     public url: string;
     private httpOptions: any;
     public token: string;
+    public identity: string;
     public user = User;
     public usuario = {
       firstName: String,
@@ -45,8 +46,20 @@ export class UserService {
 
                     localStorage.setItem('token', response['token']);
                     localStorage.setItem('usuario', JSON.stringify(this.usuario));
-                    this.router.navigate(['/dashboard']);
+                    if (aux['role'] === 'ROLE_ADMIN') {
+                      this.router.navigate(['/dashboard/admin']);
                     }
+
+                    if (aux['role'] === 'ROLE_ASESOR') {
+                      this.router.navigate(['/dashboard/asesor']);
+                    }
+
+                    if (aux['role'] === 'ROLE_CARGAS') {
+                      this.router.navigate(['/dashboard/cargas']);
+                    }
+
+
+                  }
           },
           error => {
             console.log(error);
@@ -64,6 +77,17 @@ export class UserService {
         this.token = null;
         }
     return this.token;
+  }
+
+  getIdentity() {
+
+    const identity = JSON.parse(localStorage.getItem('usuario'));
+    if (identity !== 'undefined') {
+      this.identity = identity;
+      } else {
+     this.identity = null;
+      }
+    return this.identity;
   }
 
   Autenticado() {

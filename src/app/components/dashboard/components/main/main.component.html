@@ -14,7 +14,7 @@
                 <mat-icon>home</mat-icon> <span>Home</span>
             </a>
 
-            <a mat-list-item [routerLink]="['usuarios']">
+            <a mat-list-item [routerLink]="['usuarios']" *ngIf="UserLogged['role'] == 'ROLE_ADMIN'">
                 <mat-icon>person</mat-icon> <span>Usuarios</span>
             </a>
 
@@ -22,7 +22,7 @@
                 <mat-icon>work</mat-icon> <span>Clientes</span>
             </a>
 
-            <a mat-list-item [routerLink]="['productos']">
+            <a mat-list-item [routerLink]="['productos']" *ngIf="UserLogged['role'] == 'ROLE_ADMIN'">
                 <mat-icon>shopping_cart</mat-icon> <span>Productos</span>
             </a>
 

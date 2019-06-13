@@ -7,6 +7,7 @@ import { SaldoComponent } from '../saldo/saldo.component';
 import { VerCliComponent } from '../ver-cli/ver-cli.component';
 import { Client } from 'src/app/models/client';
 import { EditarCliComponent } from '../editar-cli/editar-cli.component';
+import { UserService } from '../../../../../services/user.service';
 
 @Component({
   selector: 'app-listar-cli',
@@ -17,10 +18,12 @@ export class ListarCliComponent implements OnInit {
 
   constructor(private clientService: ClientService,
               private dialog: MatDialog,
-              private notificationService: NotificationService) {}
+              private notificationService: NotificationService,
+              private userService: UserService) {}
   public listData: MatTableDataSource<any>;
   public displayedColumns: string[] = ['nombre', 'apellido', 'iden', 'rol', 'fecha', 'acciones'];
   public searchKey: string;
+  public UserLogged: any;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -34,6 +37,8 @@ export class ListarCliComponent implements OnInit {
       }
 
     );
+
+    this.UserLogged = this.userService.getIdentity();
 
   }
 

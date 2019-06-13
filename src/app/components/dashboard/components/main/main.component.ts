@@ -9,9 +9,12 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 })
 export class MainComponent implements OnInit {
 
+  public UserLogged: any;
   public showFiller: boolean;
 
-  constructor(private userService: UserService, private router: Router , private route: ActivatedRoute ) {
+  constructor(private userService: UserService,
+              private router: Router,
+              private route: ActivatedRoute ) {
 
    }
 
@@ -21,7 +24,7 @@ export class MainComponent implements OnInit {
    // console.log(this.userService.getIdentity());
    //  console.log(this.userService.getToken());
     // console.log(this.userService.Autenticado());
-
+    this.UserLogged = this.userService.getIdentity();
 
 
   }

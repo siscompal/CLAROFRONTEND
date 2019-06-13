@@ -9,25 +9,40 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './components/main/main.component';
 import { HomeComponent } from './components/home/home.component';
 import { ListarCliComponent } from './components/cliente/listar-cli/listar-cli.component';
-import { SaldoComponent } from './components/cliente/saldo/saldo.component';
 import { ListarUsuComponent } from './components/usuario/listar-usu/listar-usu.component';
-import { CrearProComponent } from './components/producto/crear-pro/crear-pro.component';
 import { ListarProComponent } from './components/producto/listar-pro/listar-pro.component';
-import { AuthGuard } from '../../services/guards/login.guard';
+import { AdminGuard } from '../../services/guards/admin.guard';
+import { AsesorGuard } from '../../services/guards/asesor.guard';
+import { CargasGuard } from '../../services/guards/cargas.guard';
 
 
 const dashboardRoutes: Routes = [
 
-{path: 'dashboard', component: MainComponent, canActivate: [AuthGuard],
+{path: 'dashboard/admin', component: MainComponent, canActivate: [AdminGuard],
     children: [
         {path: '', redirectTo: 'home', pathMatch: 'full'},
         {path: 'home', component: HomeComponent },
         {path: 'clientes', component: ListarCliComponent},
         {path: 'usuarios', component: ListarUsuComponent},
-        {path: 'saldo', component: SaldoComponent},
         {path: 'productos', component: ListarProComponent},
     ]
-}
+},
+
+{path: 'dashboard/asesor', component: MainComponent, canActivate: [AsesorGuard],
+    children: [
+        {path: '', redirectTo: 'home', pathMatch: 'full'},
+        {path: 'home', component: HomeComponent },
+        {path: 'clientes', component: ListarCliComponent},
+    ]
+},
+
+{path: 'dashboard/cargas', component: MainComponent, canActivate: [CargasGuard],
+    children: [
+        {path: '', redirectTo: 'home', pathMatch: 'full'},
+        {path: 'home', component: HomeComponent },
+        {path: 'clientes', component: ListarCliComponent},
+    ]
+},
 
 ];
 

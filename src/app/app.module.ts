@@ -31,6 +31,9 @@ import { AuthGuard } from './services/guards/login.guard';
 import { ProductService } from './services/product.service';
 import { CdkColumnDef } from '@angular/cdk/table';
 import { RecargaService } from './services/recarga.service';
+import { AdminGuard } from './services/guards/admin.guard';
+import { AsesorGuard } from './services/guards/asesor.guard';
+import { CargasGuard } from './services/guards/cargas.guard';
 
 
 
@@ -51,14 +54,22 @@ import { RecargaService } from './services/recarga.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [UserService, AuthGuard, ClientService, ProductService, CdkColumnDef, RecargaService],
+  providers: [UserService,
+              AuthGuard,
+              ClientService,
+              ProductService,
+              CdkColumnDef,
+              RecargaService,
+              AdminGuard,
+              AsesorGuard,
+  ],
   bootstrap: [AppComponent],
   entryComponents: [
-    CrearCliComponent, 
-    VerCliComponent, 
-    EditarCliComponent, 
-    VerUsuComponent, 
-    EditarUsuComponent, 
+    CrearCliComponent,
+    VerCliComponent,
+    EditarCliComponent,
+    VerUsuComponent,
+    EditarUsuComponent,
     CrearUsuComponent,
     CrearProComponent,
     EditarProComponent,
