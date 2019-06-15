@@ -57,7 +57,9 @@ export class UserService {
                     if (aux['role'] === 'ROLE_CARGAS') {
                       this.router.navigate(['/dashboard/cargas']);
                     }
-
+                    if (aux['role'] === 'CLI_CLIENTE') {
+                      this.router.navigate(['/dashboard/cliente']);
+                    }
 
                   }
           },
@@ -118,16 +120,22 @@ export class UserService {
     const headers = {headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
     return this.http.post(this.url + 'users', parametros, headers );
   }
-  getUsuario(id: any){
+  getUsuario(id: any) {
     this.token = localStorage.getItem('token');
     const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
     return this.http.get(this.url + 'user/' + id, headers);
   }
 
-  updateUsuario(usuario: User, id: any){
+  updateUsuario(usuario: User, id: any) {
     this.token = localStorage.getItem('token');
     const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
     return this.http.put(this.url + 'users/' + id, usuario, headers);
+  }
+
+  getCupo() {
+    this.token = localStorage.getItem('token');
+    const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
+    return this.http.get(this.url + 'balance' , headers);
   }
 
 }

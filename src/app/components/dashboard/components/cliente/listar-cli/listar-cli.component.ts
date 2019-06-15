@@ -20,10 +20,12 @@ export class ListarCliComponent implements OnInit {
               private dialog: MatDialog,
               private notificationService: NotificationService,
               private userService: UserService) {}
+  
   public listData: MatTableDataSource<any>;
   public displayedColumns: string[] = ['nombre', 'apellido', 'iden', 'rol', 'fecha', 'acciones'];
   public searchKey: string;
   public UserLogged: any;
+  
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 

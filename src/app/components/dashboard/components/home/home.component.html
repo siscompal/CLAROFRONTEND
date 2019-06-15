@@ -2,13 +2,12 @@
     <mat-tab-group class="main">
         <mat-tab>
             <ng-template mat-tab-label>
-                <mat-icon class="example-tab-icon">thumb_up</mat-icon>
                 Recargas
             </ng-template>
             <div class="buttons">
                 <ul>
                     <li *ngFor="let valor of btn1">
-                        <button mat-raised-button (click)="setValue(valor)">
+                        <button mat-raised-button class="valor" (click)="setValue(valor)">
                             {{ valor }}
                         </button>
                     </li>
@@ -16,37 +15,42 @@
 
                 <ul>
                     <li *ngFor="let valor of btn2">
-                        <button mat-raised-button (click)="setValue(valor)">
+                        <button mat-raised-button class="valor" (click)="setValue(valor)">
                             {{ valor }}
                         </button>
                     </li>
                 </ul>
             </div>
             <div>
-                <label>Seleccione la bolsa</label>
+                <label>Seleccione la bolsa: </label>
                 <mat-radio-group [(ngModel)]="bolsa">
                     <mat-radio-button *ngFor="let bolsa of bolsas" [value]="bolsa">
-                        {{bolsa}}
+                        {{bolsa}} <span class="espacio"></span>
                     </mat-radio-button>
                 </mat-radio-group>
             </div>
-            <input matInput placeholder="Número de celular" [(ngModel)]="numero" maxlength=10 minlength=10 />
-            <input matInput placeholder="Valor de la recarga" [(ngModel)]="valor" />
-
-            <button mat-raised-button (click)="recargar()"> Recargar </button>
+            <form [formGroup]="recargaForm" (ngSubmit)="recargaForm.valir && recargar()" novalidate>
+                <mat-form-field>
+                    <input type="text" matInput formControlName="numero" placeholder="Número de celular" [(ngModel)]="numero" maxlength=10 minlength=10 />
+                </mat-form-field>
+                <mat-form-field>
+                    <input type="text" matInput formControlName="valor" placeholder="Valor de la recarga" [(ngModel)]="valor" />
+                </mat-form-field> 
+        
+                <button mat-button mat-flat-button type="submit" class="submit" [disabled]="!recargaForm.valid"> Recargar </button>
+            </form>
+            
         </mat-tab>
 
         <mat-tab>
             <ng-template mat-tab-label>
-                <mat-icon class="example-tab-icon">thumb_up</mat-icon>
                 Paquetes
             </ng-template>
             <!-- tabs internas-->
             <mat-tab-group>
                 <mat-tab>
                     <ng-template mat-tab-label>
-                        <mat-icon class="example-tab-icon">thumb_up</mat-icon>
-                        megas
+                        Megas
                     </ng-template>
 
                     <ul>
@@ -63,8 +67,7 @@
 
                 <mat-tab>
                     <ng-template mat-tab-label>
-                        <mat-icon class="example-tab-icon">thumb_up</mat-icon>
-                        minutos
+                        Minutos
                     </ng-template>
 
                     <p>
@@ -78,8 +81,7 @@
 
                 <mat-tab>
                     <ng-template mat-tab-label>
-                        <mat-icon class="example-tab-icon">thumb_up</mat-icon>
-                        all inclusive
+                        Todo incluido
                     </ng-template>
 
                     <p>
@@ -92,8 +94,7 @@
                 </mat-tab>
                 <mat-tab>
                     <ng-template mat-tab-label>
-                        <mat-icon class="example-tab-icon">thumb_up</mat-icon>
-                        minuteras
+                        Paquetes de minutos
                     </ng-template>
                     <!-- <mat-card class="tabscard"> -->
                     <p>

@@ -27,13 +27,16 @@ import { VerProComponent } from './components/dashboard/components/producto/ver-
 // Servicios
 import { UserService } from './services/user.service';
 import { ClientService } from './services/client.service';
-import { AuthGuard } from './services/guards/login.guard';
 import { ProductService } from './services/product.service';
 import { CdkColumnDef } from '@angular/cdk/table';
 import { RecargaService } from './services/recarga.service';
 import { AdminGuard } from './services/guards/admin.guard';
 import { AsesorGuard } from './services/guards/asesor.guard';
 import { CargasGuard } from './services/guards/cargas.guard';
+import { ClienteGuard } from './services/guards/cliente.guard';
+import { SaldoComponent } from './components/dashboard/components/cliente/saldo/saldo.component';
+import { DistribuidorGuard } from './services/guards/distribuidor.guard';
+import { MayoristaGuard } from './services/guards/mayorista.guard';
 
 
 
@@ -55,13 +58,16 @@ import { CargasGuard } from './services/guards/cargas.guard';
     ReactiveFormsModule
   ],
   providers: [UserService,
-              AuthGuard,
               ClientService,
               ProductService,
               CdkColumnDef,
               RecargaService,
               AdminGuard,
               AsesorGuard,
+              CargasGuard,
+              ClienteGuard,
+              DistribuidorGuard,
+              MayoristaGuard
   ],
   bootstrap: [AppComponent],
   entryComponents: [
@@ -73,7 +79,8 @@ import { CargasGuard } from './services/guards/cargas.guard';
     CrearUsuComponent,
     CrearProComponent,
     EditarProComponent,
-    VerProComponent
+    VerProComponent,
+    SaldoComponent
   ]
 })
 export class AppModule { }

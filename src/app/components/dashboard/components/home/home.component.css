@@ -48,3 +48,61 @@ ul li button {
     width: 75px;
     margin: 20px;
 }
+
+label {
+    margin-right: 10px;
+}
+
+.espacio {
+    margin-right: 10px;
+}
+
+
+mat-form-field,
+input {
+    width: 80%;
+    height: 20px;
+    border-color: #e52427;
+    margin-top: 10px;
+}
+
+.valor {
+
+    background-color:#e52427;
+    margin: 5px;
+    padding:10px;
+    border-radius: 200px 200px 200px 200px;
+    -moz-border-radius: 200px 200px 200px 200px;
+    -webkit-border-radius: 200px 200px 200px 200px;
+    border: 0px solid #000000;
+    line-height:32px;
+
+  }
+  .valor:hover {
+    opacity: 0.50;
+    -moz-opacity: .50;
+    filter:alpha (opacity=50);
+  }
+
+  .submit {
+      width: 25%;
+      margin-left: 30%;
+      margin-top: 14px;
+      text-align: center;
+      background-color:#e52427;
+  }
+
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: #e52427 !important;
+}
+
+ ::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: #e52427 !important;
+}
+
+ ::ng-deep.mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: #e52427 !important;
+}

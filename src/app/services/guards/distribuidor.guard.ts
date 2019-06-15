@@ -4,7 +4,7 @@ import { UserService } from '../user.service';
 
 
 @Injectable()
-export class AsesorGuard implements CanActivate {
+export class DistribuidorGuard implements CanActivate {
 
     constructor(
         private router: Router,
@@ -14,7 +14,7 @@ export class AsesorGuard implements CanActivate {
     canActivate() {
 
         const identity = this.userService.getIdentity();
-        if (identity && identity['role'] === 'ROLE_ASESOR') {
+        if (identity && identity['role'] === 'CLI_DISTRIBUIDOR') {
             return true;
         } else {
             this.router.navigate(['/']);

@@ -25,6 +25,7 @@ import { VerUsuComponent } from './components/usuario/ver-usu/ver-usu.component'
 import { EditarUsuComponent } from './components/usuario/editar-usu/editar-usu.component';
 import { EditarProComponent } from './components/producto/editar-pro/editar-pro.component';
 import { VerProComponent } from './components/producto/ver-pro/ver-pro.component';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { VerProComponent } from './components/producto/ver-pro/ver-pro.component
       VerUsuComponent,
       EditarUsuComponent,
       EditarProComponent,
-      VerProComponent
+      VerProComponent,
+      AdminHomeComponent
 
 
     ],

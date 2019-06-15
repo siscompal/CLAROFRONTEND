@@ -17,11 +17,13 @@ export class LoginComponent implements OnInit {
   public user: LoginModel = new LoginModel();
   public loginForm: FormGroup;
  //  public user: User;
-  public identity;
-  public token;
+  public identity: any;
+  public token: any;
 
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
+  constructor(private formBuilder: FormBuilder,
+              private userService: UserService,
+              private router: Router) {
 
     // this.user = new User ('', '', '', '', '', '', '', '', '', );
   }

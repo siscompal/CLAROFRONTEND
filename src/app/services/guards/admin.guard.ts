@@ -14,7 +14,6 @@ export class AdminGuard implements CanActivate {
     canActivate() {
 
         const identity = this.userService.getIdentity();
-        console.log(identity);
         if (identity && identity['role'] === 'ROLE_ADMIN') {
             return true;
         } else {
