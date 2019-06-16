@@ -138,6 +138,18 @@ export class UserService {
     return this.http.get(this.url + 'balance' , headers);
   }
 
+  getRecargas() {
+    this.token = localStorage.getItem('token');
+    const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
+    return this.http.get(this.url + 'allRecargas', headers);
+  }
+
+  getRepartos() {
+    this.token = localStorage.getItem('token');
+    const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
+    return this.http.get(this.url + 'allRepartos', headers);
+  }
+
 }
 
 

@@ -67,7 +67,7 @@ import { MayoristaGuard } from './services/guards/mayorista.guard';
               CargasGuard,
               ClienteGuard,
               DistribuidorGuard,
-              MayoristaGuard
+              MayoristaGuard,
   ],
   bootstrap: [AppComponent],
   entryComponents: [

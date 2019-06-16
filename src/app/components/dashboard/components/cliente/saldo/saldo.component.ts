@@ -14,35 +14,34 @@ export class SaldoComponent implements OnInit {
     private clientService: ClientService,
     private notificationService: NotificationService,
     public dialogRef: MatDialogRef<SaldoComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,) { }
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
   }
 
-  asignar(valor: any){
+  asignar(valor: any, obs: string) {
     console.log(this.data);
-    this.clientService.asignarSaldo(this.data['id'], valor).subscribe(
+    this.clientService.asignarSaldo(this.data['id'], valor, obs).subscribe(
       response => {
-        if(response){
+        if (response) {
           console.log(response);
-          this.notificationService.success(':: Saldo asignado correctamente');
+          this.notificationService.success('Saldo asignado correctamente');
           this.dialogRef.close();
         }
-      
       },
       err => {
         console.log(err);
       }
-    )
+    );
   }
 
-  debitar(valor: any){
+  debitar(valor: any, obs: string) {
     console.log(this.data);
-    this.clientService.debitarSaldo(this.data['id'], valor).subscribe(
+    this.clientService.debitarSaldo(this.data['id'], valor, obs).subscribe(
       response => {
-        if(response){
+        if (response) {
           console.log(response);
-          this.notificationService.success(':: Saldo debitado correctamente');
+          this.notificationService.success('Saldo debitado correctamente');
           this.dialogRef.close();
         }
       

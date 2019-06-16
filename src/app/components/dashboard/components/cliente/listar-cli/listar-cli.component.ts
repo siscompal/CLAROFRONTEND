@@ -20,12 +20,12 @@ export class ListarCliComponent implements OnInit {
               private dialog: MatDialog,
               private notificationService: NotificationService,
               private userService: UserService) {}
-  
+
   public listData: MatTableDataSource<any>;
   public displayedColumns: string[] = ['nombre', 'apellido', 'iden', 'rol', 'fecha', 'acciones'];
   public searchKey: string;
   public UserLogged: any;
-  
+
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -80,21 +80,21 @@ export class ListarCliComponent implements OnInit {
     this.dialog.open(SaldoComponent, dialogConfig);
   }
 
-  verCliente(id: any){
+  verCliente(id: any) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '50%';
-    dialogConfig.data = {id: id}; 
+    dialogConfig.data = {id: id};
     this.dialog.open(VerCliComponent, dialogConfig);
   }
 
-  onEdit(cliente: Client, id: any){
+  onEdit(cliente: Client, id: any) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '50%';
-    dialogConfig.data = {cliente: cliente, id: id}; 
+    dialogConfig.data = {cliente: cliente, id: id};
     this.dialog.open(EditarCliComponent, dialogConfig);
   }
 

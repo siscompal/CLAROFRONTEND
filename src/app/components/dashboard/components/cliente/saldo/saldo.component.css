@@ -1,8 +1,17 @@
 mat-card-title {
     margin-bottom: 10px;
+    text-align: center;
 }
 
 button {
     margin: 10px;
     margin-left: 10%;
+}
+
+mat-form-field,
+input {
+    width: 80%;
+    height: 20px;
+    border-color: #e52427;
+    margin-top: 10px;
 }

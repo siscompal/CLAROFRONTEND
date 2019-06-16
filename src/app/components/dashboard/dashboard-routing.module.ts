@@ -18,6 +18,10 @@ import { AsesorGuard } from '../../services/guards/asesor.guard';
 import { CargasGuard } from '../../services/guards/cargas.guard';
 import { ClienteGuard } from 'src/app/services/guards/cliente.guard';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { AllRecargasComponent } from './components/reportes/all-recargas/all-recargas.component';
+import { AllRepartosComponent } from './components/reportes/all-repartos/all-repartos.component';
+import { MisRecargasComponent } from './components/reportes/mis-recargas/mis-recargas.component';
+import { MisRepartosComponent } from './components/reportes/mis-repartos/mis-repartos.component';
 
 
 const dashboardRoutes: Routes = [
@@ -29,6 +33,8 @@ const dashboardRoutes: Routes = [
         {path: 'clientes', component: ListarCliComponent},
         {path: 'usuarios', component: ListarUsuComponent},
         {path: 'productos', component: ListarProComponent},
+        {path: 'recargas', component: AllRecargasComponent},
+        {path: 'repartos', component: AllRepartosComponent}
     ]
 },
 
@@ -37,6 +43,8 @@ const dashboardRoutes: Routes = [
         {path: '', redirectTo: 'home', pathMatch: 'full'},
         {path: 'home', component: AdminHomeComponent },
         {path: 'clientes', component: ListarCliComponent},
+        {path: 'recargas', component: AllRecargasComponent},
+        {path: 'repartos', component: AllRepartosComponent}
     ]
 },
 
@@ -45,6 +53,8 @@ const dashboardRoutes: Routes = [
         {path: '', redirectTo: 'home', pathMatch: 'full'},
         {path: 'home', component: AdminHomeComponent },
         {path: 'clientes', component: ListarCliComponent},
+        {path: 'recargas', component: AllRecargasComponent},
+        {path: 'repartos', component: AllRepartosComponent}
     ]
 },
 
@@ -52,6 +62,8 @@ const dashboardRoutes: Routes = [
     children: [
         {path: '', redirectTo: 'home', pathMatch: 'full'},
         {path: 'home', component: HomeComponent },
+        {path: 'recargas', component: MisRecargasComponent},
+        {path: 'repartos', component: MisRepartosComponent}
     ]
 },
 

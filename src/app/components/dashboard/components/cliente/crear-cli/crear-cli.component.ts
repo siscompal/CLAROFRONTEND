@@ -41,7 +41,7 @@ export class CrearCliComponent implements OnInit {
           if ( response ) {
               this.status = 'success';
               this.client = new Client('', '', '', '', '', '', '', '', '', '', 0);
-              this.notificationService.success(':: Cliente creado correctamente');
+              this.notificationService.success('Cliente creado correctamente');
               this.dialogRef.close();
           } else {
             this.status = 'error';

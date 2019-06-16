@@ -62,16 +62,36 @@ export class ClientService {
     return this.http.put(this.url + 'client/' + id, cliente, headers);
   }
 
-  asignarSaldo(id: any, valor: any){
+  asignarSaldo(id: any, value: any, obser: string) {
     this.token = localStorage.getItem('token');
+    const parametros = {
+      valor: value,
+      obs: obser
+    };
     const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
-    return this.http.put(this.url + 'asignar/' + id, {valor: valor}, headers);
+    return this.http.put(this.url + 'asignar/' + id, parametros, headers);
   }
 
-  debitarSaldo(id: any, valor: any){
+  debitarSaldo(id: any, value: any, obser: string) {
+    this.token = localStorage.getItem('token');
+    const parametros = {
+      valor: value,
+      obs: obser
+    };
+    const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
+    return this.http.put(this.url + 'debitar/' + id, parametros, headers);
+  }
+
+  getRecargas() {
     this.token = localStorage.getItem('token');
     const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
-    return this.http.put(this.url + 'debitar/' + id, {valor: valor}, headers);
+    return this.http.get(this.url + 'listarRecargas', headers);
+  }
+
+  getRepartos() {
+    this.token = localStorage.getItem('token');
+    const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
+    return this.http.get(this.url + 'misRepartos', headers);
   }
 
 }

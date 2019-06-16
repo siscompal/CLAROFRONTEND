@@ -26,6 +26,10 @@ import { EditarUsuComponent } from './components/usuario/editar-usu/editar-usu.c
 import { EditarProComponent } from './components/producto/editar-pro/editar-pro.component';
 import { VerProComponent } from './components/producto/ver-pro/ver-pro.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { AllRepartosComponent } from './components/reportes/all-repartos/all-repartos.component';
+import { AllRecargasComponent } from './components/reportes/all-recargas/all-recargas.component';
+import { MisRepartosComponent } from './components/reportes/mis-repartos/mis-repartos.component';
+import { MisRecargasComponent } from './components/reportes/mis-recargas/mis-recargas.component';
 
 
 @NgModule({
@@ -45,7 +49,11 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
       EditarUsuComponent,
       EditarProComponent,
       VerProComponent,
-      AdminHomeComponent
+      AdminHomeComponent,
+      AllRepartosComponent,
+      AllRecargasComponent,
+      MisRepartosComponent,
+      MisRecargasComponent
 
 
     ],

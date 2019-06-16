@@ -60,4 +60,8 @@ export class HomeComponent implements OnInit {
       );
     }
   }
+
+  prueba() {
+    alert('Funciona');
+  }
 }

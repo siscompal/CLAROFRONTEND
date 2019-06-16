@@ -16,7 +16,7 @@ export class AdminHomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userService.getCupo().subscribe(
+    /*this.userService.getCupo().subscribe(
       response => {
         this.cupo = response['respuesta'];
         this.status = true;
@@ -26,7 +26,7 @@ export class AdminHomeComponent implements OnInit {
         this.cupo = "Saldo no disponible";
         console.log(err);
       }
-    )
+    );*/
     this.UserLogged = this.userService.getIdentity();
   }
 

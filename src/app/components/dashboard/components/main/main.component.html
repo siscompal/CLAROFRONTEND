@@ -18,7 +18,7 @@
                 <mat-icon>person</mat-icon> <span>Usuarios</span>
             </a>
 
-            <a mat-list-item [routerLink]="['clientes']">
+            <a mat-list-item [routerLink]="['clientes']" *ngIf="!(UserLogged['role'] == 'CLI_CLIENTE')">
                 <mat-icon>work</mat-icon> <span>Clientes</span>
             </a>
 
@@ -26,21 +26,24 @@
                 <mat-icon>shopping_cart</mat-icon> <span>Productos</span>
             </a>
 
-            <a mat-list-item routerLink="#">
-                <mat-icon>insert_chart</mat-icon> <span>Informes</span>
-            </a>
-
-            <a mat-list-item routerLink="#">
-                <mat-icon>stay_primary_portrait</mat-icon> <span>Estado recargas</span>
-            </a>
-
-            <a mat-list-item routerLink="#">
-                <mat-icon>turned_in</mat-icon> <span>Estado productos</span>
-            </a>
-
-            <a mat-list-item routerLink="#">
-                <mat-icon>swap_vert</mat-icon> <span>Mov. de saldo</span>
-            </a>
+            <mat-list-item [matMenuTriggerFor]="informes">
+                <mat-icon>insert_chart</mat-icon>
+                <a matline>Informes</a>
+            </mat-list-item>
+            <mat-menu #informes="matMenu">
+                <button mat-menu-item [routerLink]="['recargas']" [routerLinkActive]="['active']" *ngIf="UserLogged['role'] == 'ROLE_ADMIN' || UserLogged['role'] == 'ROLE_ASESOR' || UserLogged['role'] == 'ROLE_CARGAS'">
+                    Estado recargas
+                </button>
+                <button mat-menu-item [routerLink]="['repartos']" [routerLinkActive]="['active']" *ngIf="UserLogged['role'] == 'ROLE_ADMIN' || UserLogged['role'] == 'ROLE_ASESOR' || UserLogged['role'] == 'ROLE_CARGAS'">
+                    Asignaciones y debitos
+                </button>
+                <button mat-menu-item [routerLink]="['recargas']" [routerLinkActive]="['active']" *ngIf="UserLogged['role'] == 'CLI_CLIENTE' || UserLogged['role'] == 'CLI_DISTRIBUIDOR' || UserLogged['role'] == 'CLI_MAYORISTA'">
+                    Estado recargas
+                </button>
+                <button mat-menu-item [routerLink]="['repartos']" [routerLinkActive]="['active']" *ngIf="UserLogged['role'] == 'CLI_CLIENTE' || UserLogged['role'] == 'CLI_DISTRIBUIDOR' || UserLogged['role'] == 'CLI_MAYORISTA'">
+                    Asignaciones y debitos
+                </button>
+            </mat-menu>
         </mat-nav-list>
 
     </mat-drawer>
