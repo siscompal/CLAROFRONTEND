@@ -26,7 +26,7 @@ constructor(
     private productService: ProductService,
     public dialogRef: MatDialogRef<CrearProComponent>) {
 
-    this.product = new Product('', '', '', 0, 0, 0);
+    this.product = new Product('', '', '', null, null, null);
   }
 
   ngOnInit() {
@@ -38,7 +38,7 @@ constructor(
         response => {
           if ( response ) {
               this.status = 'success';
-              this.product = new Product('', '', '', 0, 0, 0);
+              this.product = new Product('', '', '', null, null, null);
               this.notificationService.success('Producto creado correctamente');
               this.dialogRef.close();
           } else {

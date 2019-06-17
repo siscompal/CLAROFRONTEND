@@ -22,19 +22,20 @@
                 </ul>
             </div>
             <div>
+                
+            </div>
+            <form [formGroup]="recargaForm" (ngSubmit)="recargaForm.valid && recargar()" novalidate>
                 <label>Seleccione la bolsa: </label>
-                <mat-radio-group [(ngModel)]="bolsa">
-                    <mat-radio-button *ngFor="let bolsa of bolsas" [value]="bolsa">
+                <mat-radio-group [(ngModel)]="bolsa" required formControlName="radio">
+                    <mat-radio-button *ngFor="let bolsa of bolsas" [value]="bolsa" required>
                         {{bolsa}} <span class="espacio"></span>
                     </mat-radio-button>
                 </mat-radio-group>
-            </div>
-            <form [formGroup]="recargaForm" (ngSubmit)="recargaForm.valir && recargar()" novalidate>
                 <mat-form-field>
                     <input type="text" matInput formControlName="numero" placeholder="Número de celular" [(ngModel)]="numero" maxlength=10 minlength=10 />
                 </mat-form-field>
                 <mat-form-field>
-                    <input type="text" matInput formControlName="valor" placeholder="Valor de la recarga" [(ngModel)]="valor" />
+                    <input type="number" min="1000" matInput formControlName="valor" placeholder="Valor de la recarga" [(ngModel)]="valor" />
                 </mat-form-field>
 
                 <button mat-button mat-flat-button type="submit" class="submit" [disabled]="!recargaForm.valid"> Recargar </button>

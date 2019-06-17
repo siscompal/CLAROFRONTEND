@@ -9,7 +9,7 @@
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <input type="text" name="precio" #name="ngModel" [(ngModel)]="product.precio" class="form-control" matInput placeholder="Precio">
+                <input type="number" name="precio" #name="ngModel" min="0" [(ngModel)]="product.precio" class="form-control" matInput placeholder="Precio">
             </mat-form-field>
 
             <mat-form-field class="miti">
@@ -17,7 +17,7 @@
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <input type="text" name="incentivo" #name="ngModel" [(ngModel)]="product.incentivo" class="form-control" matInput placeholder="Incentivo">
+                <input type="number" name="incentivo" #name="ngModel" min="0" [(ngModel)]="product.incentivo" class="form-control" matInput placeholder="Incentivo">
 
             </mat-form-field>
             <mat-form-field class="miti">

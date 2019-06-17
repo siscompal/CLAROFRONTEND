@@ -106,6 +106,10 @@ ul .list {
     margin: 0px;
 }
 
+.mat-input-element {
+    width: 100%;
+}
+
 ::ng-deep .mat-focused .mat-form-field-label {
     /*change color of label*/
     color: #e52427 !important;

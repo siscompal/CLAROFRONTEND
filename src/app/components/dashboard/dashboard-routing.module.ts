@@ -76,7 +76,7 @@ const dashboardRoutes: Routes = [
     children: [
         {path: '', redirectTo: 'home', pathMatch: 'full'},
         {path: 'home', component: PubliHomeComponent },
-        {path: 'clientes', component: ListarCliComponent},
+        {path: 'clientes', component: MisClientesComponent},
         {path: 'repartos', component: MisRepartosComponent}
     ]
 },

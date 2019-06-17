@@ -13,12 +13,12 @@ import { ClientService } from '../../../../../services/client.service';
 export class CliHomeComponent implements OnInit {
 
 
-  public valor: any;
-  public numero: any;
+  public valor: Number;
+  public numero: String;
   public btn1: Array<any> = [1000, 2000, 3000, 5000];
   public btn2: Array<any> = [10000, 20000, 30000, 50000];
-  public bolsa: string;
-  public bolsas: string[] = ['saldo', 'comision', 'incentivo'];
+  public bolsa: String;
+  public bolsas: String[] = ['saldo', 'comision', 'incentivo'];
   public megas: any;
   public todo: any;
   public minutos: any;
@@ -39,11 +39,13 @@ export class CliHomeComponent implements OnInit {
       ]],
       valor: [this.valor, [
         Validators.required,
+      ]],
+      radio: [this.bolsa, [
+        Validators.required
       ]]
     });
     this.valor = null;
     this.numero = null;
-    const usuario = localStorage.getItem('usuario');
     this.getProducts();
   }
 
@@ -59,7 +61,7 @@ export class CliHomeComponent implements OnInit {
         () => {
           this.valor = null;
           this.numero = null;
-          this.notificationService.success(':: Recarga realizada con éxito');
+          this.notificationService.success('Recarga realizada con éxito');
         },
         err => {
           console.log(err);
