@@ -90,6 +90,22 @@ input {
     background-color: #e52427;
 }
 
+ul .list {
+    width: 80%;
+}
+
+.product {
+    height: 50px !important;
+}
+
+.product p {
+    margin-bottom: 1px;
+}
+
+.product span {
+    margin: 0px;
+}
+
 ::ng-deep .mat-focused .mat-form-field-label {
     /*change color of label*/
     color: #e52427 !important;
@@ -103,9 +119,4 @@ input {
  ::ng-deep.mat-form-field-ripple {
     /*change color of underline when focused*/
     background-color: #e52427 !important;
-}
-
-.tabs {
-    width: inherit;
-    height: inherit;
 }

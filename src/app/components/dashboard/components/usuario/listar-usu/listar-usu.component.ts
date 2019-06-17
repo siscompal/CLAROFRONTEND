@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatSort, MatPaginator, MatDialog, MatDialogConfig } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatDialog, MatDialogConfig } from '@angular/material';
 import { UserService } from 'src/app/services/user.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { VerUsuComponent } from '../ver-usu/ver-usu.component';
@@ -21,7 +21,7 @@ export class ListarUsuComponent implements OnInit {
     public listData: MatTableDataSource<any>;
     public displayedColumns: string [] = ['nombre', 'apellido', 'iden', 'estado', 'rol', 'fecha', 'acciones'];
     public searchKey: string;
-    @ViewChild(MatSort) sort: MatSort;
+
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
@@ -29,7 +29,6 @@ export class ListarUsuComponent implements OnInit {
       list => {
         const array = list['users'];
         this.listData = new MatTableDataSource(array);
-        this.listData.sort = this.sort;
         this.listData.paginator = this.paginator;
       }
 

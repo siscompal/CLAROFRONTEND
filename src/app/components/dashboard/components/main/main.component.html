@@ -37,7 +37,7 @@
                 <button mat-menu-item [routerLink]="['repartos']" [routerLinkActive]="['active']" *ngIf="UserLogged['role'] == 'ROLE_ADMIN' || UserLogged['role'] == 'ROLE_ASESOR' || UserLogged['role'] == 'ROLE_CARGAS'">
                     Asignaciones y debitos
                 </button>
-                <button mat-menu-item [routerLink]="['recargas']" [routerLinkActive]="['active']" *ngIf="UserLogged['role'] == 'CLI_CLIENTE' || UserLogged['role'] == 'CLI_DISTRIBUIDOR' || UserLogged['role'] == 'CLI_MAYORISTA'">
+                <button mat-menu-item [routerLink]="['recargas']" [routerLinkActive]="['active']" *ngIf="UserLogged['role'] == 'CLI_CLIENTE' ">
                     Estado recargas
                 </button>
                 <button mat-menu-item [routerLink]="['repartos']" [routerLinkActive]="['active']" *ngIf="UserLogged['role'] == 'CLI_CLIENTE' || UserLogged['role'] == 'CLI_DISTRIBUIDOR' || UserLogged['role'] == 'CLI_MAYORISTA'">

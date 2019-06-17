@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { RecargaService } from '../../../../services/recarga.service';
+import { RecargaService } from '../../../../../services/recarga.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ClientService } from '../../../../../services/client.service';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class CliHomeComponent implements OnInit {
 
 
   public valor: any;
@@ -18,18 +19,23 @@ export class HomeComponent implements OnInit {
   public btn2: Array<any> = [10000, 20000, 30000, 50000];
   public bolsa: string;
   public bolsas: string[] = ['saldo', 'comision', 'incentivo'];
+  public megas: any;
+  public todo: any;
+  public minutos: any;
+  public aplicaciones: any;
+
   public recargaForm: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
     private recargaService: RecargaService,
     public notificationService: NotificationService,
+    private clientService: ClientService
   ) { }
 
   ngOnInit() {
     this.recargaForm = this.formBuilder.group({
       numero: [this.numero, [
         Validators.required,
-        
       ]],
       valor: [this.valor, [
         Validators.required,
@@ -38,6 +44,7 @@ export class HomeComponent implements OnInit {
     this.valor = null;
     this.numero = null;
     const usuario = localStorage.getItem('usuario');
+    this.getProducts();
   }
 
   setValue(valor: any) {
@@ -61,7 +68,28 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  prueba() {
-    alert('Funciona');
+  getProducts() {
+    this.clientService.getProductos('datos').subscribe(
+      list => {
+        this.megas = list['Datos'];
+      }
+    );
+    this.clientService.getProductos('aplicaciones').subscribe(
+      list => {
+        this.aplicaciones = list['Apps'];
+      }
+    );
+    this.clientService.getProductos('minutos').subscribe(
+      list => {
+        this.minutos = list['Minutos'];
+      }
+    );
+    this.clientService.getProductos('allInclusive').subscribe(
+      list => {
+        this.todo = list['all_inclusive'];
+      }
+    );
   }
+
+
 }

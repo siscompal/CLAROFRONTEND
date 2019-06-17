@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatSort, MatPaginator, MatDialog, MatDialogConfig } from '@angular/material';
-import { NotificationService } from 'src/app/services/notification.service';
+import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { UserService } from '../../../../../services/user.service';
 
 @Component({
@@ -10,8 +9,7 @@ import { UserService } from '../../../../../services/user.service';
 })
 export class AllRecargasComponent implements OnInit {
 
-  constructor(private notificationService: NotificationService,
-              private userService: UserService) { }
+  constructor(private userService: UserService) { }
 
   public listData: MatTableDataSource<any>;
   public displayedColumns: string[] = ['cliente', 'monto', 'numero', 'producto', 'fecha', 'obs'];

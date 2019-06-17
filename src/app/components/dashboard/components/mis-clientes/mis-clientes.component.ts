@@ -1,25 +1,26 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ClientService } from 'src/app/services/client.service';
 import { MatTableDataSource, MatPaginator, MatDialog, MatDialogConfig } from '@angular/material';
-import { CrearCliComponent } from '../crear-cli/crear-cli.component';
+import { CrearCliComponent } from '../cliente/crear-cli/crear-cli.component';
 import { NotificationService } from 'src/app/services/notification.service';
-import { SaldoComponent } from '../saldo/saldo.component';
-import { VerCliComponent } from '../ver-cli/ver-cli.component';
+import { SaldoComponent } from '../cliente/saldo/saldo.component';
+import { VerCliComponent } from '../cliente/ver-cli/ver-cli.component';
 import { Client } from 'src/app/models/client';
-import { EditarCliComponent } from '../editar-cli/editar-cli.component';
-import { UserService } from '../../../../../services/user.service';
+import { EditarCliComponent } from '../cliente/editar-cli/editar-cli.component';
+import { UserService } from '../../../../services/user.service';
 
 @Component({
-  selector: 'app-listar-cli',
-  templateUrl: './listar-cli.component.html',
-  styleUrls: ['./listar-cli.component.css']
+  selector: 'app-mis-clientes',
+  templateUrl: './mis-clientes.component.html',
+  styleUrls: ['./mis-clientes.component.css']
 })
-export class ListarCliComponent implements OnInit {
+export class MisClientesComponent implements OnInit {
 
-  constructor(private clientService: ClientService,
-              private dialog: MatDialog,
-              private notificationService: NotificationService,
-              private userService: UserService) {}
+  constructor(
+    private clientService: ClientService,
+    private dialog: MatDialog,
+    private notificationService: NotificationService,
+    private userService: UserService) { }
 
   public listData: MatTableDataSource<any>;
   public displayedColumns: string[] = ['nombre', 'apellido', 'iden', 'rol', 'fecha', 'acciones'];
@@ -29,17 +30,14 @@ export class ListarCliComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
-    this.clientService.getClientes().subscribe(
+    this.clientService.getMisClientes().subscribe(
       list => {
         const array = list['clientes'];
         this.listData = new MatTableDataSource(array);
         this.listData.paginator = this.paginator;
       }
-
     );
-
     this.UserLogged = this.userService.getIdentity();
-
   }
 
   onSearchClear() {

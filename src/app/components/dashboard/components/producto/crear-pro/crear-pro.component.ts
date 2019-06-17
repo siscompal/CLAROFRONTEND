@@ -39,7 +39,7 @@ constructor(
           if ( response ) {
               this.status = 'success';
               this.product = new Product('', '', '', 0, 0, 0);
-              this.notificationService.success(':: Producto creado correctamente');
+              this.notificationService.success('Producto creado correctamente');
               this.dialogRef.close();
           } else {
             this.status = 'error';

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { ClientService } from '../../../../../services/client.service';
 
 @Component({
   selector: 'app-mis-recargas',
@@ -7,9 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MisRecargasComponent implements OnInit {
 
-  constructor() { }
+  constructor(private clientService: ClientService) { }
+
+  public listData: MatTableDataSource<any>;
+  public displayedColumns: string[] = ['fecha', 'monto', 'numero', 'producto', 'obs'];
+  public searchKey: string;
+
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
+    this.clientService.getRecargas().subscribe(
+      list => {
+        const array = list['InfoEncontrada'];
+        this.listData = new MatTableDataSource(array);
+        this.listData.sort = this.sort;
+        this.listData.paginator = this.paginator;
+      }
+    );
+  }
+
+  onSearchClear() {
+    this.searchKey = '';
+    this.applyFilter();
+  }
+
+  applyFilter() {
+    this.listData.filter = this.searchKey.trim().toLowerCase();
   }
 
 }

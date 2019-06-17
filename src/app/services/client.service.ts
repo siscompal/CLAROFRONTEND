@@ -85,13 +85,25 @@ export class ClientService {
   getRecargas() {
     this.token = localStorage.getItem('token');
     const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
-    return this.http.get(this.url + 'listarRecargas', headers);
+    return this.http.get(this.url + 'misRecargas', headers);
   }
 
   getRepartos() {
     this.token = localStorage.getItem('token');
     const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
     return this.http.get(this.url + 'misRepartos', headers);
+  }
+
+  getProductos(tipo: string) {
+    this.token = localStorage.getItem('token');
+    const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
+    return this.http.get(this.url + 'products/' + tipo, headers);
+  }
+
+  getMisClientes() {
+    this.token = localStorage.getItem('token');
+    const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
+    return this.http.get(this.url + 'myclients', headers);
   }
 
 }

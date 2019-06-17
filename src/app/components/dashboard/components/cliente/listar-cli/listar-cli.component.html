@@ -11,21 +11,21 @@
 </div>
 
 <div class="mat-elevation-z8">
-    <mat-table [dataSource]="listData" matSort>
+    <mat-table [dataSource]="listData">
         <ng-container matColumnDef="nombre">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="apellido">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Apellido</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.lastname}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="iden">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Identificación</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Identificación</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.iden}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="rol">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Rol</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Rol</mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <span [hidden]="!(element.role == 'CLI_CLIENTE')">Cliente</span>
                 <span [hidden]="!(element.role == 'CLI_DISTRIBUIDOR')">Distribuidor</span>
@@ -69,5 +69,5 @@
         <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide': !(listData != null && listData.length == 0)}">
         </mat-footer-row>
     </mat-table>
-    <mat-paginator [pageSize]=10 showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSize]=6 showFirstLastButtons></mat-paginator>
 </div>

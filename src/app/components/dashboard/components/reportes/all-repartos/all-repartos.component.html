@@ -10,19 +10,23 @@
 <div class="mat-elevation-z8">
     <mat-table [dataSource]="listData" matSort>
         <ng-container matColumnDef="cliente">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Cliente</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.cliente}}</mat-cell>
+            <mat-header-cell *matHeaderCellDef>Cliente</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.cliente.name}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="tipo">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</mat-header-cell>
-            <mat-cell *matCellDef="let element"></mat-cell>
+            <mat-cell *matCellDef="let element">
+                <span [hidden]="!(element.cliente.role == 'CLI_CLIENTE')">Cliente</span>
+                <span [hidden]="!(element.cliente.role == 'CLI_DISTRIBUIDOR')">Distribuidor</span>
+                <span [hidden]="!(element.cliente.role == 'CLI_MAYORISTA')">Mayorista</span>
+            </mat-cell>
         </ng-container>
         <ng-container matColumnDef="fecha">
             <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.fec_cre | date: 'dd/MM/yy'}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="concepto">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Concepto</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Concepto</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.tipo}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="valor">
@@ -30,12 +34,15 @@
             <mat-cell *matCellDef="let element">{{element.valor}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="total">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Total con comisión</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Total con comisión</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.valor + element.comision}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="usuario">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Asignado por</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.user_Origen}}{{element.client_Origen}}</mat-cell>
+            <mat-cell *matCellDef="let element">
+                <span *ngIf="element.client_Origen != null">{{element.client_Origen.name}}</span>
+                <span *ngIf="element.client_Origen == null">N/A</span>
+            </mat-cell>
         </ng-container>
         <ng-container matColumnDef="obs">
             <mat-header-cell *matHeaderCellDef>Observación</mat-header-cell>
@@ -57,5 +64,5 @@
         <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide': !(listData != null && listData.length == 0)}">
         </mat-footer-row>
     </mat-table>
-    <mat-paginator [pageSize]=10 showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSize]=6 showFirstLastButtons></mat-paginator>
 </div>

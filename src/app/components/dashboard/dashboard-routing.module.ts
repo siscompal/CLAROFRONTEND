@@ -7,7 +7,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 // Importar componentes
 import { MainComponent } from './components/main/main.component';
-import { HomeComponent } from './components/home/home.component';
+import { CliHomeComponent } from './components/home/cli-home/home.component';
+import { PubliHomeComponent } from './components/home/publi-home/publi-home.component';
 import { ListarCliComponent } from './components/cliente/listar-cli/listar-cli.component';
 import { ListarUsuComponent } from './components/usuario/listar-usu/listar-usu.component';
 import { ListarProComponent } from './components/producto/listar-pro/listar-pro.component';
@@ -17,11 +18,15 @@ import { AdminGuard } from '../../services/guards/admin.guard';
 import { AsesorGuard } from '../../services/guards/asesor.guard';
 import { CargasGuard } from '../../services/guards/cargas.guard';
 import { ClienteGuard } from 'src/app/services/guards/cliente.guard';
-import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { AdminHomeComponent } from './components/home/admin-home/admin-home.component';
 import { AllRecargasComponent } from './components/reportes/all-recargas/all-recargas.component';
 import { AllRepartosComponent } from './components/reportes/all-repartos/all-repartos.component';
 import { MisRecargasComponent } from './components/reportes/mis-recargas/mis-recargas.component';
 import { MisRepartosComponent } from './components/reportes/mis-repartos/mis-repartos.component';
+import { DistribuidorGuard } from '../../services/guards/distribuidor.guard';
+import { MayoristaGuard } from '../../services/guards/mayorista.guard';
+import { MisClientesComponent } from './components/mis-clientes/mis-clientes.component';
+
 
 
 const dashboardRoutes: Routes = [
@@ -61,8 +66,26 @@ const dashboardRoutes: Routes = [
 {path: 'dashboard/cliente', component: MainComponent, canActivate: [ClienteGuard],
     children: [
         {path: '', redirectTo: 'home', pathMatch: 'full'},
-        {path: 'home', component: HomeComponent },
+        {path: 'home', component: CliHomeComponent },
         {path: 'recargas', component: MisRecargasComponent},
+        {path: 'repartos', component: MisRepartosComponent}
+    ]
+},
+
+{path: 'dashboard/distribuidor', component: MainComponent, canActivate: [DistribuidorGuard],
+    children: [
+        {path: '', redirectTo: 'home', pathMatch: 'full'},
+        {path: 'home', component: PubliHomeComponent },
+        {path: 'clientes', component: ListarCliComponent},
+        {path: 'repartos', component: MisRepartosComponent}
+    ]
+},
+
+{path: 'dashboard/mayorista', component: MainComponent, canActivate: [MayoristaGuard],
+    children: [
+        {path: '', redirectTo: 'home', pathMatch: 'full'},
+        {path: 'home', component: PubliHomeComponent },
+        {path: 'clientes', component: MisClientesComponent},
         {path: 'repartos', component: MisRepartosComponent}
     ]
 },

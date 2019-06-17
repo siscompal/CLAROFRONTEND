@@ -11,7 +11,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { MaterialModule } from '../../material.module';
 
 import { MainComponent } from './components/main/main.component';
-import { HomeComponent } from './components/home/home.component';
+import { CliHomeComponent } from './components/home/cli-home/home.component';
 import { CrearCliComponent } from './components/cliente/crear-cli/crear-cli.component';
 import { ListarCliComponent } from './components/cliente/listar-cli/listar-cli.component';
 import { SaldoComponent } from './components/cliente/saldo/saldo.component';
@@ -25,17 +25,19 @@ import { VerUsuComponent } from './components/usuario/ver-usu/ver-usu.component'
 import { EditarUsuComponent } from './components/usuario/editar-usu/editar-usu.component';
 import { EditarProComponent } from './components/producto/editar-pro/editar-pro.component';
 import { VerProComponent } from './components/producto/ver-pro/ver-pro.component';
-import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { AdminHomeComponent } from './components/home/admin-home/admin-home.component';
 import { AllRepartosComponent } from './components/reportes/all-repartos/all-repartos.component';
 import { AllRecargasComponent } from './components/reportes/all-recargas/all-recargas.component';
 import { MisRepartosComponent } from './components/reportes/mis-repartos/mis-repartos.component';
 import { MisRecargasComponent } from './components/reportes/mis-recargas/mis-recargas.component';
+import { PubliHomeComponent } from './components/home/publi-home/publi-home.component';
+import { MisClientesComponent } from './components/mis-clientes/mis-clientes.component';
 
 
 @NgModule({
     declarations: [
       MainComponent,
-      HomeComponent,
+      CliHomeComponent,
       CrearCliComponent,
       ListarCliComponent,
       SaldoComponent,
@@ -53,7 +55,9 @@ import { MisRecargasComponent } from './components/reportes/mis-recargas/mis-rec
       AllRepartosComponent,
       AllRecargasComponent,
       MisRepartosComponent,
-      MisRecargasComponent
+      MisRecargasComponent,
+      PubliHomeComponent,
+      MisClientesComponent
 
 
     ],

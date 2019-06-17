@@ -14,7 +14,7 @@ export class MayoristaGuard implements CanActivate {
     canActivate() {
 
         const identity = this.userService.getIdentity();
-        if (identity && identity['role'] === 'CLI_MAYORISTA') {
+        if (identity && identity['role'] == 'CLI_MAYORISTA') {
             return true;
         } else {
             this.router.navigate(['/']);

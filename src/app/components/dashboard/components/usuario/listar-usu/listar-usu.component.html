@@ -11,35 +11,35 @@
 </div>
 
 <div class="mat-elevation-z8">
-    <mat-table [dataSource]="listData" matSort>
+    <mat-table [dataSource]="listData">
         <ng-container matColumnDef="nombre">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="apellido">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Apellido</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.lastname}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="iden">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Identificación</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Identificación</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.iden}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="estado">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Estado</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <span [hidden]="!(element.status == true)">Activo</span>
                 <span [hidden]="!(element.status == false)">Inactivo</span>
             </mat-cell>
         </ng-container>
         <ng-container matColumnDef="rol">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Rol</mat-header-cell>
-            <mat-cell *matCellDef="let element" >
+            <mat-header-cell *matHeaderCellDef>Rol</mat-header-cell>
+            <mat-cell *matCellDef="let element">
                 <span [hidden]="!(element.role == 'ROLE_ASESOR')">Asesor</span>
                 <span [hidden]="!(element.role == 'ROLE_CARGAS')">Cargas</span>
             </mat-cell>
         </ng-container>
         <ng-container matColumnDef="fecha">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha de creación</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Fecha de creación</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.fec_cre | date: 'dd/MM/yy'}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="acciones">
@@ -66,5 +66,5 @@
         <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide': !(listData != null && listData.length == 0)}">
         </mat-footer-row>
     </mat-table>
-    <mat-paginator [pageSize]=10 showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSize]=6 showFirstLastButtons></mat-paginator>
 </div>

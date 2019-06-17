@@ -10,7 +10,7 @@
 <div class="mat-elevation-z8">
     <mat-table [dataSource]="listData" matSort>
         <ng-container matColumnDef="cliente">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Cliente</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Cliente</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.client.name}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="monto">
@@ -18,12 +18,15 @@
             <mat-cell *matCellDef="let element">{{element.monto}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="numero">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Número</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Número</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.numero}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="producto">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Producto</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.producto}}</mat-cell>
+            <mat-cell *matCellDef="let element">
+                <span *ngIf="element.producto != null">{{element.producto.name}}</span>
+                <span *ngIf="element.producto == null">N/A</span>
+            </mat-cell>
         </ng-container>
         <ng-container matColumnDef="fecha">
             <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
@@ -49,5 +52,5 @@
         <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide': !(listData != null && listData.length == 0)}">
         </mat-footer-row>
     </mat-table>
-    <mat-paginator [pageSize]=10 showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSize]=6 showFirstLastButtons></mat-paginator>
 </div>

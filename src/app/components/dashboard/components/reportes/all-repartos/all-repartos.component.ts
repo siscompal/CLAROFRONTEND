@@ -14,7 +14,6 @@ export class AllRepartosComponent implements OnInit {
   public listData: MatTableDataSource<any>;
   public displayedColumns: string[] = ['cliente', 'tipo', 'fecha', 'concepto', 'valor', 'total', 'usuario', 'obs'];
   public searchKey: string;
-  public UserLogged: any;
 
 
   @ViewChild(MatSort) sort: MatSort;
@@ -29,7 +28,7 @@ export class AllRepartosComponent implements OnInit {
         this.listData.paginator = this.paginator;
       }
     );
-    this.UserLogged = this.userService.getIdentity();
+    
   }
 
   onSearchClear() {

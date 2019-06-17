@@ -57,8 +57,17 @@ export class UserService {
                     if (aux['role'] === 'ROLE_CARGAS') {
                       this.router.navigate(['/dashboard/cargas']);
                     }
+
                     if (aux['role'] === 'CLI_CLIENTE') {
                       this.router.navigate(['/dashboard/cliente']);
+                    }
+
+                    if (aux['role'] === 'CLI_MAYORISTA') {
+                      this.router.navigate(['/dashboard/mayorista']);
+                    }
+
+                    if (aux['role'] === 'CLI_DISTRIBUIDOR') {
+                      this.router.navigate(['/dashboard/distribuidor']);
                     }
 
                   }

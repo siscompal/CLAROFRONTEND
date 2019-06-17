@@ -55,13 +55,18 @@
                     </ng-template>
 
                     <ul>
-                        <li>
-                            <mat-card>
-                                <mat-card-title>nombre</mat-card-title>
-                                <mat-card-content>
-                                    descripciones boton incentivo
-                                </mat-card-content>
-                            </mat-card>
+                        <li *ngFor="let dato of megas" class="list">
+                            <div class="product">
+
+                                <p>{{dato.name}}</p>
+
+                                <span>
+                                    {{dato.descripcion}}
+                                    <button mat-button mat-flat-button type="submit" (click)="prueba(dato.codigo)">
+                                        ${{dato.precio}}
+                                    </button>
+                                </span>
+                            </div>
                         </li>
                     </ul>
                 </mat-tab>
