@@ -10,6 +10,7 @@ import {HttpClientModule} from '@angular/common/http';
 // Modulos propios
 import { MaterialModule } from '../../material.module';
 
+// Componentes
 import { MainComponent } from './components/main/main.component';
 import { CliHomeComponent } from './components/home/cli-home/home.component';
 import { CrearCliComponent } from './components/cliente/crear-cli/crear-cli.component';
@@ -32,6 +33,7 @@ import { MisRepartosComponent } from './components/reportes/mis-repartos/mis-rep
 import { MisRecargasComponent } from './components/reportes/mis-recargas/mis-recargas.component';
 import { PubliHomeComponent } from './components/home/publi-home/publi-home.component';
 import { MisClientesComponent } from './components/mis-clientes/mis-clientes.component';
+import { RepartosClientesComponent } from './components/reportes/repartos-clientes/repartos-clientes.component';
 
 
 @NgModule({
@@ -57,7 +59,8 @@ import { MisClientesComponent } from './components/mis-clientes/mis-clientes.com
       MisRepartosComponent,
       MisRecargasComponent,
       PubliHomeComponent,
-      MisClientesComponent
+      MisClientesComponent,
+      RepartosClientesComponent
 
 
     ],

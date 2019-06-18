@@ -43,7 +43,7 @@ export class ClientService {
     return this.http.delete(this.url + 'clients/'  + id, headers);
   }
 
-  signUp(newClient: any){
+  signUp(newClient: any) {
     const parametros = JSON.stringify(newClient);
     this.token = localStorage.getItem('token');
     const headers = {headers: new HttpHeaders({'Content-type': 'application/json'})};
@@ -106,6 +106,13 @@ export class ClientService {
     return this.http.get(this.url + 'myclients', headers);
   }
 
+   // mayoristas y distribuidores que asignan o debitan
+  getMovRepartos() {
+    this.token = localStorage.getItem('token');
+    const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
+    return this.http.get(this.url + 'movRepartos', headers);
+  }
+
 }
 
-// .pipe(map(res => res.json()));
+

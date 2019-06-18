@@ -12,22 +12,21 @@ import { PubliHomeComponent } from './components/home/publi-home/publi-home.comp
 import { ListarCliComponent } from './components/cliente/listar-cli/listar-cli.component';
 import { ListarUsuComponent } from './components/usuario/listar-usu/listar-usu.component';
 import { ListarProComponent } from './components/producto/listar-pro/listar-pro.component';
+import { AdminHomeComponent } from './components/home/admin-home/admin-home.component';
+import { AllRecargasComponent } from './components/reportes/all-recargas/all-recargas.component';
+import { AllRepartosComponent } from './components/reportes/all-repartos/all-repartos.component';
+import { MisRecargasComponent } from './components/reportes/mis-recargas/mis-recargas.component';
+import { MisRepartosComponent } from './components/reportes/mis-repartos/mis-repartos.component';
+import { RepartosClientesComponent } from './components/reportes/repartos-clientes/repartos-clientes.component';
+import { MisClientesComponent } from './components/mis-clientes/mis-clientes.component';
 
 // Servicios
 import { AdminGuard } from '../../services/guards/admin.guard';
 import { AsesorGuard } from '../../services/guards/asesor.guard';
 import { CargasGuard } from '../../services/guards/cargas.guard';
 import { ClienteGuard } from 'src/app/services/guards/cliente.guard';
-import { AdminHomeComponent } from './components/home/admin-home/admin-home.component';
-import { AllRecargasComponent } from './components/reportes/all-recargas/all-recargas.component';
-import { AllRepartosComponent } from './components/reportes/all-repartos/all-repartos.component';
-import { MisRecargasComponent } from './components/reportes/mis-recargas/mis-recargas.component';
-import { MisRepartosComponent } from './components/reportes/mis-repartos/mis-repartos.component';
 import { DistribuidorGuard } from '../../services/guards/distribuidor.guard';
 import { MayoristaGuard } from '../../services/guards/mayorista.guard';
-import { MisClientesComponent } from './components/mis-clientes/mis-clientes.component';
-
-
 
 const dashboardRoutes: Routes = [
 
@@ -77,7 +76,8 @@ const dashboardRoutes: Routes = [
         {path: '', redirectTo: 'home', pathMatch: 'full'},
         {path: 'home', component: PubliHomeComponent },
         {path: 'clientes', component: MisClientesComponent},
-        {path: 'repartos', component: MisRepartosComponent}
+        {path: 'repartos', component: MisRepartosComponent},
+        {path: 'repartos-clientes', component: RepartosClientesComponent}
     ]
 },
 
@@ -86,7 +86,8 @@ const dashboardRoutes: Routes = [
         {path: '', redirectTo: 'home', pathMatch: 'full'},
         {path: 'home', component: PubliHomeComponent },
         {path: 'clientes', component: MisClientesComponent},
-        {path: 'repartos', component: MisRepartosComponent}
+        {path: 'repartos', component: MisRepartosComponent},
+        {path: 'repartos-clientes', component: RepartosClientesComponent}
     ]
 },
 
