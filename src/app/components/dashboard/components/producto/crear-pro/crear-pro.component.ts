@@ -3,6 +3,7 @@ import { Product} from '../../../../../models/product';
 import { ProductService } from '../../../../../services/product.service';
 import { MatDialogRef } from '@angular/material';
 import { NotificationService } from 'src/app/services/notification.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-crear-pro',
@@ -14,22 +15,52 @@ export class CrearProComponent implements OnInit {
 
   public product: Product;
   public status: string;
+  public registerForm: FormGroup;
   public tipos = [
-    {id: 1, name: 'Todo incluido'},
-    {id: 2, name: 'Minutos'},
-    {id: 3, name: 'GB'},
-    {id: 4, name: 'Apps'}
+    {id: 1, name: 'todoIncluido'},
+    {id: 2, name: 'voz'},
+    {id: 3, name: 'largaDistancia'},
+    {id: 4, name: 'navegacion'},
+    {id: 5, name: 'chat'},
+    {id: 6, name: 'tv'},
+    {id: 7, name: 'apps'},
+    {id: 8, name: 'internetInalambrico'},
+    {id: 9, name: 'minuteras'}
   ];
 
 constructor(
     private notificationService: NotificationService,
     private productService: ProductService,
-    public dialogRef: MatDialogRef<CrearProComponent>) {
+    public dialogRef: MatDialogRef<CrearProComponent>,
+    private formBuilder: FormBuilder) {
 
-    this.product = new Product('', '', '', null, null, null);
+    this.product = new Product('', '', '', 0, 0, 0);
   }
 
   ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      name: [this.product.name, [
+        Validators.required,
+        ]],
+      precio: [this.product.precio, [
+        Validators.required,
+        Validators.min(0)
+        ]],
+      codigo: [this.product.codigo, [
+        Validators.required,
+        Validators.min(0)
+        ]],
+      incentivo: [this.product.incentivo, [
+        Validators.required,
+        Validators.min(0)
+        ]],
+      tipo: [this.product.tipo, [
+        Validators.required,
+        ]],
+      descripcion: [this.product.descripcion, [
+        Validators.required,
+        ]],
+    });
   }
 
   onSubmit() {

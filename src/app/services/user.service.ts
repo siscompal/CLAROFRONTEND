@@ -162,6 +162,3 @@ export class UserService {
 }
 
 
-
-// .pipe(map(res => res.json()));
-

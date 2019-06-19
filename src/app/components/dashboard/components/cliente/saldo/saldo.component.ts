@@ -44,12 +44,11 @@ export class SaldoComponent implements OnInit {
           this.notificationService.success('Saldo debitado correctamente');
           this.dialogRef.close();
         }
-      
       },
       err => {
         console.log(err);
       }
-    )
+    );
   }
 
 }

@@ -14,10 +14,9 @@ export class RecargaService {
         this.url = GLOBAL.url;
     }
 
-    recarga(num: String, valor: Number, bols: String) {
-        console.log(bols);
+    recarga(num: string, valor: number, codigo: string, bols: string) {
         const parametros = {
-            producto: 1,
+            producto: codigo,
             numero: num,
             monto: valor,
             bolsa: bols};

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from '../../../../../models/user';
 import { UserService } from '../../../../../services/user.service';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -13,7 +13,6 @@ import { MatDialogRef } from '@angular/material';
 })
 export class CrearUsuComponent implements OnInit {
 
-  email = new FormControl('', [Validators.required, Validators.email]);
   public user: User;
   public status: string;
   public options2 = [
@@ -21,17 +20,47 @@ export class CrearUsuComponent implements OnInit {
     {id: 2, name: 'ROLE_CARGAS'}
   ];
   public selected2 = this.options2[1].id;
+  public registerForm: FormGroup;
 
   constructor(
     private userService: UserService,
     private notificationService: NotificationService,
-    public dialogRef: MatDialogRef<CrearUsuComponent>) {
+    public dialogRef: MatDialogRef<CrearUsuComponent>,
+    private formBuilder: FormBuilder) {
     this.user = new User('', '', '', '', '', '', '', '');
 
   }
 
   ngOnInit() {
-    console.log();
+    this.registerForm = this.formBuilder.group({
+      name: [this.user.name, [
+        Validators.required,
+        ]],
+      lastname: [this.user.lastname, [
+        Validators.required,
+        ]],
+      iden: [this.user.iden, [
+        Validators.required,
+        ]],
+      username: [this.user.username, [
+        Validators.required,
+        ]],
+      password: [this.user.password, [
+        Validators.required,
+        ]],
+      cel: [this.user.cel, [
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(10)
+        ]],
+      email: [this.user.email, [
+        Validators.required,
+        Validators.email
+        ]],
+      role: [this.user.role, [
+        Validators.required,
+        ]],
+    });
   }
 
   onSubmit() {
@@ -54,10 +83,5 @@ export class CrearUsuComponent implements OnInit {
 
   }
 
-  getErrorMessage() {
-    return this.email.hasError('required') ? 'Campo obligatorio' :
-        this.email.hasError('email') ? 'Email invalido' :
-            '';
-  }
 
 }

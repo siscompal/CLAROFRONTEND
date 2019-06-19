@@ -1,0 +1,48 @@
+<div class="search-div">
+    <mat-card-title>{{titulo}}</mat-card-title>
+    <form [formGroup]="recargaForm" (ngSubmit)="recargaForm.valid " novalidate>
+        <label>Seleccione la bolsa: </label>
+        <mat-radio-group [(ngModel)]="bolsa" required formControlName="radio">
+            <mat-radio-button *ngFor="let bolsa of bolsas" [value]="bolsa" required>
+                {{bolsa}} <span class="espacio"></span>
+            </mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field>
+            <input type="text" class="numero" maxlength="10" minlength="10" matInput [(ngModel)]="numero" formControlName="numero" placeholder="Número de celular">
+            <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="numero" (click)="onNumClear()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </form>
+
+</div>
+
+<div class="mat-elevation-z8">
+    <mat-table [dataSource]="listData">
+        <ng-container matColumnDef="nombre">
+            <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="descripcion">
+            <mat-header-cell *matHeaderCellDef>Descripción</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.descripcion}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="incentivo">
+            <mat-header-cell *matHeaderCellDef>Incentivo</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <span *ngIf="element.incentivo == null">N/A</span>
+                <span *ngIf="element.incentivo != null">${{element.incentivo}}</span>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="acciones">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <button mat-button mat-flat-button type="submit" [disabled]="!recargaForm.valid" (click)="venderPaquete(element.codigo, element.precio)">
+                    ${{element.precio}}
+                </button>
+            </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>

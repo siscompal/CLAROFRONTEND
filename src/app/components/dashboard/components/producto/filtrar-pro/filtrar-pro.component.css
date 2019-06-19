@@ -1,0 +1,42 @@
+button {
+    background-color: #e52427;
+    width: 150px;
+}
+
+.espacio {
+    margin-right: 10px;
+}
+
+mat-form-field {
+    margin-left: 40px;
+}
+
+.mat-column-nombre {
+    margin-right: 20px;
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 30% !important;
+    width: 30% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+.mat-column-descripcion {
+    margin-right: 20px;
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 35% !important;
+    width: 35% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}

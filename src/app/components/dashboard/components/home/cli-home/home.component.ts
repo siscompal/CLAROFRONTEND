@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { RecargaService } from '../../../../../services/recarga.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 import { ClientService } from '../../../../../services/client.service';
+import { FiltrarProComponent } from '../../producto/filtrar-pro/filtrar-pro.component';
 
 
 @Component({
@@ -13,12 +15,12 @@ import { ClientService } from '../../../../../services/client.service';
 export class CliHomeComponent implements OnInit {
 
 
-  public valor: Number;
-  public numero: String;
+  public valor: number;
+  public numero: string;
   public btn1: Array<any> = [1000, 2000, 3000, 5000];
   public btn2: Array<any> = [10000, 20000, 30000, 50000];
-  public bolsa: String;
-  public bolsas: String[] = ['saldo', 'comision', 'incentivo'];
+  public bolsa: string;
+  public bolsas: string[] = ['saldo', 'comision', 'incentivo'];
   public megas: any;
   public todo: any;
   public minutos: any;
@@ -29,7 +31,8 @@ export class CliHomeComponent implements OnInit {
     private formBuilder: FormBuilder,
     private recargaService: RecargaService,
     public notificationService: NotificationService,
-    private clientService: ClientService
+    private clientService: ClientService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -39,6 +42,7 @@ export class CliHomeComponent implements OnInit {
       ]],
       valor: [this.valor, [
         Validators.required,
+        Validators.min(1000)
       ]],
       radio: [this.bolsa, [
         Validators.required
@@ -46,7 +50,6 @@ export class CliHomeComponent implements OnInit {
     });
     this.valor = null;
     this.numero = null;
-    this.getProducts();
   }
 
   setValue(valor: any) {
@@ -57,7 +60,7 @@ export class CliHomeComponent implements OnInit {
     if (this.numero == null && this.valor == null && this.bolsa == null || !this.numero ||  !this.valor || !this.bolsa) {
       this.notificationService.warn('Ingrese los valores para realizar la recarga');
     } else {
-      this.recargaService.recarga(this.numero, this.valor, this.bolsa).subscribe(
+      this.recargaService.recarga(this.numero, this.valor, '1', this.bolsa).subscribe(
         () => {
           this.valor = null;
           this.numero = null;
@@ -70,28 +73,15 @@ export class CliHomeComponent implements OnInit {
     }
   }
 
-  getProducts() {
-    this.clientService.getProductos('datos').subscribe(
-      list => {
-        this.megas = list['Datos'];
-      }
-    );
-    this.clientService.getProductos('aplicaciones').subscribe(
-      list => {
-        this.aplicaciones = list['Apps'];
-      }
-    );
-    this.clientService.getProductos('minutos').subscribe(
-      list => {
-        this.minutos = list['Minutos'];
-      }
-    );
-    this.clientService.getProductos('allInclusive').subscribe(
-      list => {
-        this.todo = list['all_inclusive'];
-      }
-    );
+  Claro(tipo: string) {
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '60%';
+    dialogConfig.data = {
+      tipo_pro: tipo,
+      operador: 'claro'};
+    this.dialog.open(FiltrarProComponent, dialogConfig);
   }
-
-
 }

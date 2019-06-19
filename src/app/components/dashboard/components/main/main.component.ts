@@ -21,12 +21,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.showFiller = true;
-   // console.log(this.userService.getIdentity());
-   //  console.log(this.userService.getToken());
-    // console.log(this.userService.Autenticado());
     this.UserLogged = this.userService.getIdentity();
-
-
   }
 
 logout() {

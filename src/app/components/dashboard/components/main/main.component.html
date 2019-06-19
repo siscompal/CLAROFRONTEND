@@ -7,7 +7,8 @@
 <mat-drawer-container class="drawer-container" autosize>
 
     <mat-drawer #drawer class="content-sidenav" mode="side" opened="true">
-        <h2>Menu</h2>
+        <h3>Bienvenido, {{UserLogged.firstName}}</h3>
+
         <mat-nav-list>
 
             <a mat-list-item [routerLink]="['home']" [routerLinkActive]="['active']">

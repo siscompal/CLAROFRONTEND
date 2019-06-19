@@ -62,7 +62,7 @@ export class ListarProComponent implements OnInit {
     this.dialog.open(VerProComponent, dialogConfig);
   }
 
-  onEdit(producto: Product, id: any){
+  onEdit(producto: Product, id: any) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;

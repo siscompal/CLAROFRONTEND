@@ -2,13 +2,13 @@
     <mat-card>
         <mat-card-title> Registrar cliente </mat-card-title>
 
-        <form [formGroup]="registerCli" (ngSubmit)="registerCli.valid && onSubmit()" novalidate>
+        <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && onSubmit()" novalidate>
             <mat-form-field class="miti">
                 <input type="text" name="name" [(ngModel)]="client.name" formControlName="name" matInput placeholder="Nombre">
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <input type="text" name="lastname"  [(ngModel)]="client.lastname" formControlName="lastname" matInput placeholder="Apellido">
+                <input type="text" name="lastname" [(ngModel)]="client.lastname" formControlName="lastname" matInput placeholder="Apellido">
             </mat-form-field>
 
             <mat-form-field class="miti">
@@ -16,11 +16,11 @@
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <input type="number" name="porcentaje"  min="0" max="10" [(ngModel)]="client.porcentaje" formControlName="porcentaje" matInput placeholder="Porcentaje">
+                <input type="number" name="porcentaje" [(ngModel)]="client.porcentaje" min=0 max=10 formControlName="porcentaje" matInput placeholder="Porcentaje">
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <input type="text" name="username"  [(ngModel)]="client.username" formControlName="username" matInput placeholder="Nombre de usuario">
+                <input type="text" name="username" [(ngModel)]="client.username" formControlName="username" matInput placeholder="Nombre de usuario">
             </mat-form-field>
 
             <mat-form-field class="miti">
@@ -28,7 +28,7 @@
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <input type="text" name="cel"  [(ngModel)]="client.cel" formControlName="cel" maxlength="10" matInput placeholder="Celular">
+                <input type="text" name="cel" [(ngModel)]="client.cel" formControlName="cel" maxlength="10" matInput placeholder="Celular">
             </mat-form-field>
 
             <mat-form-field class="miti">
@@ -44,12 +44,12 @@
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <mat-select name="role" [(ngModel)]="client.role" placeholder="Tipo de cliente" formControlName="role"> 
+                <mat-select name="role" [(ngModel)]="client.role" placeholder="Tipo de cliente" formControlName="role">
                     <mat-option *ngFor="let rol of role" [value]="rol.name">{{ rol.name }}</mat-option>
                 </mat-select>
             </mat-form-field>
 
-            <button mat-button mat-flat-button class="miti" type="submit" [disabled]="!registerCli.valid">
+            <button mat-button mat-flat-button class="miti" type="submit" [disabled]="!registerForm.valid">
                 Registrar
             </button>
         </form>

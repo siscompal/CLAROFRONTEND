@@ -1,6 +1,6 @@
 mat-card {
     height: inherit;
-    width: 70%;
+    width: 60%;
     margin-left: 10px;
 }
 
@@ -34,8 +34,12 @@ mat-tab-group {
 }
 
 .buttons {
-    margin-left: 12%;
+    margin-left: 6%;
     margin-bottom: 1px;
+}
+
+ul {
+    margin-block-start: 0px;
 }
 
 ul li {
@@ -69,9 +73,6 @@ input {
     background-color: #e52427;
     margin: 5px;
     padding: 10px;
-    border-radius: 200px 200px 200px 200px;
-    -moz-border-radius: 200px 200px 200px 200px;
-    -webkit-border-radius: 200px 200px 200px 200px;
     border: 0px solid #000000;
     line-height: 32px;
 }
@@ -94,20 +95,11 @@ ul .list {
     width: 80%;
 }
 
-.product {
-    height: 50px !important;
-}
-
-.product p {
-    margin-bottom: 1px;
-}
-
-.product span {
-    margin: 0px;
-}
-
-.mat-input-element {
-    width: 100%;
+.logos {
+    margin: 20px;
+    margin-left: 30px;
+    width: 99px;
+    height: 100px;
 }
 
 ::ng-deep .mat-focused .mat-form-field-label {

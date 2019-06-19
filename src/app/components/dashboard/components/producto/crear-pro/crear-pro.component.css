@@ -1,14 +1,13 @@
 .formcontainer {
-    margin: auto;
-}
-
-mat-card {
-    width: 50%;
+    width: 90%;
     margin: auto;
 }
 
 form {
     width: 100%;
+}
+
+mat-card {
     margin: auto;
 }
 
@@ -19,7 +18,7 @@ input {
 }
 
 mat-form-field {
-    margin-right: 12px;
+    margin-right: 10px;
 }
 
 button {

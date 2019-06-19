@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService} from '../../services/user.service';
 import { LoginModel } from '../../models/login';
-import { User } from '../../models/user';
 
 
 @Component({
@@ -38,7 +37,7 @@ export class LoginComponent implements OnInit {
         Validators.required,
       ]]
     });
-    if (localStorage.getItem('token')) {
+    if (localStorage.getItem('token') != null) {
       this.router.navigate(['dashboard']);
     }
 

@@ -37,6 +37,7 @@ import { ClienteGuard } from './services/guards/cliente.guard';
 import { SaldoComponent } from './components/dashboard/components/cliente/saldo/saldo.component';
 import { DistribuidorGuard } from './services/guards/distribuidor.guard';
 import { MayoristaGuard } from './services/guards/mayorista.guard';
+import { FiltrarProComponent } from './components/dashboard/components/producto/filtrar-pro/filtrar-pro.component';
 
 
 
@@ -80,7 +81,8 @@ import { MayoristaGuard } from './services/guards/mayorista.guard';
     CrearProComponent,
     EditarProComponent,
     VerProComponent,
-    SaldoComponent
+    SaldoComponent,
+    FiltrarProComponent
   ]
 })
 export class AppModule { }

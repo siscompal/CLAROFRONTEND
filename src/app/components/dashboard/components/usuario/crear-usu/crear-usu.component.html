@@ -2,44 +2,47 @@
     <mat-card>
         <mat-card-title> Registrar usuario </mat-card-title>
 
-        <form #registerUsu="ngForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && onSubmit()" novalidate>
 
             <mat-form-field class="miti">
-                <input type="text" name="name" #name="ngModel" [(ngModel)]="user.name" class="form-control" matInput placeholder="Nombre">
+                <input type="text" name="name" [(ngModel)]="user.name" formControlName="name" matInput placeholder="Nombre">
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <input type="text" name="lastname" #name="ngModel" [(ngModel)]="user.lastname" class="form-control" matInput placeholder="Apellido">
+                <input type="text" name="lastname" [(ngModel)]="user.lastname" formControlName="lastname" matInput placeholder="Apellido">
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <input type="text" name="iden" #name="ngModel" [(ngModel)]="user.iden" class="form-control" matInput placeholder="Identificacion">
+                <input type="text" name="iden" [(ngModel)]="user.iden" formControlName="iden" matInput placeholder="Identificacion">
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <input type="email" name="email" #name="ngModel" [(ngModel)]="user.email" matInput placeholder="Email">
-                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                <input type="email" name="email" [(ngModel)]="user.email" formControlName="email" matInput placeholder="Email">
             </mat-form-field>
-            <!--[formControl]="email"-->
             <mat-form-field class="miti">
-                <input type="text" name="username" #name="ngModel" [(ngModel)]="user.username" class="form-control" matInput placeholder="Nombre de usuario">
+                <input type="text" name="username" [(ngModel)]="user.username" formControlName="username" matInput placeholder="Nombre de usuario">
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <input type="password" name="password" #name="ngModel" [(ngModel)]="user.password" class="form-control" matInput placeholder="Contraseña">
+                <input type="password" name="password" [(ngModel)]="user.password" formControlName="password" matInput placeholder="Contraseña">
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <input type="text" name="cel" #name="ngModel" [(ngModel)]="user.cel" class="form-control" maxlength="10" matInput placeholder="Celular">
+                <input type="text" name="cel" [(ngModel)]="user.cel" formControlName="cel" maxlength="10" matInput placeholder="Celular">
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <mat-select name="role" [(ngModel)]="user.role">
-                    <mat-option *ngFor="let option of options2" [value]="option.name">{{ option.name }}</mat-option>
+                <mat-select name="role" [(ngModel)]="user.role" placeholder="Tipo de usuario" formControlName="role">
+                    <mat-option *ngFor="let option of options2" [value]="option.name">
+                        <span *ngIf="option.name == 'ROLE_CARGAS'">Cargas</span>
+                        <span *ngIf="option.name == 'ROLE_ASESOR'">Asesor</span>
+                    </mat-option>
                 </mat-select>
             </mat-form-field>
 
-            <button mat-button mat-flat-button class="miti">Registrar</button>
+            <button mat-button mat-flat-button type="submit" [disabled]="!registerForm.valid">
+                Registrar
+            </button>
 
         </form>
     </mat-card>

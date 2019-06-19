@@ -22,7 +22,7 @@
                 </ul>
             </div>
             <div>
-                
+
             </div>
             <form [formGroup]="recargaForm" (ngSubmit)="recargaForm.valid && recargar()" novalidate>
                 <label>Seleccione la bolsa: </label>
@@ -31,6 +31,7 @@
                         {{bolsa}} <span class="espacio"></span>
                     </mat-radio-button>
                 </mat-radio-group>
+
                 <mat-form-field>
                     <input type="text" matInput formControlName="numero" placeholder="Número de celular" [(ngModel)]="numero" maxlength=10 minlength=10 />
                 </mat-form-field>
@@ -51,67 +52,61 @@
             <mat-tab-group>
                 <mat-tab>
                     <ng-template mat-tab-label>
-
-                        Megas
+                        Navegación
                     </ng-template>
+                    <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Navegación Claro" (click)="Claro('navegacion')">
 
-                    <ul>
-                        <li *ngFor="let dato of megas" class="list">
-                            <div class="product">
-
-                                <p>{{dato.name}}</p>
-
-                                <span>
-                                    {{dato.descripcion}}
-                                    <button mat-button mat-flat-button type="submit" (click)="prueba(dato.codigo)">
-                                        ${{dato.precio}}
-                                    </button>
-                                </span>
-                            </div>
-                        </li>
-                    </ul>
                 </mat-tab>
 
                 <mat-tab>
                     <ng-template mat-tab-label>
-                        Minutos
+                        Voz
                     </ng-template>
+                    <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Voz Claro" (click)="Claro('voz')">
 
-                    <p>
-                        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up
-                        one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33
-                        of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor
-                        sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
-                        also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
-                    </p>
                 </mat-tab>
 
                 <mat-tab>
                     <ng-template mat-tab-label>
                         Todo incluido
                     </ng-template>
-
-                    <p>
-                        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up
-                        one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33
-                        of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor
-                        sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
-                        also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
-                    </p>
+                    <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Todo incluido Claro" (click)="Claro('todoIncluido')">
                 </mat-tab>
                 <mat-tab>
                     <ng-template mat-tab-label>
-                        Paquetes de minutos
+                        Aplicaciones
                     </ng-template>
-                    <!-- <mat-card class="tabscard"> -->
-                    <p>
-                        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up
-                        one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33
-                        of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor
-                        sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
-                        also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
-                    </p>
-                    <!-- </mat-card>-->
+                    <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Aplicaciones Claro" (click)="Claro('apps')">
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        Larga distancia
+                    </ng-template>
+                    <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Larga distancia Claro" (click)="Claro('largaDistancia')">
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        Chat
+                    </ng-template>
+                    <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Chat Claro" (click)="Claro('chat')">
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        Minuteras
+                    </ng-template>
+                    <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Minuteras Claro" (click)="Claro('minuteras')">
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        Internet inalámbrico
+                    </ng-template>
+                    <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Internet inalámbrico Claro" (click)="Claro('internetInalambrico')">
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        TV prepago
+                    </ng-template>
+                    <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="TV Prepago Claro" (click)="Claro('tv')">
                 </mat-tab>
             </mat-tab-group>
             <!--fin tabs internas-->
