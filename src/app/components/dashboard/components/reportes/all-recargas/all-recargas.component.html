@@ -11,7 +11,10 @@
     <mat-table [dataSource]="listData" matSort>
         <ng-container matColumnDef="cliente">
             <mat-header-cell *matHeaderCellDef>Cliente</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.client.name}}</mat-cell>
+            <mat-cell *matCellDef="let element">
+                <span *ngIf="element.client != null">{{element.client.name}}</span>
+                <span *ngIf="element.client == null">N/A</span>
+            </mat-cell>
         </ng-container>
         <ng-container matColumnDef="monto">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Monto</mat-header-cell>

@@ -23,10 +23,11 @@ export class RecargaService {
         this.token = localStorage.getItem('token');
         const headers = {headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
         return this.http.post(this.url + 'recargas', parametros, headers);
+
     }
 
     paquete(num: any, bols: string) {
-        
+
 
     }
 

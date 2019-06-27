@@ -21,26 +21,26 @@
                     </li>
                 </ul>
             </div>
-            <div>
+            <div class="recarga">
+                <form [formGroup]="recargaForm" (ngSubmit)="recargaForm.valid && recargar()" novalidate>
+                    <label>Seleccione la bolsa: </label>
+                    <mat-radio-group [(ngModel)]="bolsa" required formControlName="radio">
+                        <mat-radio-button *ngFor="let bolsa of bolsas" [value]="bolsa" required>
+                            {{bolsa}} <span class="espacio"></span>
+                        </mat-radio-button>
+                    </mat-radio-group>
 
+                    <mat-form-field>
+                        <input type="text" matInput formControlName="numero" placeholder="Número de celular" [(ngModel)]="numero" maxlength=10 minlength=10 />
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input type="number" min="1000" matInput formControlName="valor" placeholder="Valor de la recarga" [(ngModel)]="valor" />
+                    </mat-form-field>
+
+                    <button mat-button mat-flat-button type="submit" class="submit" [disabled]="!recargaForm.valid"> Recargar </button>
+                </form>
             </div>
-            <form [formGroup]="recargaForm" (ngSubmit)="recargaForm.valid && recargar()" novalidate>
-                <label>Seleccione la bolsa: </label>
-                <mat-radio-group [(ngModel)]="bolsa" required formControlName="radio">
-                    <mat-radio-button *ngFor="let bolsa of bolsas" [value]="bolsa" required>
-                        {{bolsa}} <span class="espacio"></span>
-                    </mat-radio-button>
-                </mat-radio-group>
 
-                <mat-form-field>
-                    <input type="text" matInput formControlName="numero" placeholder="Número de celular" [(ngModel)]="numero" maxlength=10 minlength=10 />
-                </mat-form-field>
-                <mat-form-field>
-                    <input type="number" min="1000" matInput formControlName="valor" placeholder="Valor de la recarga" [(ngModel)]="valor" />
-                </mat-form-field>
-
-                <button mat-button mat-flat-button type="submit" class="submit" [disabled]="!recargaForm.valid"> Recargar </button>
-            </form>
 
         </mat-tab>
 
@@ -49,7 +49,7 @@
                 Paquetes
             </ng-template>
             <!-- tabs internas-->
-            <mat-tab-group>
+            <mat-tab-group class="paquetes">
                 <mat-tab>
                     <ng-template mat-tab-label>
                         Navegación

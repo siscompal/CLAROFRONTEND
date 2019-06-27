@@ -7,7 +7,7 @@
 
         <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && loginSubmit()" novalidate>
             <mat-form-field>
-                <input text="type" id="username" matInput formControlName="username"  placeholder="Usuario">
+                <input text="type" id="username" matInput formControlName="username" placeholder="Usuario">
                 <mat-icon matSuffix>perm_identity</mat-icon>
             </mat-form-field>
 
@@ -15,10 +15,12 @@
                 <input type="password" id="password" matInput formControlName="password" placeholder="Contraseña">
                 <mat-icon matSuffix> vpn_key</mat-icon>
             </mat-form-field>
+            <mat-error class="error" *ngIf="error != null">{{error}}</mat-error>
             <p class="registro">¿No tienes cuenta? <a [routerLink]="[ '/registrarse']">Registrate</a></p>
             <button mat-button type="submit" mat-flat-button [disabled]="!loginForm.valid">Iniciar sesión</button>
 
         </form>
+
     </mat-card>
 
 </main>

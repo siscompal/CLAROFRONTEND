@@ -9,24 +9,23 @@ import { UserService } from 'src/app/services/user.service';
 export class AdminHomeComponent implements OnInit {
 
   public UserLogged: any;
-  public cupo: String;
-  public status: Boolean;
+  public cupo: string;
+  public status: boolean;
   constructor(
           private userService: UserService
   ) { }
 
   ngOnInit() {
-    /*this.userService.getCupo().subscribe(
+    this.userService.getCupo().subscribe(
       response => {
         this.cupo = response['respuesta'];
         this.status = true;
       },
 
       err => {
-        this.cupo = "Saldo no disponible";
-        console.log(err);
+        this.cupo = 'Saldo no disponible';
       }
-    );*/
+    );
     this.UserLogged = this.userService.getIdentity();
   }
 

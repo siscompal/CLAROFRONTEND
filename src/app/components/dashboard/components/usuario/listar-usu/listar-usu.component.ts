@@ -54,21 +54,21 @@ export class ListarUsuComponent implements OnInit {
     }
   }
 
-  verUsuario(id: any){
+  verUsuario(Id: any) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '50%';
-    dialogConfig.data = {id: id}; 
+    dialogConfig.data = {id: Id};
     this.dialog.open(VerUsuComponent, dialogConfig);
   }
 
-  onEdit(usuario: User, id: any){
+  onEdit(user: User, Id: any) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '50%';
-    dialogConfig.data = {usuario: usuario, id: id}; 
+    dialogConfig.data = {usuario: user, id: Id};
     this.dialog.open(EditarUsuComponent, dialogConfig);
   }
 

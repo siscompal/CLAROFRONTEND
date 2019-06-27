@@ -15,16 +15,22 @@ export class LoginComponent implements OnInit {
 
   public user: LoginModel = new LoginModel();
   public loginForm: FormGroup;
- //  public user: User;
+  public error: string;
   public identity: any;
   public token: any;
-
+  public usuario = {
+    firstName: String,
+    lastName: String,
+    role: String,
+    saldo: String,
+    comision: String,
+    incentivo: String
+  };
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
               private router: Router) {
 
-    // this.user = new User ('', '', '', '', '', '', '', '', '', );
   }
 
   ngOnInit() {
@@ -50,52 +56,55 @@ export class LoginComponent implements OnInit {
     this.user.username = this.loginForm.get('username').value;
     this.user.password = this.loginForm.get('password').value;
     this.user.gettoken = true;
-    this.userService.login(this.user);
-
-  }
-
-  /* logSubmit() {
-
-    // loguear al usuario y obtener sus datos
-    this.userService.loginUser(this.user).subscribe(
+    this.userService.login(this.user).subscribe(
       response => {
-          this.identity = this.user;
 
-          if (!this.identity || this.identity.id) {
-            alert('no se ha logueado bien');
-          } else {
+            if (response) {
+              // tslint:disable-next-line:no-string-literal
+                const aux = response['usuarioLoqueado'];
+                this.usuario.firstName = aux.name;
+                this.usuario.lastName = aux.lastname;
+                this.usuario.role = aux.role;
+                this.usuario.saldo = aux.saldo_actual;
+                this.usuario.comision = aux.comision_actual;
+                this.usuario.incentivo = aux.incentivo_actual;
 
-            console.log (this.token);
-            // conseguir el token
-            this.userService.loginUser(this.user, true).subscribe(
 
-                response => {
-                    this.token = this.token;
-                    if (this.token.length <= 0 ) {
-                      alert('El token no se ha generado');
-                    } else {
-                      // mostrar el token
-                      console.log (this.token);
-                    }
-                },
-                 error => {
-                    console.log (error);
+                // tslint:disable-next-line:no-string-literal
+                localStorage.setItem('token', response['token']);
+                localStorage.setItem('usuario', JSON.stringify(this.usuario));
+                if (aux.role === 'ROLE_ADMIN') {
+                  this.router.navigate(['/dashboard/admin']);
                 }
-            );
-          }
-      },
 
+                if (aux.role === 'ROLE_ASESOR') {
+                  this.router.navigate(['/dashboard/asesor']);
+                }
+
+                if (aux.role === 'ROLE_CARGAS') {
+                  this.router.navigate(['/dashboard/cargas']);
+                }
+
+                if (aux.role === 'CLI_CLIENTE') {
+                  this.router.navigate(['/dashboard/cliente']);
+                }
+
+                if (aux.role === 'CLI_MAYORISTA') {
+                  this.router.navigate(['/dashboard/mayorista']);
+                }
+
+                if (aux.role === 'CLI_DISTRIBUIDOR') {
+                  this.router.navigate(['/dashboard/distribuidor']);
+                }
+
+              }
+      },
+      error => {
+        this.error = error.error.message;
+      },
     );
 
+
   }
-
-*/
-
-
-
-
-
-
-
 
 }

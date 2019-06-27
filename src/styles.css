@@ -8,21 +8,31 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+
 /* notification */
+
 snack-bar-container.success {
     background-color: #5cb85c;
-    color : #fff;
-    margin-top: 50px; 
+    color: #fff;
+    margin-top: 50px;
 }
 
 snack-bar-container.warn {
     background-color: #f99157;
-    color : #fff;
+    color: #fff;
 }
 
-
-snack-bar-container.notification simple-snack-bar{
+snack-bar-container.notification simple-snack-bar {
     font-size: 18px !important;
     font-weight: bold;
 }
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}

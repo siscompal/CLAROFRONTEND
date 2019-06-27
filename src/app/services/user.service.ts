@@ -15,14 +15,6 @@ export class UserService {
     public token: string;
     public identity: string;
     public user = User;
-    public usuario = {
-      firstName: String,
-      lastName: String,
-      role: String,
-      saldo: String,
-      comision: String,
-      incentivo: String
-    };
 
   constructor(private http: HttpClient, private router: Router) {
       this.url = GLOBAL.url;
@@ -32,51 +24,7 @@ export class UserService {
 
   login(user: LoginModel) {
 
-        this.http.post(this.url + 'login', user, this.httpOptions).subscribe(
-          response => {
-
-                if (response) {
-                    const aux = response['usuarioLoqueado'];
-                    this.usuario.firstName = aux['name'];
-                    this.usuario.lastName = aux['lastname'];
-                    this.usuario.role = aux['role'];
-                    this.usuario.saldo = aux['saldo_actual'];
-                    this.usuario.comision = aux['comision_actual'];
-                    this.usuario.incentivo = aux['incentivo_actual'];
-
-                    localStorage.setItem('token', response['token']);
-                    localStorage.setItem('usuario', JSON.stringify(this.usuario));
-                    if (aux['role'] === 'ROLE_ADMIN') {
-                      this.router.navigate(['/dashboard/admin']);
-                    }
-
-                    if (aux['role'] === 'ROLE_ASESOR') {
-                      this.router.navigate(['/dashboard/asesor']);
-                    }
-
-                    if (aux['role'] === 'ROLE_CARGAS') {
-                      this.router.navigate(['/dashboard/cargas']);
-                    }
-
-                    if (aux['role'] === 'CLI_CLIENTE') {
-                      this.router.navigate(['/dashboard/cliente']);
-                    }
-
-                    if (aux['role'] === 'CLI_MAYORISTA') {
-                      this.router.navigate(['/dashboard/mayorista']);
-                    }
-
-                    if (aux['role'] === 'CLI_DISTRIBUIDOR') {
-                      this.router.navigate(['/dashboard/distribuidor']);
-                    }
-
-                  }
-          },
-          error => {
-            console.log(error);
-          },
-        );
-
+        return this.http.post(this.url + 'login', user, this.httpOptions);
   }
 
 
