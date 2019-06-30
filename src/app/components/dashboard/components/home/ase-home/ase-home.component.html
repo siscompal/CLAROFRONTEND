@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-8 col-sm-8">
+        <div class="formcontainer">
+            <mat-card class="mat-elevation-z15">
+                <mat-card-title> Registrar producto </mat-card-title>
+        
+                <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && onSubmit()" novalidate>
+        
+                  <mat-form-field >
+                      <input type="text" name="numero" min="10" max="10" [(ngModel)]="num" formControlName="num" matInput placeholder="Número">
+                  </mat-form-field>
+      
+                  <mat-form-field >
+                      <input type="text" name="iccid"  [(ngModel)]="iccid" formControlName="iccid" matInput placeholder="Iccid">
+                  </mat-form-field>
+      
+      
+                  <button mat-button mat-flat-button  type="submit" [disabled]="!registerForm.valid">
+                      Registrar
+                  </button>
+        
+                </form>
+            </mat-card>
+        </div>
+    </div>
+    
+</div>
+

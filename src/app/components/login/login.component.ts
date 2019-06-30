@@ -65,9 +65,6 @@ export class LoginComponent implements OnInit {
                 this.usuario.firstName = aux.name;
                 this.usuario.lastName = aux.lastname;
                 this.usuario.role = aux.role;
-                this.usuario.saldo = aux.saldo_actual;
-                this.usuario.comision = aux.comision_actual;
-                this.usuario.incentivo = aux.incentivo_actual;
 
 
                 // tslint:disable-next-line:no-string-literal

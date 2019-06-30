@@ -113,6 +113,12 @@ export class ClientService {
     return this.http.get(this.url + 'movRepartos', headers);
   }
 
+  getMyInfo() {
+    this.token = localStorage.getItem('token');
+    const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
+    return this.http.get(this.url + 'myInfo', headers);
+  }
+
 }
 
 

@@ -1,115 +1,136 @@
-<mat-card>
-    <mat-tab-group class="main">
-        <mat-tab>
-            <ng-template mat-tab-label>
-                Recargas
-            </ng-template>
-            <div class="buttons">
-                <ul>
-                    <li *ngFor="let valor of btn1">
-                        <button mat-raised-button class="valor" (click)="setValue(valor)">
-                            {{ valor }}
-                        </button>
-                    </li>
-                </ul>
+<div class="row">
+    <div class="col-8 col-sm-8">
+            <mat-card class="mat-elevation-z15">
+                <mat-tab-group class="main">
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            Recargas
+                        </ng-template>
+                        <div class="buttons">
+                            <ul>
+                                <li *ngFor="let valor of btn1">
+                                    <button mat-raised-button class="valor" (click)="setValue(valor)">
+                                        {{ valor }}
+                                    </button>
+                                </li>
+                            </ul>
+            
+                            <ul>
+                                <li *ngFor="let valor of btn2">
+                                    <button mat-raised-button class="valor" (click)="setValue(valor)">
+                                        {{ valor }}
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="recarga">
+                            <form [formGroup]="recargaForm" (ngSubmit)="recargaForm.valid && recargar()" novalidate>
+                                <label>Seleccione la bolsa: </label>
+                                <mat-radio-group [(ngModel)]="bolsa" required formControlName="radio">
+                                    <mat-radio-button *ngFor="let bolsa of bolsas" [value]="bolsa" required>
+                                        {{bolsa}} <span class="espacio"></span>
+                                    </mat-radio-button>
+                                </mat-radio-group>
+            
+                                <mat-form-field>
+                                    <input type="text" matInput formControlName="numero" placeholder="Número de celular" [(ngModel)]="numero" maxlength=10 minlength=10 />
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <input type="number" min="1000" matInput formControlName="valor" placeholder="Valor de la recarga" [(ngModel)]="valor" />
+                                </mat-form-field>
+            
+                                <button mat-button mat-flat-button type="submit" class="submit" [disabled]="!recargaForm.valid"> Recargar </button>
+                            </form>
+                        </div>
+            
+            
+                    </mat-tab>
+            
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            Paquetes
+                        </ng-template>
+                        <!-- tabs internas-->
+                        <mat-tab-group class="paquetes">
+                            <mat-tab>
+                                <ng-template mat-tab-label>
+                                    Navegación
+                                </ng-template>
+                                <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Navegación Claro" (click)="Claro('navegacion')">
+            
+                            </mat-tab>
+            
+                            <mat-tab>
+                                <ng-template mat-tab-label>
+                                    Voz
+                                </ng-template>
+                                <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Voz Claro" (click)="Claro('voz')">
+            
+                            </mat-tab>
+            
+                            <mat-tab>
+                                <ng-template mat-tab-label>
+                                    Todo incluido
+                                </ng-template>
+                                <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Todo incluido Claro" (click)="Claro('todoIncluido')">
+                            </mat-tab>
+                            <mat-tab>
+                                <ng-template mat-tab-label>
+                                    Aplicaciones
+                                </ng-template>
+                                <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Aplicaciones Claro" (click)="Claro('apps')">
+                            </mat-tab>
+                            <mat-tab>
+                                <ng-template mat-tab-label>
+                                    Larga distancia
+                                </ng-template>
+                                <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Larga distancia Claro" (click)="Claro('largaDistancia')">
+                            </mat-tab>
+                            <mat-tab>
+                                <ng-template mat-tab-label>
+                                    Chat
+                                </ng-template>
+                                <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Chat Claro" (click)="Claro('chat')">
+                            </mat-tab>
+                            <mat-tab>
+                                <ng-template mat-tab-label>
+                                    Minuteras
+                                </ng-template>
+                                <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Minuteras Claro" (click)="Claro('minuteras')">
+                            </mat-tab>
+                            <mat-tab>
+                                <ng-template mat-tab-label>
+                                    Internet inalámbrico
+                                </ng-template>
+                                <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Internet inalámbrico Claro" (click)="Claro('internetInalambrico')">
+                            </mat-tab>
+                            <mat-tab>
+                                <ng-template mat-tab-label>
+                                    TV prepago
+                                </ng-template>
+                                <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="TV Prepago Claro" (click)="Claro('tv')">
+                            </mat-tab>
+                        </mat-tab-group>
+                        <!--fin tabs internas-->
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-card>
+    </div>
 
-                <ul>
-                    <li *ngFor="let valor of btn2">
-                        <button mat-raised-button class="valor" (click)="setValue(valor)">
-                            {{ valor }}
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            <div class="recarga">
-                <form [formGroup]="recargaForm" (ngSubmit)="recargaForm.valid && recargar()" novalidate>
-                    <label>Seleccione la bolsa: </label>
-                    <mat-radio-group [(ngModel)]="bolsa" required formControlName="radio">
-                        <mat-radio-button *ngFor="let bolsa of bolsas" [value]="bolsa" required>
-                            {{bolsa}} <span class="espacio"></span>
-                        </mat-radio-button>
-                    </mat-radio-group>
+    <div class="col-4 col-sm-4">
+        <ul>
+            <li *ngFor= "let bolsa of mapSaldos">
+                <mat-card class="card-saldos mat-elevation-z15">
+                    <mat-card-title>{{bolsa[1]}}</mat-card-title>
+                    <mat-card-content>${{bolsa[0]}}</mat-card-content>
+                    
+                </mat-card>
+            </li>
+        </ul>
+    </div>
+    
+</div>
 
-                    <mat-form-field>
-                        <input type="text" matInput formControlName="numero" placeholder="Número de celular" [(ngModel)]="numero" maxlength=10 minlength=10 />
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input type="number" min="1000" matInput formControlName="valor" placeholder="Valor de la recarga" [(ngModel)]="valor" />
-                    </mat-form-field>
-
-                    <button mat-button mat-flat-button type="submit" class="submit" [disabled]="!recargaForm.valid"> Recargar </button>
-                </form>
-            </div>
-
-
-        </mat-tab>
-
-        <mat-tab>
-            <ng-template mat-tab-label>
-                Paquetes
-            </ng-template>
-            <!-- tabs internas-->
-            <mat-tab-group class="paquetes">
-                <mat-tab>
-                    <ng-template mat-tab-label>
-                        Navegación
-                    </ng-template>
-                    <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Navegación Claro" (click)="Claro('navegacion')">
-
-                </mat-tab>
-
-                <mat-tab>
-                    <ng-template mat-tab-label>
-                        Voz
-                    </ng-template>
-                    <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Voz Claro" (click)="Claro('voz')">
-
-                </mat-tab>
-
-                <mat-tab>
-                    <ng-template mat-tab-label>
-                        Todo incluido
-                    </ng-template>
-                    <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Todo incluido Claro" (click)="Claro('todoIncluido')">
-                </mat-tab>
-                <mat-tab>
-                    <ng-template mat-tab-label>
-                        Aplicaciones
-                    </ng-template>
-                    <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Aplicaciones Claro" (click)="Claro('apps')">
-                </mat-tab>
-                <mat-tab>
-                    <ng-template mat-tab-label>
-                        Larga distancia
-                    </ng-template>
-                    <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Larga distancia Claro" (click)="Claro('largaDistancia')">
-                </mat-tab>
-                <mat-tab>
-                    <ng-template mat-tab-label>
-                        Chat
-                    </ng-template>
-                    <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Chat Claro" (click)="Claro('chat')">
-                </mat-tab>
-                <mat-tab>
-                    <ng-template mat-tab-label>
-                        Minuteras
-                    </ng-template>
-                    <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Minuteras Claro" (click)="Claro('minuteras')">
-                </mat-tab>
-                <mat-tab>
-                    <ng-template mat-tab-label>
-                        Internet inalámbrico
-                    </ng-template>
-                    <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Internet inalámbrico Claro" (click)="Claro('internetInalambrico')">
-                </mat-tab>
-                <mat-tab>
-                    <ng-template mat-tab-label>
-                        TV prepago
-                    </ng-template>
-                    <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="TV Prepago Claro" (click)="Claro('tv')">
-                </mat-tab>
-            </mat-tab-group>
-            <!--fin tabs internas-->
-        </mat-tab>
-    </mat-tab-group>
-</mat-card>
+<div class="row">
+    
+</div>

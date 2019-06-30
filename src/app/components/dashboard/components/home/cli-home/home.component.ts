@@ -25,6 +25,9 @@ export class CliHomeComponent implements OnInit {
   public todo: any;
   public minutos: any;
   public aplicaciones: any;
+  public saldos: Array<number> = [0,0,0];
+  public n_saldos: Array<string> = ['Saldo','Comisión','Incentivo']
+  public mapSaldos: any;
 
   public recargaForm: FormGroup;
   constructor(
@@ -48,6 +51,14 @@ export class CliHomeComponent implements OnInit {
         Validators.required
       ]]
     });
+    this.clientService.getMyInfo().subscribe(
+      response => {
+        this.saldos[0] = response.cliente.saldo_actual;
+        this.saldos[1] = response.cliente.comision_actual;
+        this.saldos[2] = response.cliente.incentivo_actual;
+        this.mapSaldos = this.saldos.map((v, i) => [v, this.n_saldos[i]]);
+      }
+    );
     this.valor = null;
     this.numero = null;
   }

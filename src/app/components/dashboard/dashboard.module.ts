@@ -35,6 +35,7 @@ import { PubliHomeComponent } from './components/home/publi-home/publi-home.comp
 import { MisClientesComponent } from './components/mis-clientes/mis-clientes.component';
 import { RepartosClientesComponent } from './components/reportes/repartos-clientes/repartos-clientes.component';
 import { FiltrarProComponent } from './components/producto/filtrar-pro/filtrar-pro.component';
+import { AseHomeComponent } from './components/home/ase-home/ase-home.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { FiltrarProComponent } from './components/producto/filtrar-pro/filtrar-p
       PubliHomeComponent,
       MisClientesComponent,
       RepartosClientesComponent,
-      FiltrarProComponent
+      FiltrarProComponent,
+      AseHomeComponent
 
 
     ],

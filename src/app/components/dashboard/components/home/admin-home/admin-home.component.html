@@ -1,8 +1,14 @@
-<mat-card *ngIf="UserLogged['role'] == 'ROLE_ADMIN'">
-    <mat-card-title>
-        Cupo disponible
-    </mat-card-title>
-    <mat-card-content>
-        ${{cupo}}
-    </mat-card-content>
-</mat-card>
+<div class="row">
+    <div class="col-8 col-sm-8">
+        <mat-card *ngIf="UserLogged['role'] == 'ROLE_ADMIN'">
+            <mat-card-title>Cupo disponible</mat-card-title>
+            <mat-card-content>${{cupo}}</mat-card-content>
+        </mat-card>
+    </div>
+    <div class="col-4 col-sm-4">
+        <mat-card *ngIf="UserLogged['role'] == 'ROLE_ADMIN'">
+
+        </mat-card>
+    </div>
+
+</div>

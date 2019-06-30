@@ -19,6 +19,7 @@ import { MisRecargasComponent } from './components/reportes/mis-recargas/mis-rec
 import { MisRepartosComponent } from './components/reportes/mis-repartos/mis-repartos.component';
 import { RepartosClientesComponent } from './components/reportes/repartos-clientes/repartos-clientes.component';
 import { MisClientesComponent } from './components/mis-clientes/mis-clientes.component';
+import { AseHomeComponent } from './components/home/ase-home/ase-home.component';
 
 // Servicios
 import { AdminGuard } from '../../services/guards/admin.guard';
@@ -27,6 +28,7 @@ import { CargasGuard } from '../../services/guards/cargas.guard';
 import { ClienteGuard } from 'src/app/services/guards/cliente.guard';
 import { DistribuidorGuard } from '../../services/guards/distribuidor.guard';
 import { MayoristaGuard } from '../../services/guards/mayorista.guard';
+
 
 const dashboardRoutes: Routes = [
 
@@ -45,7 +47,7 @@ const dashboardRoutes: Routes = [
 {path: 'dashboard/asesor', component: MainComponent, canActivate: [AsesorGuard],
     children: [
         {path: '', redirectTo: 'home', pathMatch: 'full'},
-        {path: 'home', component: AdminHomeComponent },
+        {path: 'home', component: AseHomeComponent },
         {path: 'clientes', component: ListarCliComponent},
         {path: 'recargas', component: AllRecargasComponent},
         {path: 'repartos', component: AllRepartosComponent}

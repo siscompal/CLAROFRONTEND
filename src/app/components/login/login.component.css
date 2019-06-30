@@ -1,7 +1,3 @@
-body {
-    background-color: #e52427;
-}
-
 main {
     width: 100%;
     height: 100%;
@@ -12,7 +8,7 @@ main {
 mat-card {
     margin: auto;
     width: 25%;
-    height: 60%;
+    height: 65%;
 }
 
 mat-form-field,
