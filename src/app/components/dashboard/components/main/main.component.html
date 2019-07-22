@@ -1,7 +1,7 @@
 <mat-toolbar>
     <span>Distrirecarga</span>
     <span class="toolbar-spacer"></span>
-    <a class="pointer" (click)="logout()">Cerrar sesion</a>
+    <a class="pointer" (click)="logout()"><mat-icon>exit_to_app</mat-icon></a>
 
 </mat-toolbar>
 <mat-drawer-container class="drawer-container" autosize>
@@ -10,6 +10,9 @@
         <h3>Bienvenido, {{UserLogged.firstName}}</h3>
 
         <mat-nav-list>
+            <a mat-list-item [routerLink]="['perfil']">
+                <mat-icon>settings</mat-icon> <span>Mi perfil</span>
+            </a>
 
             <a mat-list-item [routerLink]="['home']" [routerLinkActive]="['active']">
                 <mat-icon>home</mat-icon> <span>Home</span>

@@ -36,6 +36,7 @@ import { MisClientesComponent } from './components/mis-clientes/mis-clientes.com
 import { RepartosClientesComponent } from './components/reportes/repartos-clientes/repartos-clientes.component';
 import { FiltrarProComponent } from './components/producto/filtrar-pro/filtrar-pro.component';
 import { AseHomeComponent } from './components/home/ase-home/ase-home.component';
+import { MisDatosComponent } from './components/mis-datos/mis-datos.component';
 
 
 @NgModule({
@@ -64,8 +65,8 @@ import { AseHomeComponent } from './components/home/ase-home/ase-home.component'
       MisClientesComponent,
       RepartosClientesComponent,
       FiltrarProComponent,
-      AseHomeComponent
-
+      AseHomeComponent,
+      MisDatosComponent
 
     ],
     imports: [

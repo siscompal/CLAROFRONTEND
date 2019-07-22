@@ -22,9 +22,11 @@ export class LoginComponent implements OnInit {
     firstName: String,
     lastName: String,
     role: String,
-    saldo: String,
-    comision: String,
-    incentivo: String
+    mail: String,
+    phone: String,
+    id: String,
+    user: String,
+    _id: String
   };
 
   constructor(private formBuilder: FormBuilder,
@@ -62,10 +64,15 @@ export class LoginComponent implements OnInit {
             if (response) {
               // tslint:disable-next-line:no-string-literal
                 const aux = response['usuarioLoqueado'];
+                console.log(aux);
                 this.usuario.firstName = aux.name;
                 this.usuario.lastName = aux.lastname;
                 this.usuario.role = aux.role;
-
+                this.usuario.phone = aux.cel;
+                this.usuario.id = aux.iden;
+                this.usuario._id = aux._id;
+                this.usuario.mail = aux.email;
+                this.usuario.user = aux.username;
 
                 // tslint:disable-next-line:no-string-literal
                 localStorage.setItem('token', response['token']);

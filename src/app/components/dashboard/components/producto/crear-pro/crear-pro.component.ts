@@ -25,7 +25,8 @@ export class CrearProComponent implements OnInit {
     {id: 6, name: 'tv'},
     {id: 7, name: 'apps'},
     {id: 8, name: 'internetInalambrico'},
-    {id: 9, name: 'minuteras'}
+    {id: 9, name: 'minuteras'},
+    {id: 10, name: 'recarga'}
   ];
 
 constructor(
@@ -73,7 +74,7 @@ constructor(
               this.notificationService.success('Producto creado correctamente');
               this.dialogRef.close();
           } else {
-            this.status = 'error';
+            this.notificationService.warn('No se pudo crear el producto');
           }
         },
         error => {

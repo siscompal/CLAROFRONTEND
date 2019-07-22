@@ -72,10 +72,10 @@ export class ListarProComponent implements OnInit {
   }
 
   onDelete(id: any){
-    if (confirm('¿Está seguro de que desea eliminar este usuario?')) {
+    if (confirm('¿Está seguro de que desea eliminar este producto?')) {
       this.productService.deleteProducto(id).subscribe(
         Response => {
-          this.notificationService.warn('Usuario eliminado');
+          this.notificationService.warn('Producto eliminado');
         }
       );
     }

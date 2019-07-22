@@ -26,7 +26,7 @@ export class CliHomeComponent implements OnInit {
   public minutos: any;
   public aplicaciones: any;
   public saldos: Array<number> = [0,0,0];
-  public n_saldos: Array<string> = ['Saldo','Comisión','Incentivo']
+  public n_saldos: Array<string> = ['Saldo', 'Comisión', 'Incentivo'];
   public mapSaldos: any;
 
   public recargaForm: FormGroup;
@@ -53,9 +53,10 @@ export class CliHomeComponent implements OnInit {
     });
     this.clientService.getMyInfo().subscribe(
       response => {
-        this.saldos[0] = response.cliente.saldo_actual;
-        this.saldos[1] = response.cliente.comision_actual;
-        this.saldos[2] = response.cliente.incentivo_actual;
+        let aux = response['cliente'];
+        this.saldos[0] = aux.saldo_actual;
+        this.saldos[1] = aux.comision_actual;
+        this.saldos[2] = aux.incentivo_actual;
         this.mapSaldos = this.saldos.map((v, i) => [v, this.n_saldos[i]]);
       }
     );
@@ -78,7 +79,7 @@ export class CliHomeComponent implements OnInit {
           this.notificationService.success('Recarga realizada con éxito');
         },
         err => {
-          console.log(err);
+          this.notificationService.warn('La recarga no pudo ser realizada');
         }
       );
     }

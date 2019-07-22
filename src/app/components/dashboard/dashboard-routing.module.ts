@@ -28,6 +28,7 @@ import { CargasGuard } from '../../services/guards/cargas.guard';
 import { ClienteGuard } from 'src/app/services/guards/cliente.guard';
 import { DistribuidorGuard } from '../../services/guards/distribuidor.guard';
 import { MayoristaGuard } from '../../services/guards/mayorista.guard';
+import { MisDatosComponent } from './components/mis-datos/mis-datos.component';
 
 
 const dashboardRoutes: Routes = [
@@ -40,7 +41,8 @@ const dashboardRoutes: Routes = [
         {path: 'usuarios', component: ListarUsuComponent},
         {path: 'productos', component: ListarProComponent},
         {path: 'recargas', component: AllRecargasComponent},
-        {path: 'repartos', component: AllRepartosComponent}
+        {path: 'repartos', component: AllRepartosComponent},
+        {path: 'perfil', component: MisDatosComponent}
     ]
 },
 
@@ -50,7 +52,8 @@ const dashboardRoutes: Routes = [
         {path: 'home', component: AseHomeComponent },
         {path: 'clientes', component: ListarCliComponent},
         {path: 'recargas', component: AllRecargasComponent},
-        {path: 'repartos', component: AllRepartosComponent}
+        {path: 'repartos', component: AllRepartosComponent},
+        {path: 'perfil', component: MisDatosComponent}
     ]
 },
 
@@ -60,7 +63,8 @@ const dashboardRoutes: Routes = [
         {path: 'home', component: AdminHomeComponent },
         {path: 'clientes', component: ListarCliComponent},
         {path: 'recargas', component: AllRecargasComponent},
-        {path: 'repartos', component: AllRepartosComponent}
+        {path: 'repartos', component: AllRepartosComponent},
+        {path: 'perfil', component: MisDatosComponent}
     ]
 },
 
@@ -69,7 +73,8 @@ const dashboardRoutes: Routes = [
         {path: '', redirectTo: 'home', pathMatch: 'full'},
         {path: 'home', component: CliHomeComponent },
         {path: 'recargas', component: MisRecargasComponent},
-        {path: 'repartos', component: MisRepartosComponent}
+        {path: 'repartos', component: MisRepartosComponent},
+        {path: 'perfil', component: MisDatosComponent}
     ]
 },
 
@@ -79,7 +84,8 @@ const dashboardRoutes: Routes = [
         {path: 'home', component: PubliHomeComponent },
         {path: 'clientes', component: MisClientesComponent},
         {path: 'repartos', component: MisRepartosComponent},
-        {path: 'repartos-clientes', component: RepartosClientesComponent}
+        {path: 'repartos-clientes', component: RepartosClientesComponent},
+        {path: 'perfil', component: MisDatosComponent}
     ]
 },
 
@@ -89,7 +95,8 @@ const dashboardRoutes: Routes = [
         {path: 'home', component: PubliHomeComponent },
         {path: 'clientes', component: MisClientesComponent},
         {path: 'repartos', component: MisRepartosComponent},
-        {path: 'repartos-clientes', component: RepartosClientesComponent}
+        {path: 'repartos-clientes', component: RepartosClientesComponent},
+        {path: 'perfil', component: MisDatosComponent}
     ]
 },
 

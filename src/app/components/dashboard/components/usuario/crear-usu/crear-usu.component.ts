@@ -70,14 +70,12 @@ export class CrearUsuComponent implements OnInit {
           if ( response ) {
               this.status = 'success';
               this.user = new User('', '', '', '', '', '', '', '');
-              this.notificationService.success(':: Usuario creado correctamente');
+              this.notificationService.success('Usuario creado correctamente');
               this.dialogRef.close();
-          } else {
-            this.status = 'error';
-          }
+          } 
         },
         error => {
-          console.log(error);
+          this.notificationService.warn('No se ha podido crear el usuario');
         }
     );
 
