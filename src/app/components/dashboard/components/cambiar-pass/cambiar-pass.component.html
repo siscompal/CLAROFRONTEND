@@ -1,0 +1,13 @@
+<div class="formcontainer">
+    <mat-card>
+        <mat-card-title> Actualizar contraseña </mat-card-title>
+
+        <form [formGroup]="changePass" (ngSubmit)="changePass.valid && onChange()" novalidate>
+            <mat-form-field class="miti">
+                <input type="password" name="pass" [(ngModel)]="pass" formControlName="pass" matInput placeholder="Nueva contraseña">
+            </mat-form-field>
+
+            <button mat-button mat-flat-button [disabled]="!changePass.valid">Actualizar</button>
+        </form>
+    </mat-card>
+</div>

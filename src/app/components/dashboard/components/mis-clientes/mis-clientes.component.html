@@ -47,6 +47,9 @@
                 <button mat-icon-button (click)="onEdit(element, element._id)">
                     <mat-icon>create</mat-icon>
                 </button>
+                <button mat-icon-button (click)="changePass(element._id)">
+                    <mat-icon>vpn_key</mat-icon>
+                </button>
                 <button mat-icon-button color="warn" (click)="onDelete(element._id)" *ngIf=" UserLogged['role'] == 'ROLE_ADMIN' || UserLogged['role'] == 'CLI_MAYORISTA' || UserLogged['role'] == 'CLI_DISTRIBUIDOR' ">
                     <mat-icon>delete_outline</mat-icon>
                 </button>

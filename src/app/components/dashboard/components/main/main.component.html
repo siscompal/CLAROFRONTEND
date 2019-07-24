@@ -1,13 +1,23 @@
 <mat-toolbar>
     <span>Distrirecarga</span>
     <span class="toolbar-spacer"></span>
-    <a class="pointer" (click)="logout()"><mat-icon>exit_to_app</mat-icon></a>
+    <a class="pointer" (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+    </a>
 
 </mat-toolbar>
 <mat-drawer-container class="drawer-container" autosize>
 
     <mat-drawer #drawer class="content-sidenav" mode="side" opened="true">
         <h3>Bienvenido, {{UserLogged.firstName}}</h3>
+
+        <h6 *ngIf="UserLogged['role'] == 'CLI_CLIENTE' || 
+             UserLogged['role'] == 'CLI_MAYORISTA' ||
+             UserLogged['role'] == 'CLI_DISTRIBUIDOR'">Código Efecty 130{{UserLogged.efectyId}}</h6>
+
+        <h6 *ngIf="UserLogged['role'] == 'CLI_CLIENTE' || 
+             UserLogged['role'] == 'CLI_MAYORISTA' ||
+             UserLogged['role'] == 'CLI_DISTRIBUIDOR'">N° convenio: 110911</h6>
 
         <mat-nav-list>
             <a mat-list-item [routerLink]="['perfil']">

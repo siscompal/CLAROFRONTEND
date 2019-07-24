@@ -34,14 +34,12 @@ export class EditarProComponent implements OnInit {
           if ( response ) {
               this.status = 'success';
               this.product = new Product('', '', '', 0, 0, 0);
-              this.notificationService.success(':: Producto actualizado correctamente');
+              this.notificationService.success('Producto actualizado correctamente');
               this.dialogRef.close();
-          } else {
-            this.status = 'error';
           }
         },
         error => {
-          console.log(error);
+          this.notificationService.warn("No se ha podido actualizar el producto");
         }
     );
 

@@ -8,6 +8,7 @@ import { VerCliComponent } from '../ver-cli/ver-cli.component';
 import { Client } from 'src/app/models/client';
 import { EditarCliComponent } from '../editar-cli/editar-cli.component';
 import { UserService } from '../../../../../services/user.service';
+import { CambiarPassComponent } from '../../cambiar-pass/cambiar-pass.component';
 
 @Component({
   selector: 'app-listar-cli',
@@ -94,6 +95,16 @@ export class ListarCliComponent implements OnInit {
     dialogConfig.width = '50%';
     dialogConfig.data = {cliente: cliente, id: id};
     this.dialog.open(EditarCliComponent, dialogConfig);
+  }
+
+  changePass(id: string) {
+    console.log(id);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '50%';
+    dialogConfig.data = {id: id};
+    this.dialog.open(CambiarPassComponent, dialogConfig);
   }
 
 }

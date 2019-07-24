@@ -16,8 +16,9 @@
                 <mat-icon matSuffix> vpn_key</mat-icon>
             </mat-form-field>
             <mat-error class="error" *ngIf="error != null">{{error}}</mat-error>
-            <p class="registro">¿No tienes cuenta? <a [routerLink]="[ '/registrarse']">Registrate</a></p>
             <button mat-button type="submit" mat-flat-button [disabled]="!loginForm.valid">Iniciar sesión</button>
+
+            <p class="registro">¿No tienes cuenta? <a [routerLink]="[ '/registrarse']">Registrate</a></p>
 
         </form>
 

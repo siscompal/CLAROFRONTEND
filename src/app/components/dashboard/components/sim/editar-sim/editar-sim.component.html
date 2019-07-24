@@ -1,0 +1,18 @@
+<div class="formcontainer" class="mat-elevation-z8">
+    <mat-card>
+        <mat-card-title> Actualizar información de la sim </mat-card-title>
+
+        <form [formGroup]="editForm" (ngSubmit)="editForm.valid && onSubmit()" novalidate>
+            <mat-form-field>
+                <input type="text" name="numero" [(ngModel)]="sim.numero" formControlName="numero" matInput placeholder="Número de celular">
+            </mat-form-field>
+            <mat-form-field>
+                <input type="text" name="iccid" [(ngModel)]="sim.iccid" formControlName="iccid" matInput placeholder="Código ICCID">
+            </mat-form-field>
+            <mat-form-field>
+                <input type="text" name="id_pdv" [(ngModel)]="sim.id_pdv" formControlName="id_pdv" matInput placeholder="ID punto de venta" disabled>
+            </mat-form-field>
+            <button mat-button mat-flat-button [disabled]="!editForm.valid">Actualizar</button>
+        </form>
+    </mat-card>
+</div>

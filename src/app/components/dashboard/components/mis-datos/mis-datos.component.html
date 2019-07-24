@@ -1,33 +1,44 @@
 <div class="formcontainer">
     <mat-card>
-        <mat-card-title> Actualizar información del usuario </mat-card-title>
-  
-        <form #registerCli="ngForm" (ngSubmit)="onSubmit()">
+        <mat-card-title> Mis datos </mat-card-title>
+
+        <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && onSubmit()" novalidate>
             <mat-form-field class="miti">
-                <input type="text" name="name" #name="ngModel" [(ngModel)]="user.name" class="form-control" matInput placeholder="Nombre">
+                <input type="text" name="name" [(ngModel)]="user.name" formControlName="name" matInput placeholder="Nombre">
             </mat-form-field>
-  
+
             <mat-form-field class="miti">
-                <input type="text" name="lastname" #name="ngModel" [(ngModel)]="user.lastname" class="form-control" matInput placeholder="Apellido">
+                <input type="text" name="lastname" [(ngModel)]="user.lastname" formControlName="lastname" matInput placeholder="Apellido">
             </mat-form-field>
-  
+
             <mat-form-field class="miti">
-                <input type="text" name="iden" #name="ngModel" [(ngModel)]="user.iden" class="form-control" matInput placeholder="Identificacion">
+                <input type="text" name="iden" [(ngModel)]="user.iden" formControlName="iden" matInput placeholder="Identificacion">
             </mat-form-field>
-  
+
             <mat-form-field class="miti">
-                <input type="text" name="username" #name="ngModel" [(ngModel)]="user.username" class="form-control" matInput placeholder="Nombre de usuario">
+                <input type="text" name="cel" [(ngModel)]="user.cel" formControlName="cel" matInput placeholder="Celular">
             </mat-form-field>
-  
+
             <mat-form-field class="miti">
-                <input type="text" name="cel" #name="ngModel" [(ngModel)]="user.cel" class="form-control" maxlength="10" matInput placeholder="Celular">
+                <input type="email" name="email" [(ngModel)]="user.email" formControlName="email" matInput placeholder="Email">
             </mat-form-field>
-  
-            <mat-form-field class="miti">
-                <input type="email" name="email" #name="ngModel" [(ngModel)]="user.email" class="form-control" matInput placeholder="Email" >
-            </mat-form-field>
-  
-            <button mat-button mat-flat-button class="miti">Actualizar</button>
+
+            <button class="miti" mat-button mat-flat-button [disabled]="!registerForm.valid">Actualizar</button>
         </form>
     </mat-card>
-  </div>
+</div>
+
+
+<div class="formcontainer">
+    <mat-card>
+        <mat-card-title> Actualizar contraseña </mat-card-title>
+
+        <form [formGroup]="changePass" (ngSubmit)="changePass.valid && onChange()" novalidate>
+            <mat-form-field class="miti">
+                <input type="password" name="pass" [(ngModel)]="pass" formControlName="pass" matInput placeholder="Nueva contraseña">
+            </mat-form-field>
+
+            <button class="miti" mat-button mat-flat-button [disabled]="!changePass.valid">Actualizar</button>
+        </form>
+    </mat-card>
+</div>

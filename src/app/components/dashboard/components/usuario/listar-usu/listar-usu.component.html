@@ -36,6 +36,7 @@
             <mat-cell *matCellDef="let element">
                 <span [hidden]="!(element.role == 'ROLE_ASESOR')">Asesor</span>
                 <span [hidden]="!(element.role == 'ROLE_CARGAS')">Cargas</span>
+                <span [hidden]="!(element.role == 'ROLE_ADMIN')">Admin</span>
             </mat-cell>
         </ng-container>
         <ng-container matColumnDef="fecha">

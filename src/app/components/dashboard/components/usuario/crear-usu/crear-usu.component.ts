@@ -17,7 +17,8 @@ export class CrearUsuComponent implements OnInit {
   public status: string;
   public options2 = [
     {id: 1, name: 'ROLE_ASESOR'},
-    {id: 2, name: 'ROLE_CARGAS'}
+    {id: 2, name: 'ROLE_CARGAS'},
+    {id: 3, name: 'ROLE_ADMIN'}
   ];
   public selected2 = this.options2[1].id;
   public registerForm: FormGroup;

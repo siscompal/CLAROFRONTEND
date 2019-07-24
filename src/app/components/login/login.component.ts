@@ -22,10 +22,11 @@ export class LoginComponent implements OnInit {
     firstName: String,
     lastName: String,
     role: String,
-    mail: String,
-    phone: String,
-    id: String,
+    email: String,
+    cel: String,
+    iden: String,
     user: String,
+    efectyId: String,
     _id: String
   };
 
@@ -46,7 +47,31 @@ export class LoginComponent implements OnInit {
       ]]
     });
     if (localStorage.getItem('token') != null) {
-      this.router.navigate(['dashboard']);
+      let aux = JSON.parse(localStorage.getItem('usuario'));
+
+      if (aux.role === 'ROLE_ADMIN') {
+        this.router.navigate(['/dashboard/admin']);
+      }
+
+      if (aux.role === 'ROLE_ASESOR') {
+        this.router.navigate(['/dashboard/asesor']);
+      }
+
+      if (aux.role === 'ROLE_CARGAS') {
+        this.router.navigate(['/dashboard/cargas']);
+      }
+
+      if (aux.role === 'CLI_CLIENTE') {
+        this.router.navigate(['/dashboard/cliente']);
+      }
+
+      if (aux.role === 'CLI_MAYORISTA') {
+        this.router.navigate(['/dashboard/mayorista']);
+      }
+
+      if (aux.role === 'CLI_DISTRIBUIDOR') {
+        this.router.navigate(['/dashboard/distribuidor']);
+      }
     }
 
 
@@ -64,15 +89,15 @@ export class LoginComponent implements OnInit {
             if (response) {
               // tslint:disable-next-line:no-string-literal
                 const aux = response['usuarioLoqueado'];
-                console.log(aux);
                 this.usuario.firstName = aux.name;
                 this.usuario.lastName = aux.lastname;
                 this.usuario.role = aux.role;
-                this.usuario.phone = aux.cel;
-                this.usuario.id = aux.iden;
+                this.usuario.cel = aux.cel;
+                this.usuario.iden = aux.iden;
                 this.usuario._id = aux._id;
-                this.usuario.mail = aux.email;
+                this.usuario.email = aux.email;
                 this.usuario.user = aux.username;
+                this.usuario.efectyId = aux.efectyId;
 
                 // tslint:disable-next-line:no-string-literal
                 localStorage.setItem('token', response['token']);

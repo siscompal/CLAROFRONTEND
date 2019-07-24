@@ -12,34 +12,34 @@ import { NotificationService } from 'src/app/services/notification.service';
 export class EditarUsuComponent implements OnInit {
 
   public user: User;
-  public status: String;
+  public status: string;
   constructor(
     public dialogRef: MatDialogRef<EditarUsuComponent>,
     @Inject(MAT_DIALOG_DATA) public data: User,
     private notificationService: NotificationService,
-    private userService: UserService) { 
+    private userService: UserService) {
       this.user = new User('', '', '', '', '', '', '', '');
     }
 
   ngOnInit() {
+    // tslint:disable-next-line: no-string-literal
     this.user = this.data['usuario'];
   }
 
   onSubmit() {
 
+    // tslint:disable-next-line: no-string-literal
     this.userService.updateUsuario(this.user, this.data['id']).subscribe(
         response => {
           if ( response ) {
               this.status = 'success';
               this.user = new User('', '', '', '', '', '', '', '');
-              this.notificationService.success(':: Usuario actualizado correctamente');
+              this.notificationService.success('Usuario actualizado correctamente');
               this.dialogRef.close();
-          } else {
-            this.status = 'error';
           }
         },
         error => {
-          console.log(error);
+          this.notificationService.warn('No se pudo actualizar el usuario');
         }
     );
 

@@ -23,6 +23,8 @@ mat-form-field {
 
 button {
     background-color: #e52427;
+    margin-left: 24%;
+    width: 45%;
 }
 
 .miti {

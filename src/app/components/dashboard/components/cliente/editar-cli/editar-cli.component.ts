@@ -32,14 +32,13 @@ export class EditarCliComponent implements OnInit {
           if ( response ) {
               this.status = 'success';
               this.client = new Client('', '', '', '', '', '', '', '', '', '', 0);
-              this.notificationService.success(':: Cliente actualizado correctamente');
+              this.notificationService.success('Cliente actualizado correctamente');
               this.dialogRef.close();
-          } else {
-            this.status = 'error';
           }
         },
         error => {
-          console.log(error);
+          this.notificationService.warn('No se ha podido actualizar la información');
+          this.dialogRef.close();
         }
     );
 

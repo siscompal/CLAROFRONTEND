@@ -38,6 +38,10 @@ import { SaldoComponent } from './components/dashboard/components/cliente/saldo/
 import { DistribuidorGuard } from './services/guards/distribuidor.guard';
 import { MayoristaGuard } from './services/guards/mayorista.guard';
 import { FiltrarProComponent } from './components/dashboard/components/producto/filtrar-pro/filtrar-pro.component';
+import { CambiarPassComponent } from './components/dashboard/components/cambiar-pass/cambiar-pass.component';
+import { ActivationService } from './services/activation.service';
+import { EditarSimComponent } from './components/dashboard/components/sim/editar-sim/editar-sim.component';
+import { ActivarSimComponent } from './components/dashboard/components/sim/activar-sim/activar-sim.component';
 
 
 
@@ -56,7 +60,8 @@ import { FiltrarProComponent } from './components/dashboard/components/producto/
     routing,
     DashboardModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'})
   ],
   providers: [UserService,
               ClientService,
@@ -69,6 +74,7 @@ import { FiltrarProComponent } from './components/dashboard/components/producto/
               ClienteGuard,
               DistribuidorGuard,
               MayoristaGuard,
+              ActivationService
   ],
   bootstrap: [AppComponent],
   entryComponents: [
@@ -82,7 +88,10 @@ import { FiltrarProComponent } from './components/dashboard/components/producto/
     EditarProComponent,
     VerProComponent,
     SaldoComponent,
-    FiltrarProComponent
+    FiltrarProComponent,
+    CambiarPassComponent,
+    EditarSimComponent,
+    ActivarSimComponent
   ]
 })
 export class AppModule { }

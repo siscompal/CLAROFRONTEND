@@ -27,6 +27,7 @@ export class ListarUsuComponent implements OnInit {
   ngOnInit() {
     this.userService.getUsuarios().subscribe(
       list => {
+        // tslint:disable-next-line: no-string-literal
         const array = list['users'];
         this.listData = new MatTableDataSource(array);
         this.listData.paginator = this.paginator;

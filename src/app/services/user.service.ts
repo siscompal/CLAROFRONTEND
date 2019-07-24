@@ -65,7 +65,7 @@ export class UserService {
     return this.http.get(this.url + 'users', headers);
   }
 
-  deleteUsuario(id: any) {
+  deleteUsuario(id: string) {
     this.token = localStorage.getItem('token');
     const headers = {headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
     return this.http.delete(this.url + 'users/'  + id, headers);
@@ -77,13 +77,13 @@ export class UserService {
     const headers = {headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
     return this.http.post(this.url + 'users', parametros, headers );
   }
-  getUsuario(id: any) {
+  getUsuario(id: string) {
     this.token = localStorage.getItem('token');
     const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
     return this.http.get(this.url + 'user/' + id, headers);
   }
 
-  updateUsuario(usuario: User, id: any) {
+  updateUsuario(usuario: User, id: string) {
     this.token = localStorage.getItem('token');
     const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
     return this.http.put(this.url + 'users/' + id, usuario, headers);
@@ -105,6 +105,12 @@ export class UserService {
     this.token = localStorage.getItem('token');
     const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
     return this.http.get(this.url + 'allRepartos', headers);
+  }
+
+  changePass(id:string, pass: any) {
+    this.token = localStorage.getItem('token');
+    const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
+    return this.http.put(this.url + 'cambiarpass/'+ id, {password: pass}, headers);
   }
 
 }
