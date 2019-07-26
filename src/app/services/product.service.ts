@@ -20,7 +20,6 @@ export class ProductService {
 
     newProd(newProduct: any) {
         const parametros = newProduct;
-        console.log(parametros);
         this.token = localStorage.getItem('token');
         const headers = {headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
         return this.http.post(this.url + 'products', parametros, headers );

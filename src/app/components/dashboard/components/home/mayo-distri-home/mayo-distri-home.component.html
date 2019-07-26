@@ -19,10 +19,8 @@
             <mat-form-field class="miti">
 
                 <mat-select name="origen" [(ngModel)]="origen" placeholder="Bolsa origen">
-                    <mat-option *ngFor="let bolsa of bolsaOrigen" [value]="bolsa.name">
-                        {{bolsa.name}}
-                    </mat-option>
-
+                    <mat-option value="comision">Comisión</mat-option>
+                    <mat-option value="incentivo">Incentivo</mat-option>
                 </mat-select>
 
             </mat-form-field>
@@ -30,14 +28,17 @@
             <mat-form-field class="miti">
 
                 <mat-select name="destino" [(ngModel)]="destino" placeholder="Bolsa destino">
-                    <mat-option *ngFor="let bolsa of bolsaDestino" [value]="bolsa.name">
-                        {{bolsa.name}}
-
-                    </mat-option>
+                    <span *ngIf="origen == 'comision'">
+                        <mat-option value="saldo">Saldo</mat-option>
+                    </span>
+                    <span *ngIf="origen == 'incentivo'">
+                        <mat-option value="saldo">Saldo</mat-option>
+                        <mat-option value="comision">Comisión</mat-option>
+                    </span>
                 </mat-select>
 
             </mat-form-field>
-            <button mat-button mat-flat-button type="submit">
+            <button mat-button mat-flat-button type="submit" (click)="onSubmit()">
                Transferir
             </button>
         </mat-card-content>

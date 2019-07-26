@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../../../../../services/client.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-mayo-distri-home',
@@ -13,20 +14,10 @@ export class MayoDistriHomeComponent implements OnInit {
   public mapSaldos: any;
   public origen: string;
   public destino: string;
-  public bolsaOrigen = [
-    {id: 1, name: 'Comision'},
-    {id: 2, name: 'Incentivo'},
-  ];
-
-  public bolsaDestino = [
-    {id: 1, name: 'Saldo'},
-    {id: 2, name: 'Comision'},
-    {id: 3, name: 'Incentivo'}
-  ];
-
 
   constructor(
-    private clientService: ClientService
+    private clientService: ClientService,
+    private notificationService: NotificationService
   ){}
 
   ngOnInit() {
@@ -44,23 +35,25 @@ export class MayoDistriHomeComponent implements OnInit {
 
 
   }
-  onChange(){
-    if(this.origen == this.bolsaOrigen[0].name){
-      this.bolsaDestino = [
-        {id: 1, name: 'Saldo'},
-      ];
-
-    } 
-    if(this.origen == this.bolsaOrigen[1].name){
-      this.bolsaDestino = [
-        {id: 2, name: 'Comision'},
-       
-      ];
-    }
-
-  }
+  
   onSubmit(){
-    console.log("algo ahi");
+    if(this.origen === this.destino) {
+      this.notificationService.warn("La bolsa de origen y destino no pueden ser iguales");
+    } else {
+      this.clientService.pasarSaldo(this.origen, this.destino).subscribe(
+        response => {
+          if(response) {
+            this.notificationService.success("Tranferencia exitosa");
+            this.ngOnInit();
+          }
+        },
+
+        error => {
+          this.notificationService.warn(error.error.message);
+          
+        }
+      )
+    }
   }
 
 }

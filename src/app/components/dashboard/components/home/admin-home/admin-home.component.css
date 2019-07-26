@@ -12,3 +12,8 @@ mat-card-content {
     text-align: center;
 
 }
+
+.card {
+    margin: 2% 0 10% 10%;
+    width: 30%;
+}

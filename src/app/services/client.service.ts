@@ -119,6 +119,11 @@ export class ClientService {
     return this.http.get(this.url + 'myInfo', headers);
   }
 
+  pasarSaldo(origen: string, destino: string) {
+    this.token = localStorage.getItem('token');
+    const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
+    return this.http.post(this.url +"pasarSaldo", {origen: origen, destino: destino} , headers);
+  }
 }
 
 

@@ -11,6 +11,7 @@ export class AdminHomeComponent implements OnInit {
   public UserLogged: any;
   public cupo: string;
   public status: boolean;
+  public imagen: File;
   constructor(
           private userService: UserService
   ) { }
@@ -27,6 +28,15 @@ export class AdminHomeComponent implements OnInit {
       }
     );
     this.UserLogged = this.userService.getIdentity();
+  }
+
+  fileChangeEvent(fileInput: any){
+    this.imagen = fileInput.target.files.FileList; 
+    console.log(this.imagen);
+  }
+
+  subirImagen() {
+
   }
 
 }

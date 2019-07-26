@@ -77,17 +77,17 @@ export class CrearCliComponent implements OnInit {
         { id: 2, name: 'CLI_DISTRIBUIDOR' },
         { id: 3, name: 'CLI_CLIENTE' }
       ];
-      this.selected2 = this.role[2].id;
+      this.selected2 = this.role[0].id;
     } else if (this.userLogged['role'] === 'CLI_DISTRIBUIDOR') {
       this.role = [{ id: 3, name: 'CLI_CLIENTE' }];
-      this.selected2 = this.role[3].id;
+      this.selected2 = this.role[0].id;
     } else {
       this.role = [
         { id: 1, name: 'CLI_MAYORISTA' },
         { id: 2, name: 'CLI_DISTRIBUIDOR' },
         { id: 3, name: 'CLI_CLIENTE' }
       ];
-      this.selected2 = this.role[1].id;
+      this.selected2 = this.role[0].id;
     }
   }
 

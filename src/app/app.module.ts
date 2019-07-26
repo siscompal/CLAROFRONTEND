@@ -23,6 +23,14 @@ import { CrearUsuComponent } from './components/dashboard/components/usuario/cre
 import { CrearProComponent } from './components/dashboard/components/producto/crear-pro/crear-pro.component';
 import { EditarProComponent } from './components/dashboard/components/producto/editar-pro/editar-pro.component';
 import { VerProComponent } from './components/dashboard/components/producto/ver-pro/ver-pro.component';
+import { SaldoComponent } from './components/dashboard/components/cliente/saldo/saldo.component';
+import { DistribuidorGuard } from './services/guards/distribuidor.guard';
+import { MayoristaGuard } from './services/guards/mayorista.guard';
+import { FiltrarProComponent } from './components/dashboard/components/producto/filtrar-pro/filtrar-pro.component';
+import { CambiarPassComponent } from './components/dashboard/components/cambiar-pass/cambiar-pass.component';
+import { ActivationService } from './services/activation.service';
+import { EditarSimComponent } from './components/dashboard/components/sim/editar-sim/editar-sim.component';
+import { ActivarSimComponent } from './components/dashboard/components/sim/activar-sim/activar-sim.component';
 
 // Servicios
 import { UserService } from './services/user.service';
@@ -34,15 +42,8 @@ import { AdminGuard } from './services/guards/admin.guard';
 import { AsesorGuard } from './services/guards/asesor.guard';
 import { CargasGuard } from './services/guards/cargas.guard';
 import { ClienteGuard } from './services/guards/cliente.guard';
-import { SaldoComponent } from './components/dashboard/components/cliente/saldo/saldo.component';
-import { DistribuidorGuard } from './services/guards/distribuidor.guard';
-import { MayoristaGuard } from './services/guards/mayorista.guard';
-import { FiltrarProComponent } from './components/dashboard/components/producto/filtrar-pro/filtrar-pro.component';
-import { CambiarPassComponent } from './components/dashboard/components/cambiar-pass/cambiar-pass.component';
-import { ActivationService } from './services/activation.service';
-import { EditarSimComponent } from './components/dashboard/components/sim/editar-sim/editar-sim.component';
-import { ActivarSimComponent } from './components/dashboard/components/sim/activar-sim/activar-sim.component';
-
+import { ImageService } from './services/image.service';
+import { PublicidadComponent } from './components/publicidad/publicidad.component';
 
 
 @NgModule({
@@ -50,7 +51,7 @@ import { ActivarSimComponent } from './components/dashboard/components/sim/activ
     AppComponent,
     LoginComponent,
     SignUpComponent,
-
+    PublicidadComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +75,8 @@ import { ActivarSimComponent } from './components/dashboard/components/sim/activ
               ClienteGuard,
               DistribuidorGuard,
               MayoristaGuard,
-              ActivationService
+              ActivationService,
+              ImageService
   ],
   bootstrap: [AppComponent],
   entryComponents: [
@@ -91,7 +93,8 @@ import { ActivarSimComponent } from './components/dashboard/components/sim/activ
     FiltrarProComponent,
     CambiarPassComponent,
     EditarSimComponent,
-    ActivarSimComponent
+    ActivarSimComponent,
+    PublicidadComponent
   ]
 })
 export class AppModule { }

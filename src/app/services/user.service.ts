@@ -49,10 +49,6 @@ export class UserService {
     return this.identity;
   }
 
-  Autenticado() {
-    return localStorage.getItem('token');
-  }
-
 
   logout() {
           localStorage.clear();
