@@ -19,15 +19,17 @@ export class LoginComponent implements OnInit {
   public identity: any;
   public token: any;
   public usuario = {
-    firstName: String,
-    lastName: String,
+    name: String,
+    lastname: String,
     role: String,
     email: String,
     cel: String,
     iden: String,
-    user: String,
+    username: String,
     efectyId: String,
-    _id: String
+    _id: String,
+    dir: String,
+    city: String
   };
 
   constructor(private formBuilder: FormBuilder,
@@ -89,15 +91,17 @@ export class LoginComponent implements OnInit {
             if (response) {
               // tslint:disable-next-line:no-string-literal
                 const aux = response['usuarioLoqueado'];
-                this.usuario.firstName = aux.name;
-                this.usuario.lastName = aux.lastname;
+                this.usuario.name = aux.name;
+                this.usuario.lastname = aux.lastname;
                 this.usuario.role = aux.role;
                 this.usuario.cel = aux.cel;
                 this.usuario.iden = aux.iden;
                 this.usuario._id = aux._id;
                 this.usuario.email = aux.email;
-                this.usuario.user = aux.username;
+                this.usuario.username = aux.username;
                 this.usuario.efectyId = aux.efectyId;
+                this.usuario.dir = aux.dir;
+                this.usuario.city = aux.city;
 
                 // tslint:disable-next-line:no-string-literal
                 localStorage.setItem('token', response['token']);

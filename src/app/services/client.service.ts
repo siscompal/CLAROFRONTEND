@@ -40,7 +40,7 @@ export class ClientService {
   deleteCliente(id: any) {
     this.token = localStorage.getItem('token');
     const headers = {headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
-    return this.http.delete(this.url + 'clients/'  + id, headers);
+    return this.http.delete(this.url + 'client/'  + id, headers);
   }
 
   signUp(newClient: any) {
@@ -56,7 +56,7 @@ export class ClientService {
     return this.http.get(this.url + 'client/' + id, headers);
   }
 
-  updateCliente(cliente: Client, id: any){
+  updateCliente(cliente: any, id: any){
     this.token = localStorage.getItem('token');
     const headers = { headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
     return this.http.put(this.url + 'client/' + id, cliente, headers);

@@ -20,33 +20,29 @@ export class SaldoComponent implements OnInit {
   }
 
   asignar(valor: any, obs: string) {
-    console.log(this.data);
     this.clientService.asignarSaldo(this.data['id'], valor, obs).subscribe(
       response => {
         if (response) {
-          console.log(response);
           this.notificationService.success('Saldo asignado correctamente');
           this.dialogRef.close();
         }
       },
       err => {
-        console.log(err);
+         this.notificationService.warn(err.error.message);
       }
     );
   }
 
   debitar(valor: any, obs: string) {
-    console.log(this.data);
     this.clientService.debitarSaldo(this.data['id'], valor, obs).subscribe(
       response => {
         if (response) {
-          console.log(response);
           this.notificationService.success('Saldo debitado correctamente');
           this.dialogRef.close();
         }
       },
       err => {
-        console.log(err);
+        this.notificationService.warn(err.error.message);
       }
     );
   }

@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NotificationService } from 'src/app/services/notification.service';
 import { UserService } from 'src/app/services/user.service';
 import { ClientService } from 'src/app/services/client.service';
-import { User } from 'src/app/models/user';
-import { Client } from '../../../../models/client';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -15,56 +13,79 @@ export class MisDatosComponent implements OnInit {
 
   public id: string;
   public role: string;
-  public user: User;
   public pass: string;
   public registerForm: FormGroup;
   public changePass: FormGroup;
-  public usuario = {
-    firstName: String,
-    lastName: String,
-    role: String,
-    email: String,
-    cel: String,
-    iden: String,
-    user: String,
-    _id: String
-  };
+  public aux: any;
 
   constructor(
     private notificationService: NotificationService,
     private userService: UserService,
     private clientService: ClientService,
     private formBuilder: FormBuilder
-  ) {
-    this.user = new User('', '', '', '', '', '', '', '');
-  }
+  ) {}
 
   ngOnInit() {
 
-    this.registerForm = this.formBuilder.group({
-      name: [this.user.name, [
-        Validators.required
-        ]],
-      lastname: [this.user.lastname, [
-        Validators.required,
-        ]],
-      iden: [this.user.iden, [
-        Validators.required,
-        ]],
-      username: [this.user.username, [
-        Validators.required,
-        ]],
-      cel: [this.user.cel, [
-        Validators.required,
-        Validators.minLength(10),
-        Validators.maxLength(10)
-        ]],
-      email: [this.user.email, [
-        Validators.required,
-        Validators.email
-        ]],
+    this.aux = JSON.parse(localStorage.getItem('usuario'));
+    this.id = this.aux._id;
+    this.role = this.aux.role;
 
-    });
+    if (this.role === 'ROLE_ADMIN' || this.role === 'ROLE_ASESOR' || this.role === 'ROLE_CARGAS') {
+      this.registerForm = this.formBuilder.group({
+        name: [this.aux.name, [
+          Validators.required
+          ]],
+        lastname: [this.aux.lastname, [
+          Validators.required,
+          ]],
+        iden: [this.aux.iden, [
+          Validators.required,
+          ]],
+        cel: [this.aux.cel, [
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(10)
+          ]],
+        email: [this.aux.email, [
+          Validators.required,
+          Validators.email
+          ]],
+        dir: [this.aux.dir, [
+          ]],
+        city: [this.aux.city, [
+          ]],
+      });
+    }
+
+    if (this.role === 'CLI_CLIENTE' || this.role === 'CLI_DISTRIBUIDOR' || this.role === 'CLI_MAYORISTA') {
+      this.registerForm = this.formBuilder.group({
+        name: [this.aux.name, [
+          Validators.required
+          ]],
+        lastname: [this.aux.lastname, [
+          Validators.required,
+          ]],
+        iden: [this.aux.iden, [
+          Validators.required,
+          ]],
+        cel: [this.aux.cel, [
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(10)
+          ]],
+        email: [this.aux.email, [
+          Validators.required,
+          Validators.email
+          ]],
+        dir: [this.aux.dir, [
+          Validators.required,
+          ]],
+        city: [this.aux.city, [
+          Validators.required,
+          ]],
+      });
+    }
 
     this.changePass = this.formBuilder.group({
       pass: [this.pass, [
@@ -72,24 +93,16 @@ export class MisDatosComponent implements OnInit {
         ]],
     });
 
-    const aux = JSON.parse(localStorage.getItem('usuario'));
-    this.id = aux._id;
-    this.role = aux.role;
-    this.user.name = aux.firstName;
-    this.user.lastname = aux.lastName;
-    this.user.username = aux.user;
-    this.user.email = aux.email;
-    this.user.cel = aux.cel;
-    this.user.iden = aux.iden;
   }
 
   onSubmit() {
     if (this.role === 'ROLE_ADMIN' || this.role === 'ROLE_ASESOR' || this.role === 'ROLE_CARGAS') {
-      this.userService.updateUsuario(this.user, this.id).subscribe(
+      this.userService.updateUsuario(this.aux, this.id).subscribe(
         response => {
           if (response) {
               this.notificationService.success('Sus datos se han actualizado correctamente');
               localStorage.removeItem('usuario');
+              localStorage.setItem('usuario', JSON.stringify(this.aux));
           }
         },
         error => {
@@ -99,24 +112,20 @@ export class MisDatosComponent implements OnInit {
     }
 
     if (this.role === 'CLI_CLIENTE' || this.role === 'CLI_DISTRIBUIDOR' || this.role === 'CLI_MAYORISTA') {
-      let client: Client;
-      client.name = this.user.name;
-      client.lastname = this.user.lastname;
-      client.iden = this.user.iden;
-      client.username = this.user.username;
-      client.cel = this.user.cel;
-      client.email = this.user.email;
-      this.clientService.updateCliente(client, this.id).subscribe(
+      delete this.aux._id;
+      console.log(this.aux);
+      this.clientService.updateCliente(this.aux, this.id).subscribe(
         response => {
           if (response) {
               this.notificationService.success('Sus datos se han actualizado correctamente');
-              this.userService.logout();
+              localStorage.removeItem('usuario');
+              localStorage.setItem('usuario', JSON.stringify(this.aux));
               
           }
         },
         error => {
           this.notificationService.warn('No se pudo actualizar sus datos');
-          this.userService.logout();
+
         }
       );
     }
@@ -130,6 +139,8 @@ export class MisDatosComponent implements OnInit {
         if (response) {
           this.pass = "";
           this.notificationService.success('Su contraseña se ha actualizado correctamente');
+          localStorage.clear();
+          this.userService.logout();
         } 
       },
       error => {

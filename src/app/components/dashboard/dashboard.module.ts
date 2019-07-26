@@ -40,6 +40,7 @@ import { MisDatosComponent } from './components/mis-datos/mis-datos.component';
 import { CambiarPassComponent } from './components/cambiar-pass/cambiar-pass.component';
 import { EditarSimComponent } from './components/sim/editar-sim/editar-sim.component';
 import { ActivarSimComponent } from './components/sim/activar-sim/activar-sim.component';
+import { MayoDistriHomeComponent } from './components/home/mayo-distri-home/mayo-distri-home.component';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { ActivarSimComponent } from './components/sim/activar-sim/activar-sim.co
       MisDatosComponent,
       CambiarPassComponent,
       EditarSimComponent,
-      ActivarSimComponent
+      ActivarSimComponent,
+      MayoDistriHomeComponent
 
     ],
     imports: [

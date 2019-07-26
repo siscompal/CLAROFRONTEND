@@ -4,25 +4,32 @@
 
         <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && onSubmit()" novalidate>
             <mat-form-field class="miti">
-                <input type="text" name="name" [(ngModel)]="user.name" formControlName="name" matInput placeholder="Nombre">
+                <input type="text" name="name" [(ngModel)]="aux.name" formControlName="name" matInput placeholder="Nombre">
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <input type="text" name="lastname" [(ngModel)]="user.lastname" formControlName="lastname" matInput placeholder="Apellido">
+                <input type="text" name="lastname" [(ngModel)]="aux.lastname" formControlName="lastname" matInput placeholder="Apellido">
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <input type="text" name="iden" [(ngModel)]="user.iden" formControlName="iden" matInput placeholder="Identificacion">
+                <input type="text" name="iden" [(ngModel)]="aux.iden" formControlName="iden" matInput placeholder="Identificacion">
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <input type="text" name="cel" [(ngModel)]="user.cel" formControlName="cel" matInput placeholder="Celular">
+                <input type="text" name="cel" [(ngModel)]="aux.cel" formControlName="cel" matInput placeholder="Celular">
             </mat-form-field>
 
             <mat-form-field class="miti">
-                <input type="email" name="email" [(ngModel)]="user.email" formControlName="email" matInput placeholder="Email">
+                <input type="email" name="email" [(ngModel)]="aux.email" formControlName="email" matInput placeholder="Email">
             </mat-form-field>
 
+            <mat-form-field class="miti" *ngIf="!(role == 'ROLE_ADMIN' || role == 'ROLE_ASESOR' || role == 'ROLE_CARGAS')">
+                <input type="text" name="city" [(ngModel)]="aux.city" formControlName="city" matInput placeholder="Ciudad">
+            </mat-form-field>
+
+            <mat-form-field class="miti" class="miti" *ngIf="!(role == 'ROLE_ADMIN' || role == 'ROLE_ASESOR' || role == 'ROLE_CARGAS')">
+                <input type="text" name="dir" [(ngModel)]="aux.dir" formControlName="dir" matInput placeholder="Dirección">
+            </mat-form-field>
             <button class="miti" mat-button mat-flat-button [disabled]="!registerForm.valid">Actualizar</button>
         </form>
     </mat-card>

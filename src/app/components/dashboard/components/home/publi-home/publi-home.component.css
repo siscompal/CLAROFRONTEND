@@ -41,4 +41,17 @@ mat-footer-row mat-footer-cell {
 
 .formcontainer form {
     width: 90%;
+    margin: auto;
+}
+
+.button {
+    background-color: #e52427;
+    margin-left: 8%;
+    width: 80%;
+}
+
+mat-form-field,
+input {
+    width: 95%;
+    margin: auto;
 }

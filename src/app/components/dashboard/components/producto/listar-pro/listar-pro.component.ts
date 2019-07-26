@@ -75,7 +75,7 @@ export class ListarProComponent implements OnInit {
     if (confirm('¿Está seguro de que desea eliminar este producto?')) {
       this.productService.deleteProducto(id).subscribe(
         Response => {
-          this.notificationService.warn('Producto eliminado');
+          this.notificationService.success('Producto eliminado');
         }
       );
     }

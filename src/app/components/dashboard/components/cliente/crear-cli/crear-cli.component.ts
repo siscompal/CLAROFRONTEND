@@ -104,7 +104,7 @@ export class CrearCliComponent implements OnInit {
         }
       },
       error => {
-        console.log(error);
+        this.notificationService.warn(error.error.message);
       }
     );
   }

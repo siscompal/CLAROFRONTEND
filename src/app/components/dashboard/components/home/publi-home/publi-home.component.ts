@@ -5,6 +5,7 @@ import { Activation } from '../../../../../models/activation';
 import { ActivationService } from '../../../../../services/activation.service';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog, MatDialogConfig } from '@angular/material';
 import { EditarSimComponent } from '../../sim/editar-sim/editar-sim.component';
+import { ActivarSimComponent } from '../../sim/activar-sim/activar-sim.component';
 
 
 @Component({
@@ -43,7 +44,7 @@ export class PubliHomeComponent implements OnInit {
         Validators.required
         ]],
       id_pdv: [this.activation.id_pdv, [
-        Validators.required
+        Validators.required,
         ]]
     });
     
@@ -67,7 +68,7 @@ export class PubliHomeComponent implements OnInit {
         }
       },
       error => {
-        this.notificationService.warn("No se pudo registrar la sim");
+        this.notificationService.warn("Sim existente");
         this.activation = new Activation("","","162255");
       }
     )
@@ -92,6 +93,11 @@ export class PubliHomeComponent implements OnInit {
   }
 
   Activate(sim: Activation, id: string) {
-
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '50%';
+    dialogConfig.data = {sim: sim, id: id}; 
+    this.dialog.open(ActivarSimComponent, dialogConfig);
   }
 }

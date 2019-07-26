@@ -45,7 +45,11 @@
 
             <mat-form-field class="miti">
                 <mat-select name="role" [(ngModel)]="client.role" placeholder="Tipo de cliente" formControlName="role">
-                    <mat-option *ngFor="let rol of role" [value]="rol.name">{{ rol.name }}</mat-option>
+                    <mat-option *ngFor="let rol of role" [value]="rol.name">
+                        <span *ngIf="rol.name == 'CLI_MAYORISTA'">Mayorista</span>
+                        <span *ngIf="rol.name == 'CLI_DISTRIBUIDOR'">Distribuidor</span>
+                        <span *ngIf="rol.name == 'CLI_CLIENTE'">Cliente</span>
+                    </mat-option>
                 </mat-select>
             </mat-form-field>
 

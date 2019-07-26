@@ -78,7 +78,7 @@ constructor(
           }
         },
         error => {
-          console.log(error);
+          this.notificationService.warn(error.error.message);
         }
     );
 

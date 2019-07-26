@@ -76,7 +76,7 @@ export class CrearUsuComponent implements OnInit {
           } 
         },
         error => {
-          this.notificationService.warn('No se ha podido crear el usuario');
+          this.notificationService.warn(error.error.message);
         }
     );
 

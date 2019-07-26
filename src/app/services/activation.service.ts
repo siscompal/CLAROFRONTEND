@@ -36,7 +36,7 @@ export class ActivationService {
     activateSim(sim: Object) {
         this.token = localStorage.getItem('token');
         const headers = {headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
-        return this.http.put(this.url + 'activar', sim, headers);
+        return this.http.post(this.url + 'activar', sim, headers);
     }
 
 }

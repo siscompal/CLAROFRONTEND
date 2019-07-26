@@ -1,0 +1,23 @@
+.button {
+    background-color: #e52427;
+    margin-left: 5%;
+    width: 45%;
+}
+
+.formcontainer {
+    width: 90%;
+    margin: auto;
+}
+
+form {
+    width: 100%;
+}
+
+
+/*Esto es para que los inputs(el underline) del form no se salgan de la mat-card*/
+
+mat-form-field,
+input {
+    width: 45%;
+    margin-left: 5%;
+}

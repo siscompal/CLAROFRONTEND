@@ -1,5 +1,7 @@
 <mat-toolbar>
-    <span>Distrirecarga</span>
+    <a mat-list-item [routerLink]="['/']">
+        <span>Claro recargas</span>
+    </a>
     <span class="toolbar-spacer"></span>
     <a class="pointer" (click)="logout()">
         <mat-icon>exit_to_app</mat-icon>
@@ -9,7 +11,7 @@
 <mat-drawer-container class="drawer-container" autosize>
 
     <mat-drawer #drawer class="content-sidenav" mode="side" opened="true">
-        <h3>Bienvenido, {{UserLogged.firstName}}</h3>
+        <h3>Bienvenido, {{UserLogged.name}}</h3>
 
         <h6 *ngIf="UserLogged['role'] == 'CLI_CLIENTE' || 
              UserLogged['role'] == 'CLI_MAYORISTA' ||

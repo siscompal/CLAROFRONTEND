@@ -49,7 +49,7 @@ export class ListarUsuComponent implements OnInit {
     if (confirm('¿Está seguro de que desea eliminar este usuario?')) {
       this.userService.deleteUsuario(id).subscribe(
         Response => {
-          this.notificationService.warn('Usuario eliminado');
+          this.notificationService.success('Usuario eliminado');
         }
       );
     }

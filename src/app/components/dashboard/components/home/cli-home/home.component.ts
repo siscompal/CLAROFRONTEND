@@ -76,10 +76,10 @@ export class CliHomeComponent implements OnInit {
         () => {
           this.valor = null;
           this.numero = null;
-          this.notificationService.success('Recarga realizada con éxito');
+          this.notificationService.success('Recarga exitosa');
         },
         err => {
-          this.notificationService.warn('La recarga no pudo ser realizada');
+          this.notificationService.warn('Recarga Fallida');
         }
       );
     }

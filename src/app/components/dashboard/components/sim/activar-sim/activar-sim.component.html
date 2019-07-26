@@ -1,3 +1,37 @@
-<p>
-  activar-sim works!
-</p>
+<div class="formcontainer">
+    <mat-card>
+        <mat-card-title> Solicitud de activación de Sim </mat-card-title>
+
+        <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && onSubmit()" novalidate>
+
+            <mat-form-field class="miti">
+                <input type="text" name="nombre" [(ngModel)]="activacion.nombre" formControlName="nombre" matInput placeholder="Nombre">
+            </mat-form-field>
+
+            <mat-form-field class="miti">
+                <input type="text" name="documento" [(ngModel)]="activacion.documento" formControlName="documento" matInput placeholder="Documento de identidad">
+            </mat-form-field>
+
+            <mat-form-field class="miti">
+                <input type="text" name="direccion" [(ngModel)]="activacion.direccion" formControlName="direccion" matInput placeholder="Dirección">
+            </mat-form-field>
+
+            <mat-form-field class="miti">
+                <input type="text" name="numero" [(ngModel)]="activacion.numero" formControlName="numero" matInput placeholder="Número de celular" [readonly]="true">
+            </mat-form-field>
+
+            <mat-form-field class="miti">
+                <input type="text" name="iccid" [(ngModel)]="activacion.iccid" formControlName="iccid" matInput placeholder="ICCID" [readonly]="true">
+            </mat-form-field>
+
+            <mat-form-field class="miti">
+                <input type="text" name="id_pdv" [(ngModel)]="activacion.id_pdv" formControlName="id_pdv" matInput placeholder="ID punto de venta" [readonly]="true">
+            </mat-form-field>
+
+            <button mat-button mat-flat-button class="miti" type="submit" [disabled]="!registerForm.valid">
+                Activar
+            </button>
+
+        </form>
+    </mat-card>
+</div>

@@ -20,6 +20,8 @@ import { MisRepartosComponent } from './components/reportes/mis-repartos/mis-rep
 import { RepartosClientesComponent } from './components/reportes/repartos-clientes/repartos-clientes.component';
 import { MisClientesComponent } from './components/mis-clientes/mis-clientes.component';
 import { AseHomeComponent } from './components/home/ase-home/ase-home.component';
+import { MayoDistriHomeComponent } from './components/home/mayo-distri-home/mayo-distri-home.component';
+
 
 // Servicios
 import { AdminGuard } from '../../services/guards/admin.guard';
@@ -60,7 +62,7 @@ const dashboardRoutes: Routes = [
 {path: 'dashboard/cargas', component: MainComponent, canActivate: [CargasGuard],
     children: [
         {path: '', redirectTo: 'home', pathMatch: 'full'},
-        {path: 'home', component: AdminHomeComponent },
+        {path: 'home', component: AseHomeComponent },
         {path: 'clientes', component: ListarCliComponent},
         {path: 'recargas', component: AllRecargasComponent},
         {path: 'repartos', component: AllRepartosComponent},
@@ -81,7 +83,7 @@ const dashboardRoutes: Routes = [
 {path: 'dashboard/distribuidor', component: MainComponent, canActivate: [DistribuidorGuard],
     children: [
         {path: '', redirectTo: 'home', pathMatch: 'full'},
-        {path: 'home', component: PubliHomeComponent },
+        {path: 'home', component: MayoDistriHomeComponent },
         {path: 'clientes', component: MisClientesComponent},
         {path: 'repartos', component: MisRepartosComponent},
         {path: 'repartos-clientes', component: RepartosClientesComponent},
@@ -92,7 +94,7 @@ const dashboardRoutes: Routes = [
 {path: 'dashboard/mayorista', component: MainComponent, canActivate: [MayoristaGuard],
     children: [
         {path: '', redirectTo: 'home', pathMatch: 'full'},
-        {path: 'home', component: PubliHomeComponent },
+        {path: 'home', component: MayoDistriHomeComponent },
         {path: 'clientes', component: MisClientesComponent},
         {path: 'repartos', component: MisRepartosComponent},
         {path: 'repartos-clientes', component: RepartosClientesComponent},
