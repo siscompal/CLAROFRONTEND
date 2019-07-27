@@ -8,31 +8,37 @@
     <app-publi-home></app-publi-home>
 </div>
 
-<div class="card">
+<mat-card class="card mat-elevation-z15">
+    <mat-card-title>Subir imagen de publicidad</mat-card-title>
+    <mat-card-content>
+        <input type="file" (change)="fileChangeEvent($event)">
+        <button mat-flat-button (click)="subirImagen()">Enviar</button>
+    </mat-card-content>
+</mat-card>
 
-    <div class="card-header bg-dark">
-        <h3 class="card-title text-white">
-        <i class="far fa-image"></i> Subir imagen
-        </h3>
+<div class="images">
+    <div class="card-header bg-dark text-white">
+        <h3><i class="far fa-images"></i>Imagenes cargadas</h3>
     </div>
-    
     <div class="card-body">
-        <form action="/images" method="POST" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-4 text-center">
+                
+
+                <ul *ngIf="!(images == null)">
+                    <li *ngFor="let image of images">
+                        <a>
+                                
+                            <img src="{{url+'image/'+image.imagePath}}" class="img">
+                        </a>
+                    </li>
+                </ul>
+
+                <p *ngIf="!(error == null)">{{error}}</p>
+
         
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="custom-file">
-                        <input type="file" name="image" class="custom-file-input" id="inputGroupFile" aria-describedby="inputGroupFileAddon" (change)="fileChangeEvent($event)" required/>
-                        <label class="custom-file-label" for="inputGroupFile">Elegir imagen...</label>
-                    </div>
-                </div>
             </div>
-            <div class="form-group">
-                <button class="btn btn-success" (click)="subirImagen()">
-                    <i class="fa fa-upload"></i>  Enviar
-                </button>
-            </div>
-        </form>
+
+        </div>
     </div>
 </div>
-

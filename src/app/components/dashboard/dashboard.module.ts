@@ -43,7 +43,6 @@ import { ActivarSimComponent } from './components/sim/activar-sim/activar-sim.co
 import { MayoDistriHomeComponent } from './components/home/mayo-distri-home/mayo-distri-home.component';
 
 
-
 @NgModule({
     declarations: [
       MainComponent,
@@ -84,7 +83,7 @@ import { MayoDistriHomeComponent } from './components/home/mayo-distri-home/mayo
       HttpClientModule,
       DashboardRoutingModule,
       MaterialModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
 
     ],
     providers: [

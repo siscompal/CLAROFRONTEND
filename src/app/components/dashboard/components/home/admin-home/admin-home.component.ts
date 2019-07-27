@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import { ImageService } from 'src/app/services/image.service';
+import { NotificationService } from 'src/app/services/notification.service';
+import { GLOBAL } from 'src/app/services/global';
 
 @Component({
   selector: 'app-admin-home',
@@ -11,12 +14,34 @@ export class AdminHomeComponent implements OnInit {
   public UserLogged: any;
   public cupo: string;
   public status: boolean;
-  public imagen: File;
+  public error: string;
+  public filesToUpload: Array<File>;
+  public images: Array<any>;
+  public url: string;
+
   constructor(
-          private userService: UserService
+          private userService: UserService,
+          private imageService: ImageService,
+          private notificationService: NotificationService,
   ) { }
 
   ngOnInit() {
+
+    this.url = GLOBAL.url;
+    this.imageService.getImages().subscribe(
+      response => {
+        if(response['images']){
+          this.images = response['images'];
+        }
+        else {
+          this.error = "No hay imagenes publicitarias";
+        }   
+      },
+      error => {
+        this.error = "No se pueden mostrar las imagenes";
+      }
+    );
+
     this.userService.getCupo().subscribe(
       response => {
         this.cupo = response['respuesta'];
@@ -31,12 +56,27 @@ export class AdminHomeComponent implements OnInit {
   }
 
   fileChangeEvent(fileInput: any){
-    this.imagen = fileInput.target.files.FileList; 
-    console.log(this.imagen);
+    this.filesToUpload = <Array<File>>fileInput.target.files; 
   }
 
   subirImagen() {
+    this.imageService.uploadImage(this.filesToUpload)
+      .then((result: any) => {
+        this.notificationService.success("Imagen cargada");
+        this.ngOnInit();
+        },
+        (error) => {
+          this.notificationService.warn((JSON.parse(error)).message);
+        }
+      ); 
+  }
 
+  getImage(imagen: string) {
+    this.imageService.getImage(imagen).subscribe(
+      response => {
+        console.log(response);
+      }
+    )
   }
 
 }

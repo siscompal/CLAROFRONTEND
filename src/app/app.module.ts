@@ -62,7 +62,7 @@ import { PublicidadComponent } from './components/publicidad/publicidad.componen
     DashboardModule,
     FormsModule,
     ReactiveFormsModule,
-    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'})
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
   ],
   providers: [UserService,
               ClientService,
