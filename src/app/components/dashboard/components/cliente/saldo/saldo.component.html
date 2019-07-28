@@ -8,7 +8,7 @@
         <mat-form-field>
             <input type="text" name="obs" class="form-control" matInput placeholder="Obervación" #obs>
         </mat-form-field>
-        <button mat-raised-button color="primary" (click)="asignar(valor.value, obs.value)">Asignar</button>
-        <button mat-raised-button color="warn" (click)="debitar(valor.value, obs.value)">Debitar</button>
+        <button class="miti" mat-flat-button color="primary" (click)="asignar(valor.value, obs.value)">Asignar</button>
+        <button class="miti" mat-flat-button color="warn" (click)="debitar(valor.value, obs.value)">Debitar</button>
     </mat-card-content>
 </mat-card>

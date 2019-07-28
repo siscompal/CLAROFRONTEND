@@ -50,8 +50,7 @@ import { PublicidadComponent } from './components/publicidad/publicidad.componen
   declarations: [
     AppComponent,
     LoginComponent,
-    SignUpComponent,
-    PublicidadComponent
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +61,7 @@ import { PublicidadComponent } from './components/publicidad/publicidad.componen
     DashboardModule,
     FormsModule,
     ReactiveFormsModule,
-    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'})
   ],
   providers: [UserService,
               ClientService,

@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { RecargaService } from '../../../../../services/recarga.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatDialog, MatDialogConfig } from '@angular/material';
 import { ClientService } from '../../../../../services/client.service';
 import { FiltrarProComponent } from '../../producto/filtrar-pro/filtrar-pro.component';
+import { MatTableDataSource, MatDialog, MatDialogConfig } from '@angular/material';
 
 
 @Component({
@@ -14,6 +14,9 @@ import { FiltrarProComponent } from '../../producto/filtrar-pro/filtrar-pro.comp
 })
 export class CliHomeComponent implements OnInit {
 
+
+  public listData: MatTableDataSource<any>;
+  public displayedColumns: string[] = ['fecha', 'hora', 'numero', 'monto', 'estado'];
 
   public valor: number;
   public numero: string;
@@ -60,6 +63,16 @@ export class CliHomeComponent implements OnInit {
         this.mapSaldos = this.saldos.map((v, i) => [v, this.n_saldos[i]]);
       }
     );
+
+    this.recargaService.ultimasRecargas().subscribe(
+      list => {
+        if(list['message']){
+          const array = list['message'];
+          this.listData = new MatTableDataSource(array);
+        }
+      },
+    )
+
     this.valor = null;
     this.numero = null;
   }
@@ -77,6 +90,7 @@ export class CliHomeComponent implements OnInit {
           this.valor = null;
           this.numero = null;
           this.notificationService.success('Recarga exitosa');
+          this.ngOnInit();
         },
         err => {
           this.notificationService.warn('Recarga Fallida');

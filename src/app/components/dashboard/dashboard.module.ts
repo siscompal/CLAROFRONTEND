@@ -41,7 +41,7 @@ import { CambiarPassComponent } from './components/cambiar-pass/cambiar-pass.com
 import { EditarSimComponent } from './components/sim/editar-sim/editar-sim.component';
 import { ActivarSimComponent } from './components/sim/activar-sim/activar-sim.component';
 import { MayoDistriHomeComponent } from './components/home/mayo-distri-home/mayo-distri-home.component';
-
+import { PublicidadComponent } from '../publicidad/publicidad.component';
 
 @NgModule({
     declarations: [
@@ -74,7 +74,8 @@ import { MayoDistriHomeComponent } from './components/home/mayo-distri-home/mayo
       CambiarPassComponent,
       EditarSimComponent,
       ActivarSimComponent,
-      MayoDistriHomeComponent
+      MayoDistriHomeComponent,
+      PublicidadComponent
 
     ],
     imports: [

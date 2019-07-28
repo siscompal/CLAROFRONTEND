@@ -47,9 +47,14 @@ export class ImageService {
 
 	getImage(imagen: string) {
 		this.token = localStorage.getItem('token');
-		let aux = this.url + 'image/'+ imagen;
         const headers = {headers: new HttpHeaders({Authorization: this.token})};
         return this.http.get(this.url + 'image/'+ imagen, headers );
+	}
+
+	deleteImage(id: string) {
+		this.token = localStorage.getItem('token');
+        const headers = {headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
+        return this.http.delete(this.url + 'image/'+ id, headers );
 	}
 
 

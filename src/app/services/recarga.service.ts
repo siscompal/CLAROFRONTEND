@@ -26,9 +26,10 @@ export class RecargaService {
 
     }
 
-    paquete(num: any, bols: string) {
-
-
+    ultimasRecargas() {
+        this.token = localStorage.getItem('token');
+        const headers = {headers: new HttpHeaders({'Content-type': 'application/json', Authorization: this.token})};
+        return this.http.get(this.url + 'last', headers);
     }
 
 }

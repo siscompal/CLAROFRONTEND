@@ -1,10 +1,11 @@
 .formcontainer {
-    width: 90%;
+    width: 100%;
     margin: auto;
 }
 
 form {
     width: 100%;
+    margin: auto;
 }
 
 mat-card {
@@ -13,8 +14,7 @@ mat-card {
 
 mat-form-field,
 input {
-    width: 92%;
-    margin: auto;
+    width: 90%;
 }
 
 mat-form-field {
@@ -24,9 +24,5 @@ mat-form-field {
 button {
     background-color: #e52427;
     margin-left: 24%;
-    width: 45%;
-}
-
-.miti {
     width: 45%;
 }

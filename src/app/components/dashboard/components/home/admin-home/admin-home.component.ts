@@ -71,10 +71,17 @@ export class AdminHomeComponent implements OnInit {
       ); 
   }
 
-  getImage(imagen: string) {
-    this.imageService.getImage(imagen).subscribe(
+
+  deleteImage(id: string) {
+    this.imageService.deleteImage(id).subscribe(
       response => {
-        console.log(response);
+        if(response) {
+          this.notificationService.success("Imagen eliminada");
+          this.ngOnInit();
+        }
+      },
+      error => {
+        this.notificationService.warn("No se pudo eliminar la imagen");
       }
     )
   }

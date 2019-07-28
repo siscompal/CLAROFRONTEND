@@ -10,8 +10,18 @@ button {
 
 mat-form-field,
 input {
-    width: 80%;
+    width: 90%;
     height: 20px;
     border-color: #e52427;
     margin-top: 10px;
+}
+
+form {
+    width: 100%;
+    margin: auto;
+}
+
+.miti {
+    width: 45%;
+    margin: 10px 0 5px 5px;
 }

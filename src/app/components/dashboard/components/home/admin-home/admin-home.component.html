@@ -7,37 +7,32 @@
     </div>
     <app-publi-home></app-publi-home>
 </div>
+<div>
+    <mat-card class="card col-8 mat-elevation-z15">
+        <mat-card-title>Subir imagen de publicidad</mat-card-title>
+        <mat-card-content>
+            <input type="file" (change)="fileChangeEvent($event)">
+            <button mat-flat-button (click)="subirImagen()">Enviar</button>
+        </mat-card-content>
+    </mat-card>
 
-<mat-card class="card mat-elevation-z15">
-    <mat-card-title>Subir imagen de publicidad</mat-card-title>
-    <mat-card-content>
-        <input type="file" (change)="fileChangeEvent($event)">
-        <button mat-flat-button (click)="subirImagen()">Enviar</button>
-    </mat-card-content>
-</mat-card>
+    <div class="col-8 col-sm-8 images">
+        <div class="card-header bg-dark text-white">
+            <h3><i class="far fa-images"></i>Imagenes cargadas</h3>
+        </div>
 
-<div class="images">
-    <div class="card-header bg-dark text-white">
-        <h3><i class="far fa-images"></i>Imagenes cargadas</h3>
-    </div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-md-4 text-center">
-                
+        <div class="card-body">
 
-                <ul *ngIf="!(images == null)">
-                    <li *ngFor="let image of images">
-                        <a>
-                                
-                            <img src="{{url+'image/'+image.imagePath}}" class="img">
-                        </a>
+            <div class="col-md-8">
+                <ul class="lista" *ngIf="!(images == null)">
+                    <li *ngFor="let image of images; let i = index">
+                        <img src="{{url+'image/'+image.imagePath}}" class="img" alt="Imagen no disponible" title="Imagen publicitaria {{i+1}}">
+                        <button class="button" (click)="deleteImage(image._id)" style="margin-left:5px"><mat-icon>clear</mat-icon></button>
                     </li>
                 </ul>
-
                 <p *ngIf="!(error == null)">{{error}}</p>
-
-        
             </div>
+
 
         </div>
     </div>
