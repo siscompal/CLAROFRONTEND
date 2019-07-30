@@ -31,7 +31,10 @@
         </ng-container>
         <ng-container matColumnDef="valor">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Valor</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.valor}}</mat-cell>
+            <mat-cell *matCellDef="let element">
+                <span *ngIf="element.tipo == 'asignado'" style="color: green">{{element.valor}}</span>
+                <span *ngIf="element.tipo == 'debitado'" style="color: red">{{element.valor}}</span>
+            </mat-cell>
         </ng-container>
         <ng-container matColumnDef="total">
             <mat-header-cell *matHeaderCellDef>Total con comisión</mat-header-cell>

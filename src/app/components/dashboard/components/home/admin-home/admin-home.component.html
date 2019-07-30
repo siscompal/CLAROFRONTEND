@@ -1,24 +1,19 @@
-<div class="row">
-    <div class="col-8 col-sm-8">
+<div>
+    <div class="col-8 col-sm-8 caja-cupo">
         <mat-card *ngIf="UserLogged['role'] == 'ROLE_ADMIN'">
             <mat-card-title class="cupo">Cupo disponible</mat-card-title>
             <mat-card-content class="cupo" style="font-weight: bold;">${{cupo}}</mat-card-content>
         </mat-card>
     </div>
-    <app-publi-home></app-publi-home>
+    <div>
+        <app-publi-home></app-publi-home>
+    </div>
+
 </div>
 
-<div>
-    <mat-card class="col-6 mat-elevation-z15 card">
-        <mat-card-title>Subir imagen de publicidad</mat-card-title>
-        <mat-card-content>
-            <input type="file" (change)="fileChangeEvent($event)">
-            <button mat-flat-button (click)="subirImagen()">Enviar</button>
-        </mat-card-content>
-    </mat-card>
+<div class=" row upload-section">
 
-    <div class="col-6 col-sm-6 images">
-
+    <div class="col-6 images">
         <div class="card-header text-white" style="background-color: #e52427;">
             <h5>Imagenes cargadas</h5>
         </div>
@@ -26,12 +21,23 @@
         <div class="card-body">
             <ul class="lista" *ngIf="!(images == null)">
                 <li *ngFor="let image of images; let i = index">
+
                     <img src="{{url+'image/'+image.imagePath}}" class="img" alt="Imagen no disponible" title="Imagen publicitaria {{i+1}}">
-                    <button class="button" (click)="deleteImage(image._id)" style="margin-left:5px"><mat-icon>clear</mat-icon></button>
+                    <button class="button" (click)="deleteImage(image._id)" style="margin-left:5px" matTooltip="Eliminar"><mat-icon>clear</mat-icon></button>
+
                 </li>
             </ul>
             <p *ngIf="!(error == null)">{{error}}</p>
-
         </div>
+    </div>
+
+    <div class="col-4">
+        <mat-card class="card mat-elevation-z15">
+            <mat-card-title>Agregar publicidad</mat-card-title>
+            <mat-card-content>
+                <input type="file" (change)="fileChangeEvent($event)">
+                <button mat-flat-button (click)="subirImagen()">Subir</button>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>

@@ -27,10 +27,10 @@
                 <ng-container matColumnDef="acciones">
                     <mat-header-cell *matHeaderCellDef></mat-header-cell>
                     <mat-cell *matCellDef="let element">
-                        <button mat-icon-button (click)="Activate(element, element._id)">
+                        <button mat-icon-button (click)="Activate(element, element._id)" matTooltip="Activar sim">
                             <mat-icon>check</mat-icon>
                         </button>
-                        <button mat-icon-button (click)="onEdit(element, element._id)">
+                        <button mat-icon-button (click)="onEdit(element, element._id)" matTooltip="Editar">
                             <mat-icon>edit</mat-icon>
                         </button>
 

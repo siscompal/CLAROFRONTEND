@@ -1,32 +1,37 @@
-mat-card {
-    margin: 0px auto;
-    margin-bottom: 20px;
-    width: 50%;
-}
-
-mat-card-content {
-    font-size: 20px;
-}
-
 .cupo {
     text-align: center;
 }
 
+.caja-cupo {
+    margin-bottom: 10px;
+}
+
+mat-form-field,
+input {
+    width: 100%;
+    margin: auto;
+}
+
 
 /*subida de imgs*/
+
+.upload-section {
+    width: 100%;
+    margin-top: 2%;
+}
 
 .card {
     margin: 0 0 2% 3%;
 }
 
 .images {
-    margin: 0 0 10% 1%;
-    width: 80%;
+    margin: 0 0 1% 1%;
+    width: 100%;
 }
 
 .img {
-    width: 35%;
-    margin-top: 10px;
+    width: 20%;
+    margin-top: 2%;
 }
 
 button {

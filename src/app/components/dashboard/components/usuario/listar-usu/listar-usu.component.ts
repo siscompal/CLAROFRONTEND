@@ -7,20 +7,27 @@ import { CrearUsuComponent } from '../crear-usu/crear-usu.component';
 import { EditarUsuComponent } from '../editar-usu/editar-usu.component';
 import { User } from 'src/app/models/user';
 
+
+
+
 @Component({
   selector: 'app-listar-usu',
   templateUrl: './listar-usu.component.html',
   styleUrls: ['./listar-usu.component.css']
 })
 export class ListarUsuComponent implements OnInit {
+ 
+  public listData: MatTableDataSource<any>;
+  public displayedColumns: string [] = ['nombre', 'apellido', 'iden', 'estado', 'rol', 'fecha', 'acciones'];
+  public searchKey: string;
+  
+
   constructor(
     private userService: UserService,
     private dialog: MatDialog,
     private notificationService: NotificationService) { }
 
-    public listData: MatTableDataSource<any>;
-    public displayedColumns: string [] = ['nombre', 'apellido', 'iden', 'estado', 'rol', 'fecha', 'acciones'];
-    public searchKey: string;
+   
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 

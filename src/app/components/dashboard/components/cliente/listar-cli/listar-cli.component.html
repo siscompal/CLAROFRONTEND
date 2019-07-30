@@ -38,20 +38,20 @@
         </ng-container>
         <ng-container matColumnDef="acciones">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
-            <mat-cell *matCellDef="let element" >
-                <button class="acciones" mat-icon-button *ngIf=" !(UserLogged['role'] == 'ROLE_ASESOR' || UserLogged['role'] == 'CLI_CLIENTE')" (click)="saldo(element._id)">
+            <mat-cell *matCellDef="let element">
+                <button class="acciones" mat-icon-button *ngIf=" !(UserLogged['role'] == 'ROLE_ASESOR' || UserLogged['role'] == 'CLI_CLIENTE')" (click)="saldo(element._id)" matTooltip="Asignar saldo">
                     <mat-icon  class="acciones">account_balance_wallet</mat-icon>
                 </button>
-                <button  mat-icon-button (click)="verCliente(element._id)">
+                <button mat-icon-button (click)="verCliente(element._id)" matTooltip="Ver">
                     <mat-icon class="acciones">visibility</mat-icon>
                 </button>
-                <button mat-icon-button (click)="onEdit(element, element._id)">
+                <button mat-icon-button (click)="onEdit(element, element._id)" matTooltip="Editar">
                     <mat-icon class="acciones">create</mat-icon>
                 </button>
-                <button mat-icon-button (click)="changePass(element._id)">
+                <button mat-icon-button (click)="changePass(element._id)" matTooltip="Cambiar contraseña">
                     <mat-icon class="acciones">vpn_key</mat-icon>
                 </button>
-                <button mat-icon-button color="warn" (click)="onDelete(element._id)" *ngIf=" UserLogged['role'] == 'ROLE_ADMIN' || UserLogged['role'] == 'CLI_MAYORISTA' || UserLogged['role'] == 'CLI_DISTRIBUIDOR' ">
+                <button mat-icon-button color="warn" (click)="onDelete(element._id)" *ngIf=" UserLogged['role'] == 'ROLE_ADMIN' || UserLogged['role'] == 'CLI_MAYORISTA' || UserLogged['role'] == 'CLI_DISTRIBUIDOR' " matTooltip="Eliminar">
                     <mat-icon class="acciones">delete_outline</mat-icon>
                 </button>
             </mat-cell>

@@ -14,7 +14,7 @@
                 <li *ngFor="let image of images; let i = index">
 
                     <img src="{{url+'image/'+image.imagePath}}" class="img" alt="Imagen no disponible" title="Imagen publicitaria {{i+1}}">
-                    <button class="button" (click)="deleteImage(image._id)" style="margin-left:5px"><mat-icon>clear</mat-icon></button>
+                    <button class="button" (click)="deleteImage(image._id)" style="margin-left:5px" matTooltip="Eliminar"><mat-icon>clear</mat-icon></button>
 
                 </li>
             </ul>
@@ -27,7 +27,7 @@
             <mat-card-title>Agregar publicidad</mat-card-title>
             <mat-card-content>
                 <input type="file" (change)="fileChangeEvent($event)">
-                <button mat-flat-button (click)="subirImagen()">Enviar</button>
+                <button mat-flat-button (click)="subirImagen()">Subir</button>
             </mat-card-content>
         </mat-card>
     </div>

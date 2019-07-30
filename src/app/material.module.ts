@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
+
 import {
     MatButtonModule,
     MatCardModule,
@@ -21,7 +22,8 @@ import {
     MatDialogModule,
     MatSnackBarModule,
     MatRadioModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTooltipModule
 } from '@angular/material';
 
 @NgModule({
@@ -44,7 +46,8 @@ import {
     MatDialogModule,
     MatSnackBarModule,
     MatRadioModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTooltipModule
     ],
     exports: [
     MatButtonModule,
@@ -65,7 +68,8 @@ import {
     MatDialogModule,
     MatSnackBarModule,
     MatRadioModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTooltipModule
     ]
 })
 

@@ -21,6 +21,7 @@ p {
 
 .mat-drawer {
     width: 270px;
+    background-color: lightgray;
 }
 
 drawer-container {
