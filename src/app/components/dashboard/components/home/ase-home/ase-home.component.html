@@ -1,1 +1,34 @@
-<app-publi-home></app-publi-home>
+<div>
+    <app-publi-home></app-publi-home>
+</div>
+
+<div class=" row upload-section">
+
+    <div class="col-6 images">
+        <div class="card-header text-white" style="background-color: #e52427;">
+            <h5>Imagenes cargadas</h5>
+        </div>
+
+        <div class="card-body">
+            <ul class="lista" *ngIf="!(images == null)">
+                <li *ngFor="let image of images; let i = index">
+
+                    <img src="{{url+'image/'+image.imagePath}}" class="img" alt="Imagen no disponible" title="Imagen publicitaria {{i+1}}">
+                    <button class="button" (click)="deleteImage(image._id)" style="margin-left:5px"><mat-icon>clear</mat-icon></button>
+
+                </li>
+            </ul>
+            <p *ngIf="!(error == null)">{{error}}</p>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <mat-card class="card mat-elevation-z15">
+            <mat-card-title>Agregar publicidad</mat-card-title>
+            <mat-card-content>
+                <input type="file" (change)="fileChangeEvent($event)">
+                <button mat-flat-button (click)="subirImagen()">Enviar</button>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

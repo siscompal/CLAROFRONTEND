@@ -31,8 +31,10 @@ export class CliHomeComponent implements OnInit {
   public saldos: Array<number> = [0,0,0];
   public n_saldos: Array<string> = ['Saldo', 'Comisión', 'Incentivo'];
   public mapSaldos: any;
-
   public recargaForm: FormGroup;
+  public origen: string;
+  public destino: string;
+
   constructor(
     private formBuilder: FormBuilder,
     private recargaService: RecargaService,
@@ -54,6 +56,7 @@ export class CliHomeComponent implements OnInit {
         Validators.required
       ]]
     });
+
     this.clientService.getMyInfo().subscribe(
       response => {
         let aux = response['cliente'];
@@ -75,6 +78,28 @@ export class CliHomeComponent implements OnInit {
 
     this.valor = null;
     this.numero = null;
+
+
+  }
+  
+  onSubmit(){
+    if(this.origen === this.destino) {
+      this.notificationService.warn("La bolsa de origen y destino no pueden ser iguales");
+    } else {
+      this.clientService.pasarSaldo(this.origen, this.destino).subscribe(
+        response => {
+          if(response) {
+            this.notificationService.success("Tranferencia exitosa");
+            this.ngOnInit();
+          }
+        },
+
+        error => {
+          this.notificationService.warn(error.error.message);
+          
+        }
+      )
+    }
   }
 
   setValue(valor: any) {

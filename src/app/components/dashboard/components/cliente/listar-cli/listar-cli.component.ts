@@ -98,7 +98,6 @@ export class ListarCliComponent implements OnInit {
   }
 
   changePass(id: string) {
-    console.log(id);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;

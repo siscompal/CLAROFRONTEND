@@ -12,6 +12,9 @@ mat-card-content {
     text-align: center;
 }
 
+
+/*subida de imgs*/
+
 .card {
     margin: 0 0 2% 3%;
 }
@@ -22,7 +25,7 @@ mat-card-content {
 }
 
 .img {
-    width: 50%;
+    width: 35%;
     margin-top: 10px;
 }
 

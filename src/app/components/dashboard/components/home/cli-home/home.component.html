@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row ">
     <div class="col-8 col-sm-8">
         <mat-card class="mat-elevation-z15 main">
             <mat-tab-group class="recar">
@@ -123,46 +123,35 @@
                 <mat-card class="card-saldos mat-elevation-z15">
                     <mat-card-title>{{bolsa[1]}}</mat-card-title>
                     <mat-card-content>${{bolsa[0]}}</mat-card-content>
-
                 </mat-card>
             </li>
-
             <li>
-                <div class="pasarSaldo">
-                    <mat-card class="mat-elevation-z15">
+                <mat-card class="card-saldos mat-elevation-z15">
+                    <mat-card-title>Pasar saldo</mat-card-title>
+                    <mat-card-content>
+                        <mat-form-field>
+                            <mat-select name="origen" [(ngModel)]="origen" placeholder="Bolsa origen">
+                                <mat-option value="comision">Comisión</mat-option>
+                                <mat-option value="incentivo">Incentivo</mat-option>
+                            </mat-select>
+                        </mat-form-field>
 
-                        <mat-card-title>Pasar saldo</mat-card-title>
-
-                        <mat-card-content>
-                            <mat-form-field class="miti">
-
-                                <mat-select name="origen" [(ngModel)]="origen" placeholder="Bolsa origen">
-                                    <mat-option value="comision">Comisión</mat-option>
-                                    <mat-option value="incentivo">Incentivo</mat-option>
-                                </mat-select>
-
-                            </mat-form-field>
-
-                            <mat-form-field class="miti">
-
-                                <mat-select name="destino" [(ngModel)]="destino" placeholder="Bolsa destino">
-                                    <span *ngIf="origen == 'comision'">
+                        <mat-form-field>
+                            <mat-select name="destino" [(ngModel)]="destino" placeholder="Bolsa destino">
+                                <span *ngIf="origen == 'comision'">
                                                 <mat-option value="saldo">Saldo</mat-option>
                                             </span>
-                                    <span *ngIf="origen == 'incentivo'">
+                                <span *ngIf="origen == 'incentivo'">
                                                 <mat-option value="saldo">Saldo</mat-option>
                                                 <mat-option value="comision">Comisión</mat-option>
                                             </span>
-                                </mat-select>
+                            </mat-select>
+                        </mat-form-field>
 
-                            </mat-form-field>
-                            <button class="transfer" mat-flat-button type="submit" (click)="onSubmit()">
-                                       Pasar
-                                    </button>
-                        </mat-card-content>
+                    </mat-card-content>
+                    <button class="trans-button" mat-button type="submit" (click)="onSubmit()">Pasar</button>
+                </mat-card>
 
-                    </mat-card>
-                </div>
             </li>
         </ul>
     </div>
@@ -172,7 +161,11 @@
 <div class="row publicidad">
 
     <div class=" col-6 col-sm-6">
+
         <div class="last mat-elevation-z8">
+            <div class="card-header text-white" style="background-color: #e52427;">
+                <h5><i></i>Últimas recargas</h5>
+            </div>
             <mat-table [dataSource]="listData">
                 <ng-container matColumnDef="fecha">
                     <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>

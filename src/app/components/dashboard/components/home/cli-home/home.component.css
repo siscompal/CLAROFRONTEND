@@ -128,12 +128,12 @@ ul .list {
 
 .card-saldos {
     width: 250px;
-    margin: 5px;
+    margin-bottom: 5px;
 }
 
 .publicidad {
     width: 90%;
-    margin: 0 0 5% 1%;
+    margin: 1% 0 5% 1%;
 }
 
 .hide {
@@ -179,16 +179,11 @@ mat-footer-row mat-footer-cell {
     padding-bottom: 15px;
 }
 
-.pasarSaldo {
-    margin-left: -6px;
-    width: 250px;
-}
-
-.transfer {
-    background-color: #e52427;
-    width: 100%;
-}
-
 .last {
-    margin-left: 0%;
+    margin: 0 0 0 -3%;
+}
+
+.trans-button {
+    background-color: #e52427;
+    margin: 0% !important;
 }

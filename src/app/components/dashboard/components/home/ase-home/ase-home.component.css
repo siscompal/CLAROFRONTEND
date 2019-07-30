@@ -26,3 +26,43 @@ button {
     margin-top: 20px;
     background-color: #e52427;
 }
+
+
+/*subida de imgs*/
+
+.upload-section {
+    width: 100%;
+    margin-top: 2%;
+}
+
+.card {
+    margin: 0 0 2% 3%;
+}
+
+.images {
+    margin: 0 0 1% 1%;
+    width: 100%;
+}
+
+.img {
+    width: 20%;
+    margin-top: 2%;
+}
+
+button {
+    background-color: #e52427;
+    margin-top: 6%;
+    width: 30%;
+}
+
+.lista li {
+    display: inline;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin: 0px auto;
+    text-align: center;
+}
+
+.button {
+    width: 10%;
+}
