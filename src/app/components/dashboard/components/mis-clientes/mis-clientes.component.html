@@ -27,8 +27,8 @@
         <ng-container matColumnDef="rol">
             <mat-header-cell *matHeaderCellDef>Rol</mat-header-cell>
             <mat-cell *matCellDef="let element">
-                <span [hidden]="!(element.role == 'CLI_CLIENTE')">Cliente</span>
-                <span [hidden]="!(element.role == 'CLI_DISTRIBUIDOR')">Distribuidor</span>
+                <span *ngIf="element.role == 'CLI_CLIENTE'">Cliente</span>
+                <span *ngIf="element.role == 'CLI_DISTRIBUIDOR'">Distribuidor</span>
             </mat-cell>
         </ng-container>
         <ng-container matColumnDef="fecha">
@@ -38,19 +38,19 @@
         <ng-container matColumnDef="acciones">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let element">
-                <button mat-icon-button *ngIf=" !(UserLogged['role'] == 'ROLE_ASESOR' || UserLogged['role'] == 'CLI_CLIENTE')">
+                <button mat-icon-button *ngIf=" !(UserLogged['role'] == 'ROLE_ASESOR' || UserLogged['role'] == 'CLI_CLIENTE')" matTooltip="Asignar saldo">
                     <mat-icon (click)="saldo(element._id)">account_balance_wallet</mat-icon>
                 </button>
-                <button mat-icon-button (click)="verCliente(element._id)">
+                <button mat-icon-button (click)="verCliente(element._id)" matTooltip="Ver">
                     <mat-icon>visibility</mat-icon>
                 </button>
-                <button mat-icon-button (click)="onEdit(element, element._id)">
+                <button mat-icon-button (click)="onEdit(element, element._id)" matTooltip="Editar">
                     <mat-icon>create</mat-icon>
                 </button>
-                <button mat-icon-button (click)="changePass(element._id)">
+                <button mat-icon-button (click)="changePass(element._id)" matTooltip="Cambiar contraseña">
                     <mat-icon>vpn_key</mat-icon>
                 </button>
-                <button mat-icon-button color="warn" (click)="onDelete(element._id)" *ngIf=" UserLogged['role'] == 'ROLE_ADMIN' || UserLogged['role'] == 'CLI_MAYORISTA' || UserLogged['role'] == 'CLI_DISTRIBUIDOR' ">
+                <button mat-icon-button color="warn" (click)="onDelete(element._id)" *ngIf=" UserLogged['role'] == 'ROLE_ADMIN' || UserLogged['role'] == 'CLI_MAYORISTA' || UserLogged['role'] == 'CLI_DISTRIBUIDOR' " matTooltip="Eliminar">
                     <mat-icon>delete_outline</mat-icon>
                 </button>
             </mat-cell>

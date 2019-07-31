@@ -70,7 +70,7 @@ constructor(
         response => {
           if ( response ) {
               this.status = 'success';
-              this.product = new Product('', '', '', null, null, null);
+              this.product = new Product('', '', '', 0, 0, 0);
               this.notificationService.success('Producto creado correctamente');
               this.dialogRef.close();
           } else {

@@ -1,9 +1,9 @@
 mat-card {
     height: inherit;
     width: 100%;
-    margin-left: 10px;
+    margin-left: 22px;
     background: #fff;
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 .example-tab-icon {
@@ -70,6 +70,10 @@ input {
     margin-top: 10px;
 }
 
+.input-recarga {
+    font-size: 20px;
+}
+
 .valor {
     background-color: #e52427;
     margin: 5px;
@@ -133,7 +137,7 @@ ul .list {
 
 .publicidad {
     width: 90%;
-    margin: 1% 0 5% 1%;
+    margin: 1% 0 5% 2%;
 }
 
 .hide {

@@ -9,16 +9,16 @@
                     <div class="buttons">
                         <ul>
                             <li *ngFor="let valor of btn1">
-                                <button mat-raised-button class="valor" (click)="setValue(valor)">
-                                        {{ valor }}
+                                <button mat-raised-button class="valor" (click)="setValue(valor.valor)" style="color:#fff;">
+                                        ${{ valor.nombre }}
                                     </button>
                             </li>
                         </ul>
 
                         <ul>
                             <li *ngFor="let valor of btn2">
-                                <button mat-raised-button class="valor" (click)="setValue(valor)">
-                                        {{ valor }}
+                                <button mat-raised-button class="valor" (click)="setValue(valor.valor)" style="color:#fff;">
+                                        ${{ valor.nombre }}
                                     </button>
                             </li>
                         </ul>
@@ -33,10 +33,10 @@
                             </mat-radio-group>
 
                             <mat-form-field>
-                                <input type="text" matInput formControlName="numero" placeholder="Número de celular" [(ngModel)]="numero" maxlength=10 minlength=10 />
+                                <input type="text" class="input-recarga" matInput formControlName="numero" placeholder="Número de celular" [(ngModel)]="numero" maxlength=10 minlength=10 />
                             </mat-form-field>
                             <mat-form-field>
-                                <input type="number" min="1000" matInput formControlName="valor" placeholder="Valor de la recarga" [(ngModel)]="valor" />
+                                <input type="number" min="1000" class="input-recarga" matInput formControlName="valor" placeholder="Valor de la recarga" [(ngModel)]="valor" />
                             </mat-form-field>
 
                             <button mat-button mat-flat-button type="submit" class="submit" [disabled]="!recargaForm.valid"> Recargar </button>
@@ -149,7 +149,7 @@
                         </mat-form-field>
 
                     </mat-card-content>
-                    <button class="trans-button" mat-button type="submit" (click)="onSubmit()">Pasar</button>
+                    <button class="trans-button" mat-button type="submit" (click)="onSubmit()" style="color:#fff;">Pasar</button>
                 </mat-card>
 
             </li>
@@ -185,7 +185,14 @@
                 </ng-container>
                 <ng-container matColumnDef="estado">
                     <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
-                    <mat-cell *matCellDef="let element">{{element.respuesta}}</mat-cell>
+                    <mat-cell *matCellDef="let element" style="color: green">
+                        <span *ngIf="element.respuesta == 'Recarga exitosa'">
+                            {{element.respuesta}}
+                        </span>
+                        <span *ngIf="!(element.respuesta == 'Recarga exitosa')" style="color: red">
+                            Recarga fallida
+                        </span>
+                    </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="loading">

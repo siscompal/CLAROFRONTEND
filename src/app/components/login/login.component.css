@@ -8,7 +8,7 @@ main {
 mat-card {
     margin: auto;
     width: 25%;
-    height: 65%;
+    height: 70%;
 }
 
 mat-form-field,
@@ -47,4 +47,10 @@ button {
 
 .error {
     color: red;
+}
+
+.logos {
+    width: 99px;
+    height: 100px;
+    margin-top: -20%;
 }

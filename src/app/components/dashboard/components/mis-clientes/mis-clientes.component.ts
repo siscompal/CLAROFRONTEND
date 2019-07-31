@@ -62,7 +62,8 @@ export class MisClientesComponent implements OnInit {
   onDelete(id: any) {
     if (confirm('¿Está seguro de que desea eliminar este cliente?')) {
       this.clientService.deleteCliente(id).subscribe(
-        Response => {
+        response => {
+          console.log(response);
           this.notificationService.warn('Cliente eliminado');
         }
       );

@@ -1,5 +1,6 @@
 .mat-toolbar {
-    background-color: #7c0000;
+    background-color: #ef3829;
+    margin-bottom: 30px;
 }
 
 .mat-toolbar,
@@ -11,10 +12,6 @@ p {
     flex: 1 1 auto;
 }
 
-.mat-drawer-container {
-    height: -webkit-fill-available;
-}
-
 .sidenavdiv {
     background-color: #7c0000;
 }
@@ -22,12 +19,6 @@ p {
 .mat-drawer {
     width: 270px;
     background-color: lightgray;
-}
-
-drawer-container {
-    width: 500px;
-    height: inherit;
-    border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .content-body {
@@ -38,7 +29,7 @@ drawer-container {
 }
 
 .content-sidenav {
-    width: 230;
+    width: 230px;
     padding: 20px;
 }
 
@@ -47,7 +38,7 @@ drawer-container {
 }
 
 mat-drawer-content {
-    margin-top: 30px;
+    /*   margin-top: 30px;*/
     margin-left: 20px;
 }
 
@@ -58,13 +49,22 @@ a {
 
 a:hover,
 a:active {
-    color: lightgray;
+    color: #000000;
 }
 
 .pointer {
     cursor: pointer;
 }
 
-.mat-drawer-container {
-    height: 550px;
+mat-drawer-container {
+    height: 100%;
+}
+
+.logo {
+    font-size: 25px;
+}
+
+.logo:hover,
+.logo:active {
+    color: gray;
 }

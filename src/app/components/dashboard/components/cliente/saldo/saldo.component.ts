@@ -20,6 +20,7 @@ export class SaldoComponent implements OnInit {
   }
 
   asignar(valor: any, obs: string) {
+    
     this.clientService.asignarSaldo(this.data['id'], valor, obs).subscribe(
       response => {
         if (response) {

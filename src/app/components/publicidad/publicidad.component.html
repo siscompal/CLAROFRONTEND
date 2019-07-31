@@ -1,12 +1,12 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="2000">
-    <span *ngIf="!(images.length==0)">
+    <span *ngIf="images && images!=null">
     <!-- <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         </ol>
      --> 
         <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active" data-interval="2000" >
+            <div class="carousel-item active" data-interval="2000" *ngIf="!(images[0].imagePath == undefined)">
                 <img [src]="url +'image/' + images[0].imagePath" class="d-block w-100" style="width:530px;height:450px;">
             </div>
            <!--  <div class="carousel-item" data-interval="2000">

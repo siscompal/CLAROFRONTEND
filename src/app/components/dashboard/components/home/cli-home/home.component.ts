@@ -20,8 +20,18 @@ export class CliHomeComponent implements OnInit {
 
   public valor: number;
   public numero: string;
-  public btn1: Array<any> = [1000, 2000, 3000, 5000];
-  public btn2: Array<any> = [10000, 20000, 30000, 50000];
+  public btn1: Array<any> = [
+    {nombre: "1.000", valor: 1000},
+    {nombre: "2.000", valor: 2000},
+    {nombre: "3.000", valor: 3000},
+    {nombre: "5.000", valor: 5000}
+  ];
+  public btn2: Array<any> = [
+    {nombre: "10.000", valor: 10000},
+    {nombre: "20.000", valor: 20000},
+    {nombre: "30.000", valor: 30000},
+    {nombre: "50.000", valor: 50000}
+  ];
   public bolsa: string;
   public bolsas: string[] = ['saldo', 'comision', 'incentivo'];
   public megas: any;

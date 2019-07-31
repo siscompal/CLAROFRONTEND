@@ -26,7 +26,7 @@ export class CrearCliComponent implements OnInit {
     private userService: UserService,
     private formBuilder: FormBuilder
   ) {
-    this.client = new Client('', '', '', '', '', '', '', '', '', '', null);
+    this.client = new Client('', '', '', '', '', '', '', '', '', '', 0);
   }
 
   ngOnInit() {
@@ -92,11 +92,12 @@ export class CrearCliComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.client);
     this.clientService.register(this.client).subscribe(
       response => {
         if (response) {
           this.status = 'success';
-          this.client = new Client('', '', '', '', '', '', '', '', '', '', null);
+          this.client = new Client('', '', '', '', '', '', '', '', '', '', 0);
           this.notificationService.success('Cliente creado correctamente');
           this.dialogRef.close();
         } else {
