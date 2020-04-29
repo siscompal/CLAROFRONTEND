@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
-import { MatTableDataSource, MatSort, MatPaginator, MatDialog, MatDialogConfig } from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
 import { NotificationService } from 'src/app/services/notification.service';
 import { Product } from 'src/app/models/product';
 import { CrearProComponent } from '../crear-pro/crear-pro.component';
@@ -22,8 +25,8 @@ export class ListarProComponent implements OnInit {
   public listData: MatTableDataSource<any>;
   public displayedColumns: string[] = ['nombre', 'precio', 'codigo', 'incentivo', 'acciones'];
   public searchKey: string;
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   ngOnInit() {
     this.productService.getProductos().subscribe(

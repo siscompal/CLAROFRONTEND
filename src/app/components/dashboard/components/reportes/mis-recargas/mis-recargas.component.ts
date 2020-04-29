@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
+import {MatSort} from '@angular/material/sort';
+import {MatPaginator} from '@angular/material/paginator';
 import { ClientService } from '../../../../../services/client.service';
 
 @Component({
@@ -15,8 +17,8 @@ export class MisRecargasComponent implements OnInit {
   public displayedColumns: string[] = ['fecha', 'monto', 'numero', 'producto', 'obs'];
   public searchKey: string;
 
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   ngOnInit() {
     this.clientService.getRecargas().subscribe(

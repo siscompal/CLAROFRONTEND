@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product} from '../../../../../models/product';
 import { ProductService } from '../../../../../services/product.service';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog';
 import { NotificationService } from 'src/app/services/notification.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 

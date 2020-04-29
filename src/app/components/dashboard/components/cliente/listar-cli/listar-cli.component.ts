@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ClientService } from 'src/app/services/client.service';
-import { MatTableDataSource, MatPaginator, MatDialog, MatDialogConfig } from '@angular/material';
+import {  MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginator} from '@angular/material/paginator'
 import { CrearCliComponent } from '../crear-cli/crear-cli.component';
 import { NotificationService } from 'src/app/services/notification.service';
 import { SaldoComponent } from '../saldo/saldo.component';
@@ -27,7 +29,7 @@ export class ListarCliComponent implements OnInit {
   public searchKey: string;
   public UserLogged: any;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   ngOnInit() {
     this.clientService.getClientes().subscribe(

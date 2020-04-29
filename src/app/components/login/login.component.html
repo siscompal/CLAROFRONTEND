@@ -1,29 +1,31 @@
 <main>
-
-    <mat-card class="mat-elevation-z15">
-        <div class="logo-claro">
+<div class="logo-claro">
             <img class="logos" src="./../../../../../../assets/logo-claro.png" />
-        </div>
-        <mat-card-title> Inicia sesión </mat-card-title>
+            <span>Recargas</span>
+</div>
+
+        
+    <div class="loginNew">
+        <mat-card-title> Iniciar Sesión </mat-card-title>
         <hr>
-
+      
         <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && loginSubmit()" novalidate>
-            <mat-form-field>
-                <input text="type" id="username" matInput formControlName="username" placeholder="Usuario">
+            
+                <input text="type" id="username" matInput formControlName="username" placeholder="Usuario" >
                 <mat-icon matSuffix>perm_identity</mat-icon>
-            </mat-form-field>
+            
 
-            <mat-form-field>
+            
                 <input type="password" id="password" matInput formControlName="password" placeholder="Contraseña">
                 <mat-icon matSuffix> vpn_key</mat-icon>
-            </mat-form-field>
+            
             <mat-error class="error" *ngIf="error != null">{{error}}</mat-error>
             <button mat-button type="submit" mat-flat-button [disabled]="!loginForm.valid">Iniciar sesión</button>
 
             <p class="registro">¿No tienes cuenta? <a [routerLink]="[ '/registrarse']">Registrate</a></p>
 
         </form>
-
-    </mat-card>
+    </div>
+    
 
 </main>

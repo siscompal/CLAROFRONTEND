@@ -42,6 +42,13 @@ import { EditarSimComponent } from './components/sim/editar-sim/editar-sim.compo
 import { ActivarSimComponent } from './components/sim/activar-sim/activar-sim.component';
 import { MayoDistriHomeComponent } from './components/home/mayo-distri-home/mayo-distri-home.component';
 import { PublicidadComponent } from '../publicidad/publicidad.component';
+import { NavVarComponent } from './components/nav-var/nav-var.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
     declarations: [
@@ -75,7 +82,8 @@ import { PublicidadComponent } from '../publicidad/publicidad.component';
       EditarSimComponent,
       ActivarSimComponent,
       MayoDistriHomeComponent,
-      PublicidadComponent
+      PublicidadComponent,
+      NavVarComponent
 
     ],
     imports: [
@@ -85,6 +93,12 @@ import { PublicidadComponent } from '../publicidad/publicidad.component';
       DashboardRoutingModule,
       MaterialModule,
       ReactiveFormsModule,
+      LayoutModule,
+      MatToolbarModule,
+      MatButtonModule,
+      MatSidenavModule,
+      MatIconModule,
+      MatListModule,
 
     ],
     providers: [

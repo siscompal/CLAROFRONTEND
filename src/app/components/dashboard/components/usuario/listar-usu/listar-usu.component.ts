@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatPaginator, MatDialog, MatDialogConfig } from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatTableDataSource} from '@angular/material/table';
+import { MatPaginator} from '@angular/material/paginator';
 import { UserService } from 'src/app/services/user.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { VerUsuComponent } from '../ver-usu/ver-usu.component';
@@ -29,7 +31,7 @@ export class ListarUsuComponent implements OnInit {
 
    
 
-    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   ngOnInit() {
     this.userService.getUsuarios().subscribe(

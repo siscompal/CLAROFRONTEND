@@ -4,7 +4,8 @@ import { NotificationService } from 'src/app/services/notification.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ClientService } from '../../../../../services/client.service';
 import { FiltrarProComponent } from '../../producto/filtrar-pro/filtrar-pro.component';
-import { MatTableDataSource, MatDialog, MatDialogConfig } from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatTableDataSource} from '@angular/material/table'
 
 
 @Component({

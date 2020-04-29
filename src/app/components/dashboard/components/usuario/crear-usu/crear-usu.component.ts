@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from '../../../../../models/user';
 import { UserService } from '../../../../../services/user.service';
 import { NotificationService } from 'src/app/services/notification.service';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog';
 
 
 @Component({

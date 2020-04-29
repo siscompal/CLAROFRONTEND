@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Client } from '../../../../../models/client';
 import { ClientService } from '../../../../../services/client.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog';
 import { NotificationService } from 'src/app/services/notification.service';
 import { UserService } from 'src/app/services/user.service';
 

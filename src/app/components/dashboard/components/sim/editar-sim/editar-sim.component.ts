@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { NotificationService } from 'src/app/services/notification.service';
 import { Activation } from '../../../../../models/activation';
 import { ActivationService } from '../../../../../services/activation.service';

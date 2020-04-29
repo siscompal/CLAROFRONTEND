@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatSort, MatPaginator, MatDialog, MatDialogConfig } from '@angular/material';
+import { MatTableDataSource} from '@angular/material/table';
+import {MatSort} from '@angular/material/sort';
+import { MatPaginator} from '@angular/material/paginator';
+import {MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ClientService } from '../../../../../services/client.service';
 
 @Component({
@@ -17,8 +20,8 @@ export class MisRepartosComponent implements OnInit {
   public UserLogged: any;
 
 
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   ngOnInit() {
     this.clientService.getRepartos().subscribe(

@@ -14,7 +14,7 @@ export class PublicidadComponent implements OnInit {
   public error: string;
   public url: string;
   constructor(
-    private imageService: ImageService,
+    private imageService: ImageService
   ) { }
 
   ngOnInit() {

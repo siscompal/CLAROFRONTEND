@@ -1,220 +1,192 @@
-<div class="row ">
-    <div class="col-8 col-sm-8">
-        <mat-card class="mat-elevation-z15 main">
-            <mat-tab-group class="recar">
-                <mat-tab>
-                    <ng-template mat-tab-label>
-                        Recargas
-                    </ng-template>
-                    <div class="buttons">
-                        <ul>
-                            <li *ngFor="let valor of btn1">
-                                <button mat-raised-button class="valor" (click)="setValue(valor.valor)" style="color:#fff;">
-                                        ${{ valor.nombre }}
-                                    </button>
-                            </li>
-                        </ul>
+<div class="main">
+    <div class="row ">
+        <div class="tarjeta-prin">
+            <mat-card  class="recar">
+                <mat-tab-group>
+                    <mat-tab >
+                        <ng-template mat-tab-label>
+                            Recargas
+                        </ng-template>
+                        <div class="buttons">
+                            <ul>
+                                <li *ngFor="let valor of btn1" class="btn-valor">
+                                    <button mat-raised-button class="valor" (click)="setValue(valor.valor)" style="color:#fff;">
+                                            ${{ valor.nombre }}
+                                        </button>
+                                </li>
+                            </ul>
 
-                        <ul>
-                            <li *ngFor="let valor of btn2">
-                                <button mat-raised-button class="valor" (click)="setValue(valor.valor)" style="color:#fff;">
-                                        ${{ valor.nombre }}
-                                    </button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="recarga">
-                        <form [formGroup]="recargaForm" (ngSubmit)="recargaForm.valid && recargar()" novalidate>
-                            <label>Seleccione la bolsa: </label>
-                            <mat-radio-group [(ngModel)]="bolsa" required formControlName="radio">
-                                <mat-radio-button *ngFor="let bolsa of bolsas" [value]="bolsa" required>
-                                    {{bolsa}} <span class="espacio"></span>
-                                </mat-radio-button>
-                            </mat-radio-group>
+                            <ul>
+                                <li *ngFor="let valor of btn2" class="btn-valor">
+                                    <button mat-raised-button class="valor" (click)="setValue(valor.valor)" style="color:#fff;">
+                                            ${{ valor.nombre }}
+                                        </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="recarga">
+                            <form [formGroup]="recargaForm" (ngSubmit)="recargaForm.valid && recargar()" novalidate>
+                                <label>Seleccione la bolsa: </label>
+                                <mat-radio-group [(ngModel)]="bolsa" required formControlName="radio">
+                                    <mat-radio-button *ngFor="let bolsa of bolsas" [value]="bolsa" required>
+                                        {{bolsa}} <span class="espacio"></span>
+                                    </mat-radio-button>
+                                </mat-radio-group>
 
-                            <mat-form-field>
-                                <input type="text" class="input-recarga" matInput formControlName="numero" placeholder="Número de celular" [(ngModel)]="numero" maxlength=10 minlength=10 />
-                            </mat-form-field>
-                            <mat-form-field>
-                                <input type="number" min="1000" class="input-recarga" matInput formControlName="valor" placeholder="Valor de la recarga" [(ngModel)]="valor" />
-                            </mat-form-field>
+                                <mat-form-field>
+                                    <input type="text" class="input-recarga" matInput formControlName="numero" placeholder="Número de celular" [(ngModel)]="numero" maxlength=10 minlength=10 />
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <input type="number" min="1000" class="input-recarga" matInput formControlName="valor" placeholder="Valor de la recarga" [(ngModel)]="valor" />
+                                </mat-form-field>
 
-                            <button mat-button mat-flat-button type="submit" class="submit" [disabled]="!recargaForm.valid"> Recargar </button>
-                        </form>
-                    </div>
+                                <button mat-button mat-flat-button type="submit" class="submit" [disabled]="!recargaForm.valid"> Recargar </button>
+                            </form>
+                        </div>
 
 
-                </mat-tab>
+                    </mat-tab>
 
-                <mat-tab>
-                    <ng-template mat-tab-label>
-                        Paquetes
-                    </ng-template>
-                    <!-- tabs internas-->
-                    <mat-tab-group class="paquetes">
-                        <mat-tab>
-                            <ng-template mat-tab-label>
-                                Navegación
-                            </ng-template>
-                            <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Navegación Claro" (click)="Claro('navegacion')">
+                    <mat-tab >
+                        <ng-template mat-tab-label >
+                            Paquetes
+                        </ng-template>
+                        <!-- tabs internas-->
+                        <div style="content=align-center">
+                            <button mat-raised-button  (click)="Claro('navegacion')" style="display:block; width:100%;margin:2px auto">
+                                                NAVEGACION
+                            </button>
+                            <button mat-raised-button  (click)="Claro('voz')" style="display:block; width:100%;margin:2px auto">
+                                                VOZ
+                            </button>
+                            <button mat-raised-button  (click)="Claro('todoIncluido')" style="display:block; width:100%;margin:2px auto" >
+                                                TODO INCLUIDO
+                            </button>
+                            <button mat-raised-button  (click)="Claro('apps')" style="display:block; width:100%;margin:2px auto" >
+                                                APPS
+                            </button>
+                            <button mat-raised-button  (click)="Claro('largaDistancia')" style="display:block; width:100%;margin:2px auto" >
+                                                LARGA DISTANCIA
+                            </button>
+                            <button mat-raised-button  (click)="Claro('chat')" style="display:block; width:100%;margin:2px auto" >
+                                                CHAT
+                            </button>
+                            <button mat-raised-button  (click)="Claro('minuteras')" style="display:block; width:100%;margin:2px auto" >
+                                                MINUTERAS
+                            </button>
+                            <button mat-raised-button  (click)="Claro('internetInalambrico')" style="display:block; width:100%;margin:2px auto" >
+                                                INALAMBRICOS
+                            </button>
+                            <button mat-raised-button  (click)="Claro('tv')" style="display:block; width:100%;margin:2px auto" >
+                                                TV PREPAGO
+                            </button>
+                        </div>
 
-                        </mat-tab>
-
-                        <mat-tab>
-                            <ng-template mat-tab-label>
-                                Voz
-                            </ng-template>
-                            <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Voz Claro" (click)="Claro('voz')">
-
-                        </mat-tab>
-
-                        <mat-tab>
-                            <ng-template mat-tab-label>
-                                Todo incluido
-                            </ng-template>
-                            <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Todo incluido Claro" (click)="Claro('todoIncluido')">
-                        </mat-tab>
-                        <mat-tab>
-                            <ng-template mat-tab-label>
-                                Aplicaciones
-                            </ng-template>
-                            <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Aplicaciones Claro" (click)="Claro('apps')">
-                        </mat-tab>
-                        <mat-tab>
-                            <ng-template mat-tab-label>
-                                Larga distancia
-                            </ng-template>
-                            <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Larga distancia Claro" (click)="Claro('largaDistancia')">
-                        </mat-tab>
-                        <mat-tab>
-                            <ng-template mat-tab-label>
-                                Chat
-                            </ng-template>
-                            <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Chat Claro" (click)="Claro('chat')">
-                        </mat-tab>
-                        <mat-tab>
-                            <ng-template mat-tab-label>
-                                Minuteras
-                            </ng-template>
-                            <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Minuteras Claro" (click)="Claro('minuteras')">
-                        </mat-tab>
-                        <mat-tab>
-                            <ng-template mat-tab-label>
-                                Internet inalámbrico
-                            </ng-template>
-                            <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="Internet inalámbrico Claro" (click)="Claro('internetInalambrico')">
-                        </mat-tab>
-                        <mat-tab>
-                            <ng-template mat-tab-label>
-                                TV prepago
-                            </ng-template>
-                            <input type="image" name="imgbtn" class="logos" src="./../../../../../../assets/logo-claro.png" alt="TV Prepago Claro" (click)="Claro('tv')">
-                        </mat-tab>
-                    </mat-tab-group>
-                    <!--fin tabs internas-->
-                </mat-tab>
-            </mat-tab-group>
-        </mat-card>
-    </div>
-
-    <div class="col-4 col-sm-4">
-        <ul>
-            <li *ngFor="let bolsa of mapSaldos">
-                <mat-card class="card-saldos mat-elevation-z15">
-                    <mat-card-title>{{bolsa[1]}}</mat-card-title>
-                    <mat-card-content>${{bolsa[0]}}</mat-card-content>
-                </mat-card>
-            </li>
-            <li>
-                <mat-card class="card-saldos mat-elevation-z15">
-                    <mat-card-title>Pasar saldo</mat-card-title>
-                    <mat-card-content>
-                        <mat-form-field>
-                            <mat-select name="origen" [(ngModel)]="origen" placeholder="Bolsa origen">
-                                <mat-option value="comision">Comisión</mat-option>
-                                <mat-option value="incentivo">Incentivo</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-
-                        <mat-form-field>
-                            <mat-select name="destino" [(ngModel)]="destino" placeholder="Bolsa destino">
-                                <span *ngIf="origen == 'comision'">
-                                                <mat-option value="saldo">Saldo</mat-option>
-                                            </span>
-                                <span *ngIf="origen == 'incentivo'">
-                                                <mat-option value="saldo">Saldo</mat-option>
-                                                <mat-option value="comision">Comisión</mat-option>
-                                            </span>
-                            </mat-select>
-                        </mat-form-field>
-
-                    </mat-card-content>
-                    <button class="trans-button" mat-button type="submit" (click)="onSubmit()" style="color:#fff;">Pasar</button>
-                </mat-card>
-
-            </li>
-        </ul>
-    </div>
-
-</div>
-
-<div class="row publicidad">
-
-    <div class=" col-6 col-sm-6">
-
-        <div class="last mat-elevation-z8">
-            <div class="card-header text-white" style="background-color: #e52427;">
-                <h5><i></i>Últimas recargas</h5>
-            </div>
-            <mat-table [dataSource]="listData">
-                <ng-container matColumnDef="fecha">
-                    <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
-                    <mat-cell *matCellDef="let element">{{element.fec_cre | date: 'dd/MM/yy'}}</mat-cell>
-                </ng-container>
-                <ng-container matColumnDef="hora">
-                    <mat-header-cell *matHeaderCellDef>Hora</mat-header-cell>
-                    <mat-cell *matCellDef="let element">{{element.fec_cre | date : 'shortTime'}}</mat-cell>
-                </ng-container>
-                <ng-container matColumnDef="numero">
-                    <mat-header-cell *matHeaderCellDef>Número</mat-header-cell>
-                    <mat-cell *matCellDef="let element">{{element.numero}}</mat-cell>
-                </ng-container>
-                <ng-container matColumnDef="monto">
-                    <mat-header-cell *matHeaderCellDef>Monto</mat-header-cell>
-                    <mat-cell *matCellDef="let element">{{element.monto}}</mat-cell>
-                </ng-container>
-                <ng-container matColumnDef="estado">
-                    <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
-                    <mat-cell *matCellDef="let element" style="color: green">
-                        <span *ngIf="element.respuesta == 'Recarga exitosa'">
-                            {{element.respuesta}}
-                        </span>
-                        <span *ngIf="!(element.respuesta == 'Recarga exitosa')" style="color: red">
-                            Recarga fallida
-                        </span>
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="loading">
-                    <mat-footer-cell *matFooterCellDef colspan="6">
-                        Cargando información...
-                    </mat-footer-cell>
-                </ng-container>
-                <ng-container matColumnDef="noData">
-                    <mat-footer-cell *matFooterCellDef colspan="6">
-                        No hay información que mostrar.
-                    </mat-footer-cell>
-                </ng-container>
-                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-                <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide': listData != null}"></mat-footer-row>
-                <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide': !(listData != null && listData.length == 0)}">
-                </mat-footer-row>
-            </mat-table>
+                        <!--fin tabs internas-->
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-card>
         </div>
-    </div>
-    <div class="col-6 col-sm-6">
-        <app-publicidad></app-publicidad>
+
+        <div class="bolsas-saldos">
+            <ul class="lista-saldo">
+                <li  *ngFor="let bolsa of mapSaldos">
+                    <mat-card class="card-saldos mat-elevation-z15">
+                        <mat-card-title>{{bolsa[1]}}</mat-card-title>
+                        <mat-card-content>${{bolsa[0]}}</mat-card-content>
+                    </mat-card>
+                </li>
+                <li>
+                    <mat-card class="card-saldos mat-elevation-z15">
+                        <mat-card-title>Pasar saldo</mat-card-title>
+                        <mat-card-content>
+                            <mat-form-field>
+                                <mat-select name="origen" [(ngModel)]="origen" placeholder="Bolsa origen">
+                                    <mat-option value="comision">Comisión</mat-option>
+                                    <mat-option value="incentivo">Incentivo</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <mat-select name="destino" [(ngModel)]="destino" placeholder="Bolsa destino">
+                                    <span *ngIf="origen == 'comision'">
+                                                    <mat-option value="saldo">Saldo</mat-option>
+                                                </span>
+                                    <span *ngIf="origen == 'incentivo'">
+                                                    <mat-option value="saldo">Saldo</mat-option>
+                                                    <mat-option value="comision">Comisión</mat-option>
+                                                </span>
+                                </mat-select>
+                            </mat-form-field>
+
+                        </mat-card-content>
+                        <button class="trans-button" mat-button type="submit" (click)="onSubmit()" style="color:#fff;">Pasar</button>
+                    </mat-card>
+
+                </li>
+            </ul>
+        </div>
+
     </div>
 
+    <div class="publicidad">
+
+        <div class=" ultimasRecargas" >
+
+            <div class="last mat-elevation-z15">
+                <div class="card-header text-white" style="background-color: #e52427;">
+                    <h5><i></i>Últimas Recargas</h5>
+                </div>
+                <mat-table [dataSource]="listData">
+                    <ng-container matColumnDef="fecha">
+                        <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{element.fec_cre | date: 'dd/MM/yy'}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="hora">
+                        <mat-header-cell *matHeaderCellDef>Hora</mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{element.fec_cre | date : 'shortTime'}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="numero">
+                        <mat-header-cell *matHeaderCellDef>Número</mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{element.numero}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="monto">
+                        <mat-header-cell *matHeaderCellDef>Monto</mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{element.monto}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="estado">
+                        <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+                        <mat-cell *matCellDef="let element" style="color: green">
+                            <span *ngIf="element.respuesta == 'Recarga exitosa'">
+                                {{element.respuesta}}
+                            </span>
+                            <span *ngIf="!(element.respuesta == 'Recarga exitosa')" style="color: red">
+                                Recarga fallida
+                            </span>
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="loading">
+                        <mat-footer-cell *matFooterCellDef colspan="6">
+                            Cargando información...
+                        </mat-footer-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="noData">
+                        <mat-footer-cell *matFooterCellDef colspan="6">
+                            No hay información que mostrar.
+                        </mat-footer-cell>
+                    </ng-container>
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide': listData != null}"></mat-footer-row>
+                    <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide': !(listData != null && listData.length == 0)}">
+                    </mat-footer-row>
+                </mat-table>
+            </div>
+        </div>
+        <div class="col-6 col-sm-6">
+            <app-publicidad></app-publicidad>
+        </div>
+
+    </div>
 </div>

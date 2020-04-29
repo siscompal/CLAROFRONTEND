@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 // Importar componentes
 import { MainComponent } from './components/main/main.component';
+import {NavVarComponent} from './components/nav-var/nav-var.component';
 import { CliHomeComponent } from './components/home/cli-home/home.component';
 import { PubliHomeComponent } from './components/home/publi-home/publi-home.component';
 import { ListarCliComponent } from './components/cliente/listar-cli/listar-cli.component';
@@ -70,7 +71,7 @@ const dashboardRoutes: Routes = [
     ]
 },
 
-{path: 'dashboard/cliente', component: MainComponent, canActivate: [ClienteGuard],
+{path: 'dashboard/cliente', component: NavVarComponent, canActivate: [ClienteGuard],
     children: [
         {path: '', redirectTo: 'home', pathMatch: 'full'},
         {path: 'home', component: CliHomeComponent },

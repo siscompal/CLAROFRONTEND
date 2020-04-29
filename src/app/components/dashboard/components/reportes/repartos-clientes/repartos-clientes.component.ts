@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ClientService } from 'src/app/services/client.service';
-import { MatTableDataSource, MatPaginator, MatDialog, MatDialogConfig } from '@angular/material';
+import { MatTableDataSource} from '@angular/material/table';
+import {MatSort} from '@angular/material/sort';
+import { MatPaginator} from '@angular/material/paginator';
+import {MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { NotificationService } from 'src/app/services/notification.service';
 import { UserService } from '../../../../../services/user.service';
 
@@ -22,7 +25,7 @@ export class RepartosClientesComponent implements OnInit {
   public searchKey: string;
   public UserLogged: any;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   ngOnInit() {
     this.clientService.getMovRepartos().subscribe(

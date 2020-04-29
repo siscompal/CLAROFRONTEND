@@ -3,7 +3,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NotificationService } from 'src/app/services/notification.service';
 import { Activation } from '../../../../../models/activation';
 import { ActivationService } from '../../../../../services/activation.service';
-import { MatTableDataSource, MatSort, MatPaginator, MatDialog, MatDialogConfig } from '@angular/material';
+import {  MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatTableDataSource} from '@angular/material/table';
+import {MatSort} from '@angular/material/sort';
+import {MatPaginator} from '@angular/material/paginator';
 import { EditarSimComponent } from '../../sim/editar-sim/editar-sim.component';
 import { ActivarSimComponent } from '../../sim/activar-sim/activar-sim.component';
 
@@ -21,8 +24,8 @@ export class PubliHomeComponent implements OnInit {
   public listData: MatTableDataSource<any>;
   public displayedColumns: string[] = ['numero', 'iccid', 'id_pdv', 'acciones'];
   public searchKey: string;
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   constructor(
     private formBuilder: FormBuilder,
