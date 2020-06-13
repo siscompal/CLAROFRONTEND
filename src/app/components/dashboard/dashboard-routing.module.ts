@@ -24,6 +24,7 @@ import { AseHomeComponent } from './components/home/ase-home/ase-home.component'
 import { MayoDistriHomeComponent } from './components/home/mayo-distri-home/mayo-distri-home.component';
 
 
+
 // Servicios
 import { AdminGuard } from '../../services/guards/admin.guard';
 import { AsesorGuard } from '../../services/guards/asesor.guard';
@@ -36,7 +37,7 @@ import { MisDatosComponent } from './components/mis-datos/mis-datos.component';
 
 const dashboardRoutes: Routes = [
 
-{path: 'dashboard/admin', component: MainComponent, canActivate: [AdminGuard],
+{path: 'dashboard/admin', component: NavVarComponent, canActivate: [AdminGuard],
     children: [
         {path: '', redirectTo: 'home', pathMatch: 'full'},
         {path: 'home', component: AdminHomeComponent },
@@ -49,7 +50,7 @@ const dashboardRoutes: Routes = [
     ]
 },
 
-{path: 'dashboard/asesor', component: MainComponent, canActivate: [AsesorGuard],
+{path: 'dashboard/asesor', component: NavVarComponent, canActivate: [AsesorGuard],
     children: [
         {path: '', redirectTo: 'home', pathMatch: 'full'},
         {path: 'home', component: AseHomeComponent },
@@ -60,7 +61,7 @@ const dashboardRoutes: Routes = [
     ]
 },
 
-{path: 'dashboard/cargas', component: MainComponent, canActivate: [CargasGuard],
+{path: 'dashboard/cargas', component: NavVarComponent, canActivate: [CargasGuard],
     children: [
         {path: '', redirectTo: 'home', pathMatch: 'full'},
         {path: 'home', component: AseHomeComponent },
@@ -77,11 +78,12 @@ const dashboardRoutes: Routes = [
         {path: 'home', component: CliHomeComponent },
         {path: 'recargas', component: MisRecargasComponent},
         {path: 'repartos', component: MisRepartosComponent},
-        {path: 'perfil', component: MisDatosComponent}
+        {path: 'perfil', component: MisDatosComponent},
+        {path: 'activar', component:  PubliHomeComponent}
     ]
 },
 
-{path: 'dashboard/distribuidor', component: MainComponent, canActivate: [DistribuidorGuard],
+{path: 'dashboard/distribuidor', component: NavVarComponent, canActivate: [DistribuidorGuard],
     children: [
         {path: '', redirectTo: 'home', pathMatch: 'full'},
         {path: 'home', component: MayoDistriHomeComponent },
@@ -92,7 +94,7 @@ const dashboardRoutes: Routes = [
     ]
 },
 
-{path: 'dashboard/mayorista', component: MainComponent, canActivate: [MayoristaGuard],
+{path: 'dashboard/mayorista', component: NavVarComponent, canActivate: [MayoristaGuard],
     children: [
         {path: '', redirectTo: 'home', pathMatch: 'full'},
         {path: 'home', component: MayoDistriHomeComponent },

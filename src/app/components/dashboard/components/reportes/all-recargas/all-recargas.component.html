@@ -5,38 +5,54 @@
             <mat-icon>close</mat-icon>
         </button>
     </mat-form-field>
+    &nbsp;
+  <button mat-raised-button color="accent" (click)="exportarFiltro()">Exportar este filtro
+  <mat-icon>trending_down</mat-icon>
+  </button>
 </div>
 
-<div class="mat-elevation-z8">
-    <mat-table [dataSource]="listData" matSort>
-        <ng-container matColumnDef="cliente">
-            <mat-header-cell *matHeaderCellDef>Cliente</mat-header-cell>
+<div *ngIf="busqueda"><app-filtro-recargas (datosBuscar)="buscarD($event)"></app-filtro-recargas></div>
+<div class="container">
+<button class="btn-busqueda-av"mat-raised-button color="primary" (click)="busqueda=!busqueda">Busqueda Avanzada
+  <mat-icon>search</mat-icon>
+  </button>
+  <button mat-raised-button color="primary" (click)="exportarXlsx()">Exportar
+  <mat-icon>cloud_download</mat-icon>
+  </button>
+  
+</div>
+
+<div class="mat-elevation-z8 contenedor">
+    
+    <mat-table [dataSource]="listData" matSort >
+        <ng-container matColumnDef="cliente" >
+            <mat-header-cell *matHeaderCellDef>CLIENTE</mat-header-cell>
             <mat-cell *matCellDef="let element">
-                <span *ngIf="element.client != null">{{element.client.name}}</span>
+                <span *ngIf="element.client != null">{{element.client| titlecase }}</span>
                 <span *ngIf="element.client == null">N/A</span>
             </mat-cell>
         </ng-container>
         <ng-container matColumnDef="monto">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Monto</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>MONTO</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.monto}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="numero">
-            <mat-header-cell *matHeaderCellDef>Número</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>NÚMERO</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.numero}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="producto">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Producto</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>PRODUCTO</mat-header-cell>
             <mat-cell *matCellDef="let element">
-                <span *ngIf="element.producto != null">{{element.producto.name}}</span>
+                <span *ngIf="element.producto != null">{{element.producto | titlecase}}</span>
                 <span *ngIf="element.producto == null">N/A</span>
             </mat-cell>
         </ng-container>
         <ng-container matColumnDef="fecha">
-            <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.fec_cre | date: 'dd/MM/yy'}}</mat-cell>
+            <mat-header-cell *matHeaderCellDef>FECHA</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.fec_cre}}</mat-cell>
         </ng-container>
-        <ng-container matColumnDef="obs">
-            <mat-header-cell *matHeaderCellDef>Observación</mat-header-cell>
+        <ng-container matColumnDef="obs" >
+            <mat-header-cell *matHeaderCellDef>OBSERVACIÓN</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.respuesta}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="loading">
@@ -44,7 +60,7 @@
                 Cargando información...
             </mat-footer-cell>
         </ng-container>
-        <ng-container matColumnDef="noData">
+        <ng-container matColumnDef="noData" >
             <mat-footer-cell *matFooterCellDef colspan="6">
                 No hay información que mostrar.
             </mat-footer-cell>
@@ -55,5 +71,5 @@
         <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide': !(listData != null && listData.length == 0)}">
         </mat-footer-row>
     </mat-table>
-    <mat-paginator [pageSize]=6 showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSize]=10 showFirstLastButtons></mat-paginator>
 </div>

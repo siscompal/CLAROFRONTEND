@@ -111,4 +111,18 @@ export class UserService {
 
 }
 
+export interface Saldo{
+    comision?:number,
+    fec_cre?: any,
+    obs?: string, 
+    valor?:number,
+    role?:string,
+    tipo?:string,
+    cliente?:string,
+    client_Origen?:string,
+    user_Origen?:string
+
+    
+}
+
 

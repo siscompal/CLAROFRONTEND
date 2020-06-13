@@ -6,12 +6,20 @@
       </button>
     </mat-form-field>
 </div>
-
+ <div class="container">
+  <button mat-raised-button color="primary" (click)="exportarSaldo()">Exportar
+  <mat-icon>cloud_download</mat-icon>
+  </button>
+  &nbsp;
+  <button mat-raised-button color="accent" (click)="exportarSaldoFiltrado()">Filtro
+  <mat-icon>trending_down</mat-icon>
+  </button>
+</div>  
 <div class="mat-elevation-z8">
     <mat-table [dataSource]="listData">
         <ng-container matColumnDef="cliente">
             <mat-header-cell *matHeaderCellDef>Cliente</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.cliente.name}}</mat-cell>
+            <mat-cell *matCellDef="let element">{{element.cliente}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="concepto">
             <mat-header-cell *matHeaderCellDef>Concepto</mat-header-cell>
@@ -26,7 +34,7 @@
         </ng-container>
         <ng-container matColumnDef="total">
             <mat-header-cell *matHeaderCellDef>Total</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.comision}}</mat-cell>
+            <mat-cell *matCellDef="let element">{{element.comision+element.valor}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="obs">
             <mat-header-cell *matHeaderCellDef>Obs</mat-header-cell>
@@ -35,13 +43,13 @@
         <ng-container matColumnDef="rol">
             <mat-header-cell *matHeaderCellDef>Rol</mat-header-cell>
             <mat-cell *matCellDef="let element">
-                <span *ngIf="element.cliente.role == 'CLI_CLIENTE'">Cliente</span>
-                <span *ngIf="element.cliente.role == 'CLI_DISTRIBUIDOR'">Distribuidor</span>
+                <span *ngIf="element.role == 'CLI_CLIENTE'">Cliente</span>
+                <span *ngIf="element.role == 'CLI_DISTRIBUIDOR'">Distribuidor</span>
             </mat-cell>
         </ng-container>
         <ng-container matColumnDef="fecha">
             <mat-header-cell *matHeaderCellDef>Fecha de creación</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.fec_cre | date: 'dd/MM/yy'}}</mat-cell>
+            <mat-cell *matCellDef="let element">{{element.fec_cre }}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="loading">
             <mat-footer-cell *matFooterCellDef colspan="6">

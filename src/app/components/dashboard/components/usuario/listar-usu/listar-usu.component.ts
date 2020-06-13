@@ -68,7 +68,8 @@ export class ListarUsuComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '50%';
+    dialogConfig.width = '90%';
+    dialogConfig.height = '100%';
     dialogConfig.data = {id: Id};
     this.dialog.open(VerUsuComponent, dialogConfig);
   }
@@ -77,7 +78,8 @@ export class ListarUsuComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '50%';
+    dialogConfig.width = '90%';
+    dialogConfig.height= '100%'
     dialogConfig.data = {usuario: user, id: Id};
     this.dialog.open(EditarUsuComponent, dialogConfig);
   }
@@ -86,7 +88,8 @@ export class ListarUsuComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '50%';
+    dialogConfig.width = '90%';
+    dialogConfig.height = '100%';
     this.dialog.open(CrearUsuComponent, dialogConfig);
   }
 

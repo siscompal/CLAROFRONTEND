@@ -1,9 +1,40 @@
 .sidenav-container {
     height: 100%;
+    width: 100%;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 5px;
+    margin: 0px auto;
+}
+
+.mat-list-item {
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+h6 {
+    width: 70%;
+    margin: 10px auto;
+    font-weight: bold;
+}
+
+.user {
+    font-size: 15px;
+    font-style: italic;
+    display: inline-block;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-top: 2px 10px;
+}
+
+.user:hover,
+.user:active {
+    color: #ccacac;
+}
+
+button:focus {
+    outline: none !important;
 }
 
 .sidenav {
-    width: 200px;
+    width: 250px;
 }
 
 .sidenav .mat-toolbar {
@@ -21,12 +52,14 @@
 
 .mat-toolbar {
     background-color: #ef3829;
+    height: 50px;
     margin-bottom: 30px;
+    border-radius: 5px;
 }
 
 .mat-toolbar,
 p {
-    color: #000000;
+    color: #ffffff;
 }
 
 .toolbar-spacer {
@@ -34,7 +67,7 @@ p {
 }
 
 .mat-drawer {
-    width: 270px;
+    width: 200px;
     background-color: #ffffff;
 }
 
@@ -47,13 +80,20 @@ p {
 
 .content-sidenav {
     width: 15%;
-    padding: 10px;
+    padding: 5px;
 }
 
 .inforMenu {
-    display: block;
+    display: inline-block;
+    width: 100%;
+    padding: 2px;
     align-content: center;
-    margin: 0px auto;
+}
+
+.inforMenu:hover {
+    border: #ffffff;
+    background: F3F0F0;
+    color: #ef3829;
 }
 
 mat-drawer-content {
@@ -68,7 +108,7 @@ a {
 
 a:hover,
 a:active {
-    color: #000000;
+    color: #ef3829;
 }
 
 .pointer {
@@ -77,9 +117,25 @@ a:active {
 
 .logo {
     font-size: 25px;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .logo:hover,
 .logo:active {
-    color: gray;
+    color: #ccacac;
+}
+
+@media(max-width:410px) {
+    .logo {
+        font-size: 20px;
+    }
+}
+
+@media(max-width:365px) {
+    .logo {
+        font-size: 12px;
+    }
+    .user {
+        font-size: 12px;
+    }
 }

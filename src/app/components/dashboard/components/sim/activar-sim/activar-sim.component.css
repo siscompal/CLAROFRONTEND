@@ -1,10 +1,11 @@
 .formcontainer {
-    width: 90%;
-    margin: auto;
+    width: 100%;
+    margin: 2px auto;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 form {
-    width: 100%;
+    width: 95%;
 }
 
 mat-card {
@@ -14,25 +15,48 @@ mat-card {
 mat-form-field,
 input {
     width: 92%;
-    margin: auto;
+    margin: 2px auto;
 }
 
 mat-form-field {
-    margin-right: 10px;
+    margin-right: 2px;
 }
 
 button {
-    margin-top: 20px;
-    margin-left: 25%;
+    width: 80%;
+    margin: 2px auto;
     background-color: #e52427;
+    color: #ffffff;
+    border-radius: 10px;
 }
 
 .miti {
-    width: 45%;
+    width: 90%;
 }
 
 .cdk-overlay-pane {
     width: 50%;
     position: static;
     pointer-events: auto;
+}
+
+@media(max-width:884px) {
+    .titulo {
+        font-size: 20px;
+    }
+}
+
+@media(max-width:764px) {
+    .titulo {
+        font-size: 12px;
+    }
+}
+
+@media(max-width:764px) {
+    .titulo {
+        font-size: 10px;
+    }
+    .form {
+        width: 95%;
+    }
 }

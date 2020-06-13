@@ -1,6 +1,7 @@
 .formcontainer {
-    width: 70%;
+    width: 100%;
     margin: auto;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 form {
@@ -23,8 +24,15 @@ mat-form-field {
 
 button {
     background-color: #e52427;
+    color: #ffffff;
 }
 
 .miti {
     width: 45%;
+}
+
+@media(max-width:522px) {
+    .miti {
+        width: 90%;
+    }
 }

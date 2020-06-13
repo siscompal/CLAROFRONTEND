@@ -1,3 +1,21 @@
 .carousel {
-    width: 100%;
+    display: block;
+    width: 90%;
+    border: none;
+    outline: none !important;
+}
+
+.carousel-item {
+    display: block;
+    width: 90%;
+    color: #ffffff;
+    border: none;
+}
+
+img {
+    display: inherit;
+    margin: 0px auto;
+    width: 95%;
+    height: 300px;
+    align-content: center;
 }

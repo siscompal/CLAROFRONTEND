@@ -52,7 +52,7 @@ export class ListarProComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '50%';
+    dialogConfig.width = '90%';
     this.dialog.open(CrearProComponent, dialogConfig);
   }
 
@@ -60,7 +60,8 @@ export class ListarProComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '50%';
+    dialogConfig.width = '90%';
+    dialogConfig.height='100%';
     dialogConfig.data = {id: id}; 
     this.dialog.open(VerProComponent, dialogConfig);
   }
@@ -69,7 +70,8 @@ export class ListarProComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '50%';
+    dialogConfig.width = '90%';
+    dialogConfig.height='100%';
     dialogConfig.data = {producto: producto, id: id}; 
     this.dialog.open(EditarProComponent, dialogConfig);
   }

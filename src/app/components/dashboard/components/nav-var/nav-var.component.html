@@ -3,15 +3,15 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+    <!--<mat-toolbar></mat-toolbar>-->
     
     <h6 *ngIf="UserLogged['role'] == 'CLI_CLIENTE' || 
         UserLogged['role'] == 'CLI_MAYORISTA' ||
-        UserLogged['role'] == 'CLI_DISTRIBUIDOR'">N° convenio: 110911</h6>
+        UserLogged['role'] == 'CLI_DISTRIBUIDOR'">Convenio: 110911</h6>
 
         <h6 *ngIf="UserLogged['role'] == 'CLI_CLIENTE' || 
              UserLogged['role'] == 'CLI_MAYORISTA' ||
-             UserLogged['role'] == 'CLI_DISTRIBUIDOR'">Mi código Efecty: 130{{UserLogged.efectyId}}</h6>
+             UserLogged['role'] == 'CLI_DISTRIBUIDOR'">Referencia: 130{{UserLogged.efectyId}}</h6>
    
    
     <mat-nav-list>
@@ -34,27 +34,33 @@
             <a mat-list-item [routerLink]="['productos']" *ngIf="UserLogged['role'] == 'ROLE_ADMIN'">
                 <mat-icon>shopping_cart</mat-icon> <span>Productos</span>
             </a>
-
-            <mat-list-item [matMenuTriggerFor]="informes">
+            <a mat-list-item  [routerLink]="['activar']"  *ngIf="UserLogged['role'] == 'CLI_CLIENTE' || UserLogged['role'] == 'CLI_DISTRIBUIDOR' || UserLogged['role'] == 'CLI_MAYORISTA'">
+                   <mat-icon>sim_card</mat-icon> <span>Activar Sim Cards </span>
+                </a>
+            
+            <a mat-list-item [matMenuTriggerFor]="informes"  (click)="icono=false"  >
                 <mat-icon>insert_chart</mat-icon>
-                <a matline>Informes</a>
-            </mat-list-item>
-            <mat-menu #informes="matMenu"  class="inforMenu">
-                <button mat-menu-item class="inforMenu" [routerLink]="['recargas']" [routerLinkActive]="['active']" *ngIf="UserLogged['role'] == 'ROLE_ADMIN' || UserLogged['role'] == 'ROLE_ASESOR' || UserLogged['role'] == 'ROLE_CARGAS'">
+                Informes
+                <mat-icon *ngIf="icono==true" >keyboard_arrow_right</mat-icon>
+                <mat-icon *ngIf="icono==false">keyboard_arrow_down</mat-icon>
+            </a>
+            <mat-menu #informes="matMenu"  class="inforMenu" >
+                <button mat-menu-item (click)="icono=!icono"  [routerLink]="['recargas']" [routerLinkActive]="['active']" *ngIf="UserLogged['role'] == 'ROLE_ADMIN' || UserLogged['role'] == 'ROLE_ASESOR' || UserLogged['role'] == 'ROLE_CARGAS'">
                     Estado recargas
                 </button>
-                <button mat-menu-item [routerLink]="['repartos']" [routerLinkActive]="['active']" *ngIf="UserLogged['role'] == 'ROLE_ADMIN' || UserLogged['role'] == 'ROLE_ASESOR' || UserLogged['role'] == 'ROLE_CARGAS'">
+                <button mat-menu-item  (click)="icono=!icono" [routerLink]="['repartos']" [routerLinkActive]="['active']" *ngIf="UserLogged['role'] == 'ROLE_ADMIN' || UserLogged['role'] == 'ROLE_ASESOR' || UserLogged['role'] == 'ROLE_CARGAS'">
                     Asignaciones y debitos
                 </button>
-                <button mat-menu-item class="inforMenu" [routerLink]="['repartos']" [routerLinkActive]="['active']" *ngIf="UserLogged['role'] == 'CLI_CLIENTE' || UserLogged['role'] == 'CLI_DISTRIBUIDOR' || UserLogged['role'] == 'CLI_MAYORISTA'">
+                <button mat-menu-item  [routerLink]="['repartos']" [routerLinkActive]="['active']"  (click)="icono=!icono" *ngIf="UserLogged['role'] == 'CLI_CLIENTE' || UserLogged['role'] == 'CLI_DISTRIBUIDOR' || UserLogged['role'] == 'CLI_MAYORISTA'">
                    <!--Asignaciones y debitos--> Saldos
                 </button>
-                <button mat-menu-item class="inforMenu" [routerLink]="['recargas']" [routerLinkActive]="['active']" *ngIf="UserLogged['role'] == 'CLI_CLIENTE' ">
+                <button mat-menu-item   (click)="icono=!icono" [routerLink]="['recargas']" [routerLinkActive]="['active']" *ngIf="UserLogged['role'] == 'CLI_CLIENTE' ">
                     Estado recargas
                 </button>
-                <button mat-menu-item class="inforMenu" [routerLink]="['repartos-clientes']" [routerLinkActive]="['active']" *ngIf="UserLogged['role'] == 'CLI_DISTRIBUIDOR' || UserLogged['role'] == 'CLI_MAYORISTA'">
+                <button mat-menu-item  (click)="icono=!icono" [routerLink]="['repartos-clientes']" [routerLinkActive]="['active']" *ngIf="UserLogged['role'] == 'CLI_DISTRIBUIDOR' || UserLogged['role'] == 'CLI_MAYORISTA'">
                     Movimientos a clientes
                 </button>
+                
             </mat-menu>
     </mat-nav-list>
 
@@ -72,11 +78,17 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
        <a mat-list-item [routerLink]="['/']">
-                <span class="logo">Claro Recargas</span>
+                <span class="logo">CLARO RECARGAS</span>
         </a>
         <span class="toolbar-spacer"></span>
         <a class="pointer" (click)="logout()">
+        
+            <span class="user">
+            <mat-icon>person</mat-icon>
+            {{UserLogged.name|titlecase}}
+            
             <mat-icon>exit_to_app</mat-icon>
+            </span>
         </a> 
       
     </mat-toolbar>

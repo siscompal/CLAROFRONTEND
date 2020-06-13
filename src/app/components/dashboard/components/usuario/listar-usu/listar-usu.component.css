@@ -1,5 +1,13 @@
 .mat-elevation-z8 {
-    padding: 30px;
+    width: 100%;
+    overflow: auto;
+    margin: 5px auto;
+}
+
+.mat-table {
+    width: 100%;
+    min-width: 650px;
+    padding: 2px;
 }
 
 .hide {
@@ -24,6 +32,35 @@ mat-footer-row mat-footer-cell {
     border-radius: 5px;
 }
 
+.mat-header-cell {
+    background-color: #4fc3f7;
+    color: #000000;
+    font-size: 12px;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    border-top: 1px solid #01579b;
+    border-bottom: 2px solid #01579b;
+    margin-bottom: 2px;
+}
+
+.acciones {
+    padding: 0;
+    min-width: 0;
+    width: 20%;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    margin: 2px;
+}
+
+.acciones-ic {
+    background-repeat: no-repeat;
+    display: inline-block;
+    fill: currentColor;
+    height: 24px;
+    width: 100%;
+}
+
 .search-form-field div.mat-form-field-underline {
     display: none;
 }
@@ -43,4 +80,11 @@ mat-footer-row mat-footer-cell {
 
 .mat-form-field-appearance-legacy .mat-form-field-wrapper {
     padding-bottom: 15px;
+}
+
+@media screen and (max-width:650px) {
+    .table {
+        display: block;
+        overflow-x: auto;
+    }
 }

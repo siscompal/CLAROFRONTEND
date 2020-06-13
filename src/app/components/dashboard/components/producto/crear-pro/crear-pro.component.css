@@ -29,3 +29,14 @@ button {
 .miti {
     width: 45%;
 }
+
+@media(max-width:440px) {
+    .miti {
+        padding: 0px;
+        margin: 0px;
+        width: 90%;
+    }
+    .mat-card-title {
+        font-size: 18px;
+    }
+}

@@ -1,9 +1,17 @@
 .mat-elevation-z8 {
-    padding: 30px;
+    width: 100%;
+    overflow: auto;
+    margin: 5px auto;
 }
 
 .hide {
     display: none;
+}
+
+.mat-table {
+    width: 100%;
+    min-width: 560px;
+    padding: 2px;
 }
 
 mat-footer-row mat-footer-cell {
@@ -22,6 +30,49 @@ mat-footer-row mat-footer-cell {
     padding: 0px 10px;
     background-color: #f5f5f5;
     border-radius: 5px;
+}
+
+.mat-cell {
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    margin: 0px;
+    border-left: 1px solid #eeeeee;
+}
+
+.mat-header-cell {
+    background-color: #4fc3f7;
+    color: #000000;
+    font-size: 12px;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    border-top: 1px solid #01579b;
+    border-bottom: 2px solid #01579b;
+    margin-bottom: 2px;
+}
+
+.mat-column-nombre {
+    width: 50%;
+    flex: none;
+}
+
+.mat-column-precio {
+    width: 10%;
+    flex: none;
+}
+
+.mat-column-codigo {
+    width: 10%;
+    flex: none;
+}
+
+.mat-column-incentivo {
+    width: 10%;
+    flex: none;
+}
+
+.mat-column-acciones {
+    width: 20%;
+    flex: none;
 }
 
 .search-form-field div.mat-form-field-underline {
@@ -43,4 +94,17 @@ mat-footer-row mat-footer-cell {
 
 .mat-form-field-appearance-legacy .mat-form-field-wrapper {
     padding-bottom: 15px;
+}
+
+@media screen and (max-width:550px) {
+    .table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+@media(max-width:650px) {
+    .mat-column-nombre {
+        display: table-cell;
+    }
 }

@@ -6,9 +6,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import {HttpClientModule} from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 
 // Modulos propios
 import { MaterialModule } from '../../material.module';
+import { MatMomentDateModule} from '@angular/material-moment-adapter';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 // Componentes
 import { MainComponent } from './components/main/main.component';
@@ -49,6 +54,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { FiltroRecargasComponent } from './components/reportes/filtro-recargas/filtro-recargas.component';
+import { FiltroRepartosComponent } from './components/reportes/filtro-repartos/filtro-repartos.component';
+
 
 @NgModule({
     declarations: [
@@ -83,7 +91,9 @@ import { MatListModule } from '@angular/material/list';
       ActivarSimComponent,
       MayoDistriHomeComponent,
       PublicidadComponent,
-      NavVarComponent
+      NavVarComponent,
+      FiltroRecargasComponent,
+      FiltroRepartosComponent
 
     ],
     imports: [
@@ -99,6 +109,9 @@ import { MatListModule } from '@angular/material/list';
       MatSidenavModule,
       MatIconModule,
       MatListModule,
+      MatDatepickerModule,
+      MatMomentDateModule,
+      NgbModule
 
     ],
     providers: [

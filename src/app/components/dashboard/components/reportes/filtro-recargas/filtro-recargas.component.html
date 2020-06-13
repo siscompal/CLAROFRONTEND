@@ -1,0 +1,45 @@
+<form #formFiltro="ngForm" class = "contenedor-fil" > 
+<div>
+  <div class="fechas">
+      <mat-form-field  class ="cl-fechas" >
+      <mat-label>Fecha Inicial</mat-label> 
+      <input matInput [matDatepicker]="picker" name="fechaInicial" #fechaInicial=ngModel [(ngModel)]="filtro.fechaInicial">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker ></mat-datepicker>
+      </mat-form-field > 
+      <mat-form-field  class ="cl-fechas" >
+      <mat-label>Fecha Final</mat-label> 
+      <input matInput [matDatepicker]="picker2" name="fechaFinal" #fechaFinal=ngModel [(ngModel)]="filtro.fechaFinal">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field > 
+  </div>
+    
+    <mat-form-field  class = "st-etiquieta" > 
+      <mat-label > Cliente </mat-label > 
+      <input name="nombreCliente" #nombreCliente="ngModel" [(ngModel)]="filtro.nombreCliente" matInput  placeholder = "Nombre Cliente"  > 
+    </mat-form-field > 
+
+    <mat-form-field  class = "st-etiquieta" > 
+      <mat-label >Número </mat-label > 
+      <input  matInput type="number"   placeholder = "Celular" name="numero" #numero=ngModel [(ngModel)]="filtro.numero"> 
+    </mat-form-field > 
+    <mat-form-field>
+      <mat-label>Productos</mat-label>
+      <mat-select [(ngModel)]="filtro.producto" name="producto">
+      <mat-option value="seleccione">Seleccione </mat-option>
+        <mat-option *ngFor="let producto of productos" [value]="producto">
+          {{producto|lowercase}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field  class = "st-etiquieta" > 
+      <mat-label >Observación </mat-label > 
+      <input  matInput  placeholder = "Observación" name="observacion" #observacion="ngModel" [(ngModel)]="filtro.observacion" > 
+    </mat-form-field > 
+    <button class="btn-buscar" mat-raised-button color="primary" (click)="buscar()">Buscar
+    <mat-icon>search</mat-icon>
+    </button>
+  </div>
+</form>

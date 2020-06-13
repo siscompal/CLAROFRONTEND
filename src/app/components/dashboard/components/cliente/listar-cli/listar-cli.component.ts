@@ -35,6 +35,7 @@ export class ListarCliComponent implements OnInit {
     this.clientService.getClientes().subscribe(
       list => {
         const array = list['clientes'];
+        console.log(array);
         this.listData = new MatTableDataSource(array);
         this.listData.paginator = this.paginator;
       }
@@ -58,7 +59,8 @@ export class ListarCliComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '50%';
+    dialogConfig.width = '90%';
+    dialogConfig.height = '100%';
     this.dialog.open(CrearCliComponent, dialogConfig);
   }
 
@@ -85,7 +87,8 @@ export class ListarCliComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '50%';
+    dialogConfig.width = '90%';
+    dialogConfig.height = '100%';
     dialogConfig.data = {id: id};
     this.dialog.open(VerCliComponent, dialogConfig);
   }
@@ -94,7 +97,8 @@ export class ListarCliComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '50%';
+    dialogConfig.width = '90%';
+    dialogConfig.height = '90%';
     dialogConfig.data = {cliente: cliente, id: id};
     this.dialog.open(EditarCliComponent, dialogConfig);
   }
@@ -103,7 +107,7 @@ export class ListarCliComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '50%';
+    dialogConfig.width = '80%';
     dialogConfig.data = {id: id};
     this.dialog.open(CambiarPassComponent, dialogConfig);
   }

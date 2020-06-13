@@ -5,7 +5,7 @@
                 <mat-tab-group>
                     <mat-tab >
                         <ng-template mat-tab-label>
-                            Recargas
+                            RECARGAS
                         </ng-template>
                         <div class="buttons">
                             <ul>
@@ -26,15 +26,15 @@
                         </div>
                         <div class="recarga">
                             <form [formGroup]="recargaForm" (ngSubmit)="recargaForm.valid && recargar()" novalidate>
-                                <label>Seleccione la bolsa: </label>
+                                <label style="margin:5px">Seleccione la bolsa: </label>
                                 <mat-radio-group [(ngModel)]="bolsa" required formControlName="radio">
                                     <mat-radio-button *ngFor="let bolsa of bolsas" [value]="bolsa" required>
                                         {{bolsa}} <span class="espacio"></span>
                                     </mat-radio-button>
                                 </mat-radio-group>
-
+ 
                                 <mat-form-field>
-                                    <input type="text" class="input-recarga" matInput formControlName="numero" placeholder="Número de celular" [(ngModel)]="numero" maxlength=10 minlength=10 />
+                                    <input type="celphone" class="input-recarga" matInput formControlName="numero" placeholder="Número de celular" [(ngModel)]="numero" maxlength=10 minlength=10 />
                                 </mat-form-field>
                                 <mat-form-field>
                                     <input type="number" min="1000" class="input-recarga" matInput formControlName="valor" placeholder="Valor de la recarga" [(ngModel)]="valor" />
@@ -49,35 +49,35 @@
 
                     <mat-tab >
                         <ng-template mat-tab-label >
-                            Paquetes
+                            PAQUETES
                         </ng-template>
                         <!-- tabs internas-->
-                        <div style="content=align-center">
-                            <button mat-raised-button  (click)="Claro('navegacion')" style="display:block; width:100%;margin:2px auto">
+                        <div class="cont-btn-paq">
+                            <button mat-raised-button  (click)="Claro('navegacion')"class="btn-paq">
                                                 NAVEGACION
                             </button>
-                            <button mat-raised-button  (click)="Claro('voz')" style="display:block; width:100%;margin:2px auto">
+                            <button mat-raised-button  (click)="Claro('voz')" class="btn-paq">
                                                 VOZ
                             </button>
-                            <button mat-raised-button  (click)="Claro('todoIncluido')" style="display:block; width:100%;margin:2px auto" >
+                            <button mat-raised-button  (click)="Claro('todoIncluido')"class="btn-paq" >
                                                 TODO INCLUIDO
                             </button>
-                            <button mat-raised-button  (click)="Claro('apps')" style="display:block; width:100%;margin:2px auto" >
+                            <button mat-raised-button  (click)="Claro('apps')" class="btn-paq" >
                                                 APPS
                             </button>
-                            <button mat-raised-button  (click)="Claro('largaDistancia')" style="display:block; width:100%;margin:2px auto" >
+                            <button mat-raised-button  (click)="Claro('largaDistancia')" class="btn-paq" >
                                                 LARGA DISTANCIA
                             </button>
-                            <button mat-raised-button  (click)="Claro('chat')" style="display:block; width:100%;margin:2px auto" >
+                            <button mat-raised-button  (click)="Claro('chat')" class="btn-paq" >
                                                 CHAT
                             </button>
-                            <button mat-raised-button  (click)="Claro('minuteras')" style="display:block; width:100%;margin:2px auto" >
+                            <button mat-raised-button  (click)="Claro('minuteras')" class="btn-paq" >
                                                 MINUTERAS
                             </button>
-                            <button mat-raised-button  (click)="Claro('internetInalambrico')" style="display:block; width:100%;margin:2px auto" >
+                            <button mat-raised-button  (click)="Claro('internetInalambrico')" class="btn-paq" >
                                                 INALAMBRICOS
                             </button>
-                            <button mat-raised-button  (click)="Claro('tv')" style="display:block; width:100%;margin:2px auto" >
+                            <button mat-raised-button  (click)="Claro('tv')" class="btn-paq" >
                                                 TV PREPAGO
                             </button>
                         </div>
@@ -93,7 +93,7 @@
                 <li  *ngFor="let bolsa of mapSaldos">
                     <mat-card class="card-saldos mat-elevation-z15">
                         <mat-card-title>{{bolsa[1]}}</mat-card-title>
-                        <mat-card-content>${{bolsa[0]}}</mat-card-content>
+                        <mat-card-content>${{bolsa[0]|number}}</mat-card-content>
                     </mat-card>
                 </li>
                 <li>
@@ -134,8 +134,8 @@
         <div class=" ultimasRecargas" >
 
             <div class="last mat-elevation-z15">
-                <div class="card-header text-white" style="background-color: #e52427;">
-                    <h5><i></i>Últimas Recargas</h5>
+                <div class="card-header " >
+                    <h5><i></i>Últimas Recargas:</h5>
                 </div>
                 <mat-table [dataSource]="listData">
                     <ng-container matColumnDef="fecha">
@@ -184,9 +184,10 @@
                 </mat-table>
             </div>
         </div>
-        <div class="col-6 col-sm-6">
+        <div class="publi">
             <app-publicidad></app-publicidad>
         </div>
+        
 
     </div>
 </div>

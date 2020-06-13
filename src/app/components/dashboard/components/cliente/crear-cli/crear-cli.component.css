@@ -35,3 +35,9 @@ button {
     position: static;
     pointer-events: auto;
 }
+
+@media(max-width:470px) {
+    .miti {
+        width: 90%;
+    }
+}

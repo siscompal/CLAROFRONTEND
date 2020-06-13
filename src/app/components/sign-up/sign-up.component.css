@@ -1,6 +1,6 @@
 .formcontainer {
     padding-top: 5%;
-    width: 50%;
+    width: 80%;
     margin: auto;
 }
 
@@ -35,4 +35,10 @@ button {
     width: 50%;
     position: static;
     pointer-events: auto;
+}
+
+@media(max-width:450px) {
+    .miti {
+        width: 90%;
+    }
 }

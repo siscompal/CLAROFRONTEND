@@ -10,11 +10,11 @@
     </mat-form-field>
 </div>
 
-<div class="mat-elevation-z8">
+<div class="mat-elevation-z8"> 
     <mat-table [dataSource]="listData" matSort>
-        <ng-container matColumnDef="nombre">
+        <ng-container matColumnDef="nombre" > 
             <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+            <mat-cell  *matCellDef="let element">{{element.name}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="precio">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Precio</mat-header-cell>
@@ -61,5 +61,5 @@
         <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide': !(listData != null && listData.length == 0)}">
         </mat-footer-row>
     </mat-table>
-    <mat-paginator [pageSize]=6 showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSize]=15 showFirstLastButtons></mat-paginator>
 </div>

@@ -13,18 +13,18 @@ body {
 
 snack-bar-container.success {
     background-color: #5cb85c;
-    color: #fff;
+    color: #ffffff;
     margin-top: 50px;
 }
 
 snack-bar-container.warn {
-    background-color: #f99157;
-    color: #fff;
+    background-color: #F60F00;
+    color: #ffffff;
 }
 
 snack-bar-container.notification simple-snack-bar {
     font-size: 18px !important;
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -35,4 +35,8 @@ input[type=number]::-webkit-outer-spin-button {
 
 input[type=number] {
     -moz-appearance: textfield;
+}
+
+.button {
+    outline: none !important;
 }

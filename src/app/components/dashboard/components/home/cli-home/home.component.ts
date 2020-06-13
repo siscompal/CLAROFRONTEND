@@ -140,7 +140,8 @@ export class CliHomeComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '60%';
+    dialogConfig.width = '90%';
+    dialogConfig.height = '95%';
     dialogConfig.data = {
       tipo_pro: tipo,
       operador: 'claro'};

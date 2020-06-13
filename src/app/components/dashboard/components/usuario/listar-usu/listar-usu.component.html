@@ -13,26 +13,26 @@
 <div class="mat-elevation-z8">
     <mat-table [dataSource]="listData">
         <ng-container matColumnDef="nombre">
-            <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+            <mat-header-cell *matHeaderCellDef>NOMBRE</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.name | titlecase}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="apellido">
-            <mat-header-cell *matHeaderCellDef>Apellido</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.lastname}}</mat-cell>
+            <mat-header-cell *matHeaderCellDef>APELLIDO</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.lastname | titlecase}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="iden">
-            <mat-header-cell *matHeaderCellDef>Identificación</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>IDENTIFICACIÓN</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.iden}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="estado">
-            <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>ESTADO</mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <span [hidden]="!(element.status == true)">Activo</span>
                 <span [hidden]="!(element.status == false)">Inactivo</span>
             </mat-cell>
         </ng-container>
         <ng-container matColumnDef="rol">
-            <mat-header-cell *matHeaderCellDef>Rol</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>ROL</mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <span [hidden]="!(element.role == 'ROLE_ASESOR')">Asesor</span>
                 <span [hidden]="!(element.role == 'ROLE_CARGAS')">Cargas</span>
@@ -40,15 +40,15 @@
             </mat-cell>
         </ng-container>
         <ng-container matColumnDef="fecha">
-            <mat-header-cell *matHeaderCellDef>Fecha de creación</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>FECHA DE CREACIÓN</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.fec_cre | date: 'dd/MM/yy'}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="acciones">
-            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-header-cell *matHeaderCellDef></mat-header-cell> 
             <mat-cell *matCellDef="let element">
-                <button mat-icon-button (click)="verUsuario(element._id)" matTooltip="Ver"><mat-icon>visibility</mat-icon></button>
-                <button mat-icon-button (click)="onEdit(element, element._id)" matTooltip="Editar"><mat-icon>create</mat-icon></button>
-                <button mat-icon-button color="warn" (click)="onDelete(element._id)" matTooltip="Eliminar"><mat-icon>delete_outline</mat-icon></button>
+                <button class="acciones"mat-icon-button (click)="verUsuario(element._id)" matTooltip="Ver"><mat-icon class="ic-acciones">visibility</mat-icon></button>
+                <button class="acciones" mat-icon-button (click)="onEdit(element, element._id)" matTooltip="Editar"><mat-icon class="ic-acciones">create</mat-icon></button>
+                <button class="acciones" mat-icon-button color="warn" (click)="onDelete(element._id)" matTooltip="Eliminar"><mat-icon class="ic-acciones">delete_outline</mat-icon></button>
             </mat-cell>
         </ng-container>
         <ng-container matColumnDef="loading">
@@ -67,5 +67,5 @@
         <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide': !(listData != null && listData.length == 0)}">
         </mat-footer-row>
     </mat-table>
-    <mat-paginator [pageSize]=6 showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSize]=15 showFirstLastButtons></mat-paginator>
 </div>

@@ -1,6 +1,72 @@
+.mat-elevation-z8 {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    margin: 5px auto;
+}
+
+.mat-table {
+    width: 100%;
+    height: 100%;
+    min-width: 463px;
+    min-height: 600px;
+    padding: 2px;
+}
+
+.mat-cell {
+    display: block;
+    padding-left: 11px;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    margin: 0px;
+    border-left: 1px solid #eeeeee;
+}
+
+.mat-header-cell {
+    background-color: #4fc3f7;
+    color: #000000;
+    font-size: 12px;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    border-top: 1px solid #01579b;
+    border-bottom: 2px solid #01579b;
+    margin-bottom: 2px;
+}
+
+.mat-column-incentivo {
+    flex: none;
+    width: 10%;
+    padding: 2px;
+}
+
+.mat-column-acciones {
+    flex: none;
+    width: 15%;
+    padding: 2px;
+}
+
+.mat-column-nombre {
+    flex: none;
+    width: 35%;
+    padding: 2px;
+}
+
+.mat-column-descripcion {
+    flex: none;
+    width: 40%;
+    padding: 2px;
+}
+
 button {
     background-color: #e52427;
-    width: 150px;
+    width: 100%;
+    color: #ffffff;
+    margin: 2px auto;
+    outline: none !important;
+}
+
+span {
+    margin: 0px auto;
 }
 
 .espacio {
@@ -8,35 +74,33 @@ button {
 }
 
 mat-form-field {
-    margin-left: 40px;
+    margin-left: 10px;
 }
 
-.mat-column-nombre {
-    margin-right: 20px;
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 30% !important;
-    width: 30% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+.numero {
+    font-size: large;
+    font-weight: bold;
 }
 
-.mat-column-descripcion {
-    margin-right: 20px;
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 35% !important;
-    width: 35% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+@media screen and (max-width:700px) {
+    .mat-table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+@media screen and (max-width:463px) {
+    .mat-card-title {
+        font-size: 15px;
+    }
+    .mat-radio-button {
+        width: 90%;
+    }
+}
+
+@media screen and (max-height:600px) {
+    .mat-table {
+        display: block;
+        overflow-y: auto;
+    }
 }

@@ -1,0 +1,45 @@
+<form #formFiltroRecargas="ngForm" class = "contenedor-fil" > 
+<div>
+  <div class="fechas"> 
+      <mat-form-field  class ="cl-fechas" >
+      <mat-label>Fecha Inicial</mat-label> 
+      <input matInput [matDatepicker]="picker" name="fechaInicial" #fechaInicial=ngModel [(ngModel)]="filtro.fechaInicial"  >
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker ></mat-datepicker>
+      </mat-form-field > 
+      <mat-form-field  class ="cl-fechas" >
+      <mat-label>Fecha Final</mat-label> 
+      <input matInput [matDatepicker]="picker2" name="fechaFinal" #fechaFinal="ngModel" [(ngModel)]="filtro.fechaFinal">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field > 
+  </div>
+    
+    <mat-form-field  class = "st-etiquieta" > 
+      <mat-label > Cliente </mat-label > 
+      <input name="nombreCliente"   matInput  placeholder = "Nombre Cliente" name="nombre" #nombre="ngModel" [(ngModel)]="filtro.nombreCliente" > 
+    </mat-form-field >
+
+    <mat-form-field  class = "st-etiquieta" > 
+      <mat-label >Tipo </mat-label > 
+      <input  matInput type="text"   placeholder = "Tipo" name="tipo" #tipo="ngModel" [(ngModel)]="filtro.tipo"  > 
+    </mat-form-field > 
+    <mat-form-field class="st-etiquieta">
+      <mat-label>Concepto</mat-label>
+      <mat-select  name="concepto" #name="ngModel" [(ngModel)]="filtro.concepto">
+      <mat-option value="seleccione">Seleccione </mat-option>
+        <mat-option *ngFor="let concepto of conceptos" [value]="concepto.value">
+          {{concepto.value}}
+        </mat-option>
+      </mat-select> 
+    </mat-form-field>
+    <mat-form-field  class = "st-etiquieta" > 
+      <mat-label >Asignado Por </mat-label > 
+      <input  matInput  placeholder = "Asignado Por" name="asignado" #asignado="ngModel" [(ngModel)]="filtro.asignado"  > 
+    </mat-form-field > 
+    
+    <button class="btn-buscar" mat-raised-button color="primary" (click)="buscar()">Buscar
+    <mat-icon>search</mat-icon>
+    </button>
+  </div>
+</form> 

@@ -1,80 +1,82 @@
-<div class="row">
-    <div class="col-8 col-sm-8">
-        <div class="search-div">
-            <mat-form-field class="search-form-field" floatLabel="never">
-                <input matInput [(ngModel)]="searchKey" placeholder="Buscar" autocomplete="off" (keyup)="applyFilter()">
-                <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
-                    <mat-icon>close</mat-icon>
-                </button>
-            </mat-form-field>
+<div class="contenido">
+    
+        <div class="registro">
+                <mat-card>
+                    <mat-card-title> Registrar SIM Cards </mat-card-title>
+
+                    <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && onSubmit()" novalidate>
+                        <mat-form-field>
+                            <input type="text" name="numero" [(ngModel)]="activation.numero" formControlName="numero" matInput placeholder="Número de celular">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input type="text" name="iccid" [(ngModel)]="activation.iccid" formControlName="iccid" matInput placeholder="Código ICCID">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input type="text" name="id_pdv" [(ngModel)]="activation.id_pdv" formControlName="id_pdv" matInput placeholder="ID punto de venta" [readonly]="true">
+                        </mat-form-field>
+                        <button class="button" mat-flat-button [disabled]="!registerForm.valid">Registrar</button>
+                    </form>
+                </mat-card>
+            
         </div>
+   
+            
 
-        <div class="mat-elevation-z8">
-            <mat-table [dataSource]="listData" matSort>
-                <ng-container matColumnDef="numero">
-                    <mat-header-cell *matHeaderCellDef>Número</mat-header-cell>
-                    <mat-cell *matCellDef="let element">{{element.numero}}</mat-cell>
-                </ng-container>
-                <ng-container matColumnDef="iccid">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header>ICCID</mat-header-cell>
-                    <mat-cell *matCellDef="let element">{{element.iccid}}</mat-cell>
-                </ng-container>
-                <ng-container matColumnDef="id_pdv">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header>ID punto de venta</mat-header-cell>
-                    <mat-cell *matCellDef="let element">{{element.id_pdv}}</mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="acciones">
-                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
-                    <mat-cell *matCellDef="let element">
-                        <button mat-icon-button (click)="Activate(element, element._id)" matTooltip="Activar sim">
-                            <mat-icon>check</mat-icon>
+            <div class="activacion">
+                <div class="search-div">
+                <h3>Activar SIM CARDS</h3>
+                    <mat-form-field  floatLabel="never">
+                        <input matInput [(ngModel)]="searchKey" placeholder="Buscar" autocomplete="off" (keyup)="applyFilter()">
+                        <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
+                            <mat-icon>close</mat-icon>
                         </button>
-                        <button mat-icon-button (click)="onEdit(element, element._id)" matTooltip="Editar">
-                            <mat-icon>edit</mat-icon>
-                        </button>
+                     </mat-form-field>
+                </div>
+                <mat-table [dataSource]="listData" matSort class="tabla_act">
+                    <ng-container matColumnDef="numero">
+                        <mat-header-cell *matHeaderCellDef>Número</mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{element.numero}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="iccid">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>ICCID</mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{element.iccid}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="id_pdv">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>ID punto de venta</mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{element.id_pdv}}</mat-cell>
+                    </ng-container> 
 
-                    </mat-cell>
-                </ng-container>
-                <ng-container matColumnDef="loading">
-                    <mat-footer-cell *matFooterCellDef colspan="6">
-                        Cargando información...
-                    </mat-footer-cell>
-                </ng-container>
-                <ng-container matColumnDef="noData">
-                    <mat-footer-cell *matFooterCellDef colspan="6">
-                        No hay información que mostrar.
-                    </mat-footer-cell>
-                </ng-container>
-                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-                <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide': listData != null}"></mat-footer-row>
-                <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide': !(listData != null && listData.length == 0)}">
-                </mat-footer-row>
-            </mat-table>
-            <mat-paginator [pageSize]=6 showFirstLastButtons></mat-paginator>
-        </div>
-    </div>
+                    <ng-container matColumnDef="acciones">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let element">
+                            <button  (click)="Activate(element, element._id)" matTooltip="Activar sim">
+                                <mat-icon>check</mat-icon>
+                            </button>
+                            <button (click)="onEdit(element, element._id)" matTooltip="Editar">
+                                <mat-icon>edit</mat-icon>
+                            </button>
 
-    <div class="col-4 col-sm-4 registro">
-        <div class="formcontainer" class="mat-elevation-z8">
-            <mat-card>
-                <mat-card-title> Registrar sim </mat-card-title>
-
-                <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && onSubmit()" novalidate>
-                    <mat-form-field>
-                        <input type="text" name="numero" [(ngModel)]="activation.numero" formControlName="numero" matInput placeholder="Número de celular">
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input type="text" name="iccid" [(ngModel)]="activation.iccid" formControlName="iccid" matInput placeholder="Código ICCID">
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input type="text" name="id_pdv" [(ngModel)]="activation.id_pdv" formControlName="id_pdv" matInput placeholder="ID punto de venta" [readonly]="true">
-                    </mat-form-field>
-                    <button class="button" mat-flat-button [disabled]="!registerForm.valid">Registrar</button>
-                </form>
-            </mat-card>
-        </div>
-    </div>
-
+                        </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="loading">
+                        <mat-footer-cell *matFooterCellDef colspan="6">
+                            Cargando información...
+                        </mat-footer-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="noData">
+                        <mat-footer-cell *matFooterCellDef colspan="6">
+                            No hay información que mostrar.
+                        </mat-footer-cell>
+                    </ng-container>
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide': listData != null}"></mat-footer-row>
+                    <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide': !(listData != null && listData.length == 0)}">
+                    </mat-footer-row> 
+                </mat-table>
+                <mat-paginator [pageSize]=6 showFirstLastButtons></mat-paginator>
+            </div>
 </div>
+
+   
+

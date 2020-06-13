@@ -13,6 +13,7 @@ import { map, shareReplay } from 'rxjs/operators';
 export class NavVarComponent implements OnInit {
   public UserLogged: any;
   public showFiller: boolean;
+  public icono=true;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(

@@ -1,5 +1,5 @@
 <div class="search-div">
-    <button mat-raised-button (click)="onCreate()" *ngIf=" !(UserLogged['role'] == 'CLI_CLIENTE') ">
+    <button  mat-raised-button (click)="onCreate()" *ngIf=" !(UserLogged['role'] == 'CLI_CLIENTE') ">
         <mat-icon>add</mat-icon>Crear
     </button>
     <mat-form-field class="search-form-field" floatLabel="never">
@@ -13,19 +13,19 @@
 <div class="mat-elevation-z8">
     <mat-table [dataSource]="listData">
         <ng-container matColumnDef="nombre">
-            <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+            <mat-header-cell *matHeaderCellDef>NOMBRE</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.name | titlecase}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="apellido">
-            <mat-header-cell *matHeaderCellDef>Apellido</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.lastname}}</mat-cell>
+            <mat-header-cell *matHeaderCellDef>APELLIDO</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.lastname | titlecase}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="iden">
-            <mat-header-cell *matHeaderCellDef>Identificación</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>IDENTIFICACIÓN</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.iden}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="rol">
-            <mat-header-cell *matHeaderCellDef>Rol</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>ROL</mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <span [hidden]="!(element.role == 'CLI_CLIENTE')">Cliente</span>
                 <span [hidden]="!(element.role == 'CLI_DISTRIBUIDOR')">Distribuidor</span>
@@ -33,26 +33,26 @@
             </mat-cell>
         </ng-container>
         <ng-container matColumnDef="fecha">
-            <mat-header-cell *matHeaderCellDef>Fecha de creación</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>FECHA CREACIÓN</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.fec_cre | date: 'dd/MM/yy'}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="acciones">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <button class="acciones" mat-icon-button *ngIf=" !(UserLogged['role'] == 'ROLE_ASESOR' || UserLogged['role'] == 'CLI_CLIENTE')" (click)="saldo(element._id)" matTooltip="Asignar saldo">
-                    <mat-icon  class="acciones">account_balance_wallet</mat-icon>
+                    <mat-icon  class="acciones-ic">account_balance_wallet</mat-icon>
                 </button>
-                <button mat-icon-button (click)="verCliente(element._id)" matTooltip="Ver">
-                    <mat-icon class="acciones">visibility</mat-icon>
+                <button class="acciones" mat-icon-button (click)="verCliente(element._id)" matTooltip="Ver">
+                    <mat-icon class="acciones-ic">visibility</mat-icon>
                 </button>
-                <button mat-icon-button (click)="onEdit(element, element._id)" matTooltip="Editar">
-                    <mat-icon class="acciones">create</mat-icon>
+                <button class="acciones" mat-icon-button (click)="onEdit(element, element._id)" matTooltip="Editar">
+                    <mat-icon class="acciones-ic">create</mat-icon>
                 </button>
-                <button mat-icon-button (click)="changePass(element._id)" matTooltip="Cambiar contraseña">
-                    <mat-icon class="acciones">vpn_key</mat-icon>
+                <button class="acciones" mat-icon-button (click)="changePass(element._id)" matTooltip="Cambiar contraseña">
+                    <mat-icon class="acciones-ic">vpn_key</mat-icon>
                 </button>
-                <button mat-icon-button color="warn" (click)="onDelete(element._id)" *ngIf=" UserLogged['role'] == 'ROLE_ADMIN' || UserLogged['role'] == 'CLI_MAYORISTA' || UserLogged['role'] == 'CLI_DISTRIBUIDOR' " matTooltip="Eliminar">
-                    <mat-icon class="acciones">delete_outline</mat-icon>
+                <button class="acciones" mat-icon-button color="warn" (click)="onDelete(element._id)" *ngIf=" UserLogged['role'] == 'ROLE_ADMIN' || UserLogged['role'] == 'CLI_MAYORISTA' || UserLogged['role'] == 'CLI_DISTRIBUIDOR' " matTooltip="Eliminar">
+                    <mat-icon class="acciones-ic">delete_outline</mat-icon>
                 </button>
             </mat-cell>
         </ng-container>
@@ -72,5 +72,5 @@
         <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide': !(listData != null && listData.length == 0)}">
         </mat-footer-row>
     </mat-table>
-    <mat-paginator [pageSize]=6 showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSize]=15 showFirstLastButtons></mat-paginator>
 </div>

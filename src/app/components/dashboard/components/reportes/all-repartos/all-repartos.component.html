@@ -5,25 +5,40 @@
             <mat-icon>close</mat-icon>
         </button>
     </mat-form-field>
+    &nbsp;
+  <button mat-raised-button color="accent" (click)="exportarSaldoFiltrado()">Exportar este filtro
+  <mat-icon>trending_down</mat-icon>
+  </button>
 </div>
-
+<div *ngIf="busquedaAvanzada==true"><app-filtro-repartos (datosBuscar)="buscar($event)"></app-filtro-repartos></div>
+<div class="container">
+<button mat-raised-button color="accent" (click)="busquedaAvanzada=!busquedaAvanzada" class="btn-ava">Busqueda Avanzada
+  <mat-icon>search</mat-icon>
+  </button>
+  &nbsp;
+  <button mat-raised-button color="primary" (click)="exportarSaldo()">Exportar
+  <mat-icon>cloud_download</mat-icon>
+  </button>
+  
+  
+</div>
 <div class="mat-elevation-z8">
     <mat-table [dataSource]="listData" matSort>
         <ng-container matColumnDef="cliente">
             <mat-header-cell *matHeaderCellDef>Cliente</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.cliente.name}}</mat-cell>
+            <mat-cell *matCellDef="let element">{{element.cliente|titlecase}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="tipo">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</mat-header-cell>
             <mat-cell *matCellDef="let element">
-                <span [hidden]="!(element.cliente.role == 'CLI_CLIENTE')">Cliente</span>
-                <span [hidden]="!(element.cliente.role == 'CLI_DISTRIBUIDOR')">Distribuidor</span>
-                <span [hidden]="!(element.cliente.role == 'CLI_MAYORISTA')">Mayorista</span>
+                <span [hidden]="!(element.role == 'CLI_CLIENTE')">Cliente</span>
+                <span [hidden]="!(element.role == 'CLI_DISTRIBUIDOR')">Distribuidor</span>
+                <span [hidden]="!(element.role == 'CLI_MAYORISTA')">Mayorista</span>
             </mat-cell>
         </ng-container>
         <ng-container matColumnDef="fecha">
             <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.fec_cre | date: 'dd/MM/yy'}}</mat-cell>
+            <mat-cell *matCellDef="let element">{{element.fec_cre }}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="concepto">
             <mat-header-cell *matHeaderCellDef>Concepto</mat-header-cell>
@@ -43,8 +58,8 @@
         <ng-container matColumnDef="usuario">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Asignado por</mat-header-cell>
             <mat-cell *matCellDef="let element">
-                <span *ngIf="element.client_Origen != null">{{element.client_Origen.name}}</span>
-                <span *ngIf="element.client_Origen == null">N/A</span>
+                <span *ngIf="element.user_Origen != null">{{element.user_Origen}}</span>
+                <span *ngIf="element.user_Origen == null">N/A</span>
             </mat-cell>
         </ng-container>
         <ng-container matColumnDef="obs">
@@ -67,5 +82,5 @@
         <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide': !(listData != null && listData.length == 0)}">
         </mat-footer-row>
     </mat-table>
-    <mat-paginator [pageSize]=6 showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSize]=10 showFirstLastButtons></mat-paginator>
 </div>

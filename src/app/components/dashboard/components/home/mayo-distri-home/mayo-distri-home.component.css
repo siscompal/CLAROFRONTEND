@@ -34,7 +34,7 @@ ul li {
 }
 
 .miti {
-    width: 45%;
+    width: 100%;
 }
 
 mat-form-field {
@@ -43,6 +43,8 @@ mat-form-field {
 
 button {
     background-color: #e52427;
+    color: #ffffff;
     margin-left: 8%;
     width: 80%;
+    outline: none !important;
 }

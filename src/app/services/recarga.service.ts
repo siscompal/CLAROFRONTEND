@@ -33,3 +33,14 @@ export class RecargaService {
     }
 
 }
+export interface RecargaCliente{
+  
+    fec_cre?:any;
+    monto?:number;
+    numero?:string;
+    producto?:string;
+    client?:string
+    respuesta?:string;
+  
+
+}

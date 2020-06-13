@@ -1,0 +1,45 @@
+.contenedor-fil {
+    min-width: 150px;
+    max-width: 500 px;
+    width: 95%;
+    border: white 4px groove;
+    margin: 5px auto;
+}
+
+.st-etiquieta {
+    width: 20%;
+    margin: 5px;
+}
+
+.fechas {
+    margin: 0px auto;
+    width: 80%;
+}
+
+.cl-fechas {
+    align-content: center;
+    width: 30%;
+    margin: 10px;
+}
+
+.btn-buscar {
+    display: block;
+    width: 30%;
+    margin: 4px auto;
+    background-color: #01579b;
+}
+
+@media(max-width:414px) {
+    .cl-fechas {
+        font-size: 12px;
+    }
+}
+
+@media(max-width:360px) {
+    .st-etiquieta {
+        width: 100%;
+    }
+    .btn-buscar {
+        width: 100%;
+    }
+}

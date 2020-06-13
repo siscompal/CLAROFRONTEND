@@ -1,45 +1,56 @@
 <div class="search-div">
     <mat-form-field class="search-form-field" floatLabel="never">
-        <input matInput [(ngModel)]="searchKey" placeholder="Buscar" autocomplete="off" (keyup)="applyFilter()">
+        <input matInput [(ngModel)]="searchKey" placeholder="Buscar" autocomplete="off" (keyup)='applyFilter()'>
         <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
             <mat-icon>close</mat-icon>
         </button>
     </mat-form-field>
 </div>
 
-<div class="mat-elevation-z8">
+ 
+<div class="container" >
+  <button mat-raised-button color="primary" (click)="exportarSaldos()">Exportar
+  <mat-icon>cloud_download</mat-icon> 
+  </button>
+  &nbsp;
+  <button mat-raised-button color="accent" (click)="exportarSaldosFiltrado()">Filtro
+  <mat-icon>trending_down</mat-icon>
+  </button>
+</div>
+
+<div class="mat-elevation-z8 contenedor">
     <mat-table [dataSource]="listData" matSort>
-        <ng-container matColumnDef="fecha">
-            <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.fec_cre | date: 'dd/MM/yy'}}</mat-cell>
+        <ng-container matColumnDef="fecha" sticky>
+            <mat-header-cell *matHeaderCellDef>FECHA</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.fec_cre}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="concepto">
-            <mat-header-cell *matHeaderCellDef>Concepto</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>CONCEPTO</mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <span *ngIf="element.tipo == 'asignado'">Reparto</span>
                 <span *ngIf="element.tipo == 'debitado'">Débito</span>
             </mat-cell>
         </ng-container>
         <ng-container matColumnDef="valor">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Valor</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>VALOR</mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <span *ngIf="element.tipo == 'asignado'" style="color: green">{{element.valor}}</span>
                 <span *ngIf="element.tipo == 'debitado'" style="color: red">{{element.valor}}</span>
             </mat-cell>
         </ng-container>
         <ng-container matColumnDef="total">
-            <mat-header-cell *matHeaderCellDef>Total con comisión</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>TOTAL CON COMISIÓN</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.valor + element.comision}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="usuario">
-            <mat-header-cell *matHeaderCellDef>Asignado por</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>ASIGNADO POR</mat-header-cell> 
             <mat-cell *matCellDef="let element">
-                <span *ngIf="element.client_Origen != null">{{element.client_Origen.name}}</span>
-                <span *ngIf="element.user_Origen != null">{{element.user_Origen.name}}</span>
+                <span *ngIf="element.user_Origen != null">{{element.user_Origen| uppercase}}</span>
+               <!-- <span *ngIf="element.user_Origen != null">{{element.client_Origen| uppercase}}</span>-->
             </mat-cell>
         </ng-container>
         <ng-container matColumnDef="obs">
-            <mat-header-cell *matHeaderCellDef>Observación</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef stickyEnd>OBSERVACIÓN</mat-header-cell>
             <mat-cell *matCellDef="let element">{{element.obs}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="loading">

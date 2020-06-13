@@ -1,5 +1,13 @@
-.mat-elevation-z8 {
-    padding: 30px;
+.contenedor {
+    width: 100%;
+    overflow: auto;
+    margin: 5px auto;
+}
+
+.mat-table {
+    width: 100%;
+    min-width: 715px;
+    padding: 2px;
 }
 
 .hide {
@@ -24,8 +32,25 @@ mat-footer-row mat-footer-cell {
     border-radius: 5px;
 }
 
+.mat-cell {
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    margin: 0px;
+    border-left: 1px solid #eeeeee;
+}
+
+.mat-header-cell {
+    background-color: #4fc3f7;
+    color: #000000;
+    font-size: 12px;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    border-top: 1px solid #01579b;
+    border-bottom: 2px solid #01579b;
+    margin-bottom: 2px;
+}
+
 .mat-column-producto {
-    margin-right: 20px;
     word-wrap: break-word !important;
     white-space: unset !important;
     flex: 0 0 28% !important;
@@ -72,4 +97,20 @@ mat-footer-row mat-footer-cell {
 
 .mat-form-field-appearance-legacy .mat-form-field-wrapper {
     padding-bottom: 15px;
+}
+
+
+/* @media(max-width:669px) {
+    .contenedor {
+        width: 660px;
+    } 
+
+
+}*/
+
+@media screen and (max-width:715px) {
+    .mat-table {
+        display: block;
+        overflow-x: auto;
+    }
 }

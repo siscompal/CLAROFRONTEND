@@ -3,7 +3,7 @@
         <li *ngFor="let bolsa of mapSaldos">
             <mat-card class="card-saldos mat-elevation-z15">
                 <mat-card-title>{{bolsa[1]}}</mat-card-title>
-                <mat-card-content>${{bolsa[0]}}</mat-card-content>
+                <mat-card-content>${{bolsa[0]|number}}</mat-card-content>
 
             </mat-card>
         </li>
@@ -15,7 +15,7 @@
 
         <mat-card-title>Pasar saldo</mat-card-title>
 
-        <mat-card-content>
+        <mat-card-content> 
             <mat-form-field class="miti">
 
                 <mat-select name="origen" [(ngModel)]="origen" placeholder="Bolsa origen">

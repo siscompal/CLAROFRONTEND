@@ -1,20 +1,32 @@
 <div>
-    <div class="col-8 col-sm-8 caja-cupo">
+    <div class=" caja-cupo">
         <mat-card *ngIf="UserLogged['role'] == 'ROLE_ADMIN'">
-            <mat-card-title class="cupo">Cupo disponible</mat-card-title>
-            <mat-card-content class="cupo" style="font-weight: bold;">${{cupo}}</mat-card-content>
+            <mat-card-title class="cupo">Cupo disponible: ${{cupo}}</mat-card-title>
+           
         </mat-card>
     </div>
+    
+
+</div> 
+
+      <div class="regist">  
+      <app-publi-home></app-publi-home>
+      </div>
+
+<div class="limpiar"></div>
+<div class="upload-section">
     <div>
-        <app-publi-home></app-publi-home>
+        <mat-card >
+            <mat-card-title>Agregar publicidad</mat-card-title>
+            <mat-card-content>
+                <input type="file" (change)="fileChangeEvent($event)">
+                <button mat-flat-button (click)="subirImagen()">Subir</button>
+            </mat-card-content>
+        </mat-card>
     </div>
 
-</div>
-
-<div class=" row upload-section">
-
-    <div class="col-6 images">
-        <div class="card-header text-white" style="background-color: #e52427;">
+    <div class=" images"> 
+        <div >
             <h5>Imagenes cargadas</h5>
         </div>
 
@@ -31,13 +43,5 @@
         </div>
     </div>
 
-    <div class="col-4">
-        <mat-card class="card mat-elevation-z15">
-            <mat-card-title>Agregar publicidad</mat-card-title>
-            <mat-card-content>
-                <input type="file" (change)="fileChangeEvent($event)">
-                <button mat-flat-button (click)="subirImagen()">Subir</button>
-            </mat-card-content>
-        </mat-card>
-    </div>
+   
 </div>

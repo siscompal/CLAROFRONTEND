@@ -6,6 +6,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {routing} from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
+
+
+
 // Modulos propios
 import { MaterialModule } from './material.module';
 import { DashboardModule } from './components/dashboard/dashboard.module';
@@ -44,6 +48,9 @@ import { CargasGuard } from './services/guards/cargas.guard';
 import { ClienteGuard } from './services/guards/cliente.guard';
 import { ImageService } from './services/image.service';
 import { PublicidadComponent } from './components/publicidad/publicidad.component';
+import { ExportarService } from './services/exportar.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @NgModule({
@@ -61,7 +68,8 @@ import { PublicidadComponent } from './components/publicidad/publicidad.componen
     DashboardModule,
     FormsModule,
     ReactiveFormsModule,
-    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'})
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
+    NgbModule
   ],
   providers: [UserService,
               ClientService,
@@ -75,7 +83,8 @@ import { PublicidadComponent } from './components/publicidad/publicidad.componen
               DistribuidorGuard,
               MayoristaGuard,
               ActivationService,
-              ImageService
+              ImageService,
+              ExportarService
   ],
   bootstrap: [AppComponent],
   entryComponents: [
